@@ -1,0 +1,94 @@
+<div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100" hx-get="/api/scrape/status/{{ job_id }}"
+    hx-trigger="every 2s" hx-swap="outerHTML">
+
+    <div class="mb-8">
+        <h3 class="text-lg font-bold text-gray-900 mb-4">Phase: {{ status|title }}</h3>
+
+        <!-- 5-Step Progress Timeline -->
+        <div class="relative">
+            <div class="absolute inset-0 flex items-center px-6" aria-hidden="true">
+                <div class="w-full border-t-2 border-gray-100"></div>
+                <div class="absolute h-1 bg-primary transition-all duration-1000"
+                    style="width: {{ 20 if status == 'pending' else 60 if status == 'processing' else 100 }}%"></div>
+            </div>
+
+            <div class="relative flex justify-between">
+                <!-- Step 1 -->
+                <div class="flex flex-col items-center">
+                    <div
+                        class="w-10 h-10 rounded-full flex items-center justify-center {{ 'bg-primary text-white' if status in ['pending', 'processing', 'completed'] else 'bg-gray-200 text-gray-400' }} shadow-lg">
+                        <svg class="w-5 h-5 transition-transform duration-500 scale-110" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <span class="mt-2 text-xs font-bold text-gray-500">Validating</span>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex flex-col items-center">
+                    <div
+                        class="w-10 h-10 rounded-full flex items-center justify-center {{ 'bg-primary text-white' if status in ['processing', 'completed'] else 'bg-gray-100 text-gray-300' }} {{ 'animate-pulse' if status == 'pending' }}">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10">
+                            </path>
+                        </svg>
+                    </div>
+                    <span class="mt-2 text-xs font-bold text-gray-400">Fetching</span>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex flex-col items-center">
+                    <div
+                        class="w-10 h-10 rounded-full flex items-center justify-center {{ 'bg-primary text-white' if status == 'completed' else 'bg-gray-100 text-gray-300' }} {{ 'animate-pulse' if status == 'processing' }}">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4">
+                            </path>
+                        </svg>
+                    </div>
+                    <span class="mt-2 text-xs font-bold text-gray-400">Extracting</span>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="flex flex-col items-center">
+                    <div class="w-10 h-10 rounded-full bg-gray-100 text-gray-300 flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <span class="mt-2 text-xs font-bold text-gray-400">Analyzing</span>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="flex flex-col items-center">
+                    <div class="w-10 h-10 rounded-full bg-gray-100 text-gray-300 flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                    </div>
+                    <span class="mt-2 text-xs font-bold text-gray-400">Complete</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Status Text -->
+    <div class="flex items-center justify-center space-x-3 text-primary animate-pulse">
+        <div class="w-2 h-2 bg-primary rounded-full"></div>
+        <span class="text-sm font-semibold uppercase tracking-wider">
+            {% if status == 'pending' %}
+            Establishing Connection to CodeCanyon...
+            {% elif status == 'processing' %}
+            Parsing Item Data & Attributes...
+            {% else %}
+            Initializing Analysis Engine...
+            {% endif %}
+        </span>
+    </div>
+</div>

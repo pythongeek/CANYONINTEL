@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Product Search &amp; Advanced Filters | CodeCanyon Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b6cee",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #dbdfe6; border-radius: 10px; }
+        .profitability-gradient {
+            background: linear-gradient(90deg, #ef4444 0%, #f59e0b 50%, #10b981 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111318] dark:text-white min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-solid border-[#dbdfe6] dark:border-slate-800 bg-white dark:bg-background-dark px-6 lg:px-10 py-3">
+<div class="max-w-[1440px] mx-auto flex items-center justify-between whitespace-nowrap">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.8261 17.4264C16.7203 18.1174 20.2244 18.5217 24 18.5217C27.7756 18.5217 31.2797 18.1174 34.1739 17.4264C36.9144 16.7722 39.9967 15.2331 41.3563 14.1648L24.8486 40.6391C24.4571 41.267 23.5429 41.267 23.1514 40.6391L6.64374 14.1648C8.00331 15.2331 11.0856 16.7722 13.8261 17.4264Z" fill="currentColor"></path>
+<path clip-rule="evenodd" d="M39.998 12.236C39.9944 12.2537 39.9875 12.2845 39.9748 12.3294C39.9436 12.4399 39.8949 12.5741 39.8346 12.7175C39.8168 12.7597 39.7989 12.8007 39.7813 12.8398C38.5103 13.7113 35.9788 14.9393 33.7095 15.4811C30.9875 16.131 27.6413 16.5217 24 16.5217C20.3587 16.5217 17.0125 16.131 14.2905 15.4811C12.0012 14.9346 9.44505 13.6897 8.18538 12.8168C8.17384 12.7925 8.16216 12.767 8.15052 12.7408C8.09919 12.6249 8.05721 12.5114 8.02977 12.411C8.00356 12.3152 8.00039 12.2667 8.00004 12.2612C8.00004 12.261 8 12.2607 8.00004 12.2612C8.00004 12.2359 8.0104 11.9233 8.68485 11.3686C9.34546 10.8254 10.4222 10.2469 11.9291 9.72276C14.9242 8.68098 19.1919 8 24 8C28.8081 8 33.0758 8.68098 36.0709 9.72276C37.5778 10.2469 38.6545 10.8254 39.3151 11.3686C39.9006 11.8501 39.9857 12.1489 39.998 12.236ZM4.95178 15.2312L21.4543 41.6973C22.6288 43.5809 25.3712 43.5809 26.5457 41.6973L43.0534 15.223C43.0709 15.1948 43.0878 15.1662 43.104 15.1371L41.3563 14.1648C43.104 15.1371 43.1038 15.1374 43.104 15.1371L43.1051 15.135L43.1065 15.1325L43.1101 15.1261L43.1199 15.1082C43.1276 15.094 43.1377 15.0754 43.1497 15.0527C43.1738 15.0075 43.2062 14.9455 43.244 14.8701C43.319 14.7208 43.4196 14.511 43.5217 14.2683C43.6901 13.8679 44 13.0689 44 12.2609C44 10.5573 43.003 9.22254 41.8558 8.2791C40.6947 7.32427 39.1354 6.55361 37.385 5.94477C33.8654 4.72057 29.133 4 24 4C18.867 4 14.1346 4.72057 10.615 5.94478C8.86463 6.55361 7.30529 7.32428 6.14419 8.27911C4.99695 9.22255 3.99999 10.5573 3.99999 12.2609C3.99999 13.1275 4.29264 13.9078 4.49321 14.3607C4.60375 14.6102 4.71348 14.8196 4.79687 14.9689C4.83898 15.0444 4.87547 15.1065 4.9035 15.1529C4.91754 15.1762 4.92954 15.1957 4.93916 15.2111L4.94662 15.223L4.95178 15.2312ZM35.9868 18.996L24 38.22L12.0131 18.996C12.4661 19.1391 12.9179 19.2658 13.3617 19.3718C16.4281 20.1039 20.0901 20.5217 24 20.5217C27.9099 20.5217 31.5719 20.1039 34.6383 19.3718C35.082 19.2658 35.5339 19.1391 35.9868 18.996Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-[#111318] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">CodeCanyon Intelligence</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-[#111318] dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Marketplace</a>
+<a class="text-[#111318] dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Analytics</a>
+<a class="text-[#111318] dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Research</a>
+<a class="text-[#111318] dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Alerts</a>
+</nav>
+<div class="flex items-center gap-4 border-l border-[#dbdfe6] dark:border-slate-800 pl-8">
+<button class="material-symbols-outlined text-[#616f89]">notifications</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="User profile avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB0GOOlOgxjt0g75NOt0tvSM5a1nE13yDYqHg58chydyXu_gU6SghXDjyub0rtw1RvC-YoyR4xIGW2PnUut097GmL__K9ZYdEngahZA_9_8gQtWZWxfZ6P_wpQkRdiLS5BWPJEXlaMsYvBtnwPkqWu9F3OQ8Ai2ZDE24AAZSiIr1LxzSEv7_BEVIxCrEEg-dqxsRsEiW_R0aX_G4FXfN41qDuPV56Zp4JOEEElLALF2geNEN1tRWXYEoqMZs2gpueVkE-5FQHY2-PIw");'></div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-[1440px] mx-auto flex flex-col items-center">
+<!-- Search Hero Section -->
+<div class="w-full max-w-[800px] px-6 py-12 flex flex-col items-center gap-4">
+<h1 class="text-3xl font-bold text-center mb-2">Find the next top-selling asset</h1>
+<div class="w-full">
+<label class="flex flex-col w-full h-14 group">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full bg-white dark:bg-slate-900 shadow-lg border-2 border-transparent group-focus-within:border-primary group-focus-within:ring-4 group-focus-within:ring-primary/10 transition-all overflow-hidden">
+<div class="text-[#616f89] flex items-center justify-center pl-4">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden text-[#111318] dark:text-white focus:outline-0 focus:ring-0 border-none bg-transparent h-full placeholder:text-[#616f89] px-4 text-lg font-normal" placeholder="Search e-commerce scripts, UI kits, SaaS..." value="e-commerce scripts"/>
+<div class="flex items-center justify-center pr-4 gap-2">
+<button class="material-symbols-outlined text-[#616f89] hover:text-primary transition-colors">cancel</button>
+<div class="w-[1px] h-6 bg-[#dbdfe6] dark:bg-slate-700"></div>
+<button class="bg-primary text-white px-6 py-2 rounded-lg font-bold text-sm hover:bg-primary/90 transition-colors">SEARCH</button>
+</div>
+</div>
+</label>
+</div>
+<!-- Active Filter Chips -->
+<div class="flex gap-2 flex-wrap justify-center mt-2">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/10 border border-primary/20 pl-4 pr-3 hover:bg-primary/20 transition-colors group">
+<p class="text-primary text-sm font-semibold">PHP Scripts</p>
+<span class="material-symbols-outlined text-primary text-[18px]">close</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/10 border border-primary/20 pl-4 pr-3 hover:bg-primary/20 transition-colors">
+<p class="text-primary text-sm font-semibold">Price: $50 - $250</p>
+<span class="material-symbols-outlined text-primary text-[18px]">close</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/10 border border-primary/20 pl-4 pr-3 hover:bg-primary/20 transition-colors">
+<p class="text-primary text-sm font-semibold">Profitability &gt; 75</p>
+<span class="material-symbols-outlined text-primary text-[18px]">close</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary text-white pl-4 pr-3 hover:bg-primary/90 transition-colors">
+<p class="text-sm font-semibold">Clear All</p>
+</button>
+</div>
+</div>
+<div class="w-full flex px-6 lg:px-10 gap-10 pb-20">
+<!-- Sidebar Filters -->
+<aside class="w-[320px] shrink-0 sticky top-24 h-fit bg-white dark:bg-slate-900 rounded-xl border border-[#dbdfe6] dark:border-slate-800 p-6 overflow-hidden">
+<div class="flex items-center justify-between mb-6">
+<div class="flex flex-col">
+<h3 class="text-[#111318] dark:text-white text-lg font-bold">Filters</h3>
+<p class="text-[#616f89] text-xs font-medium">1,245 matches found</p>
+</div>
+<button class="text-primary text-xs font-bold hover:underline">Reset</button>
+</div>
+<div class="flex flex-col gap-2 custom-scrollbar overflow-y-auto max-h-[calc(100vh-250px)] pr-1">
+<!-- Category Accordion -->
+<details class="group" open="">
+<summary class="flex cursor-pointer items-center justify-between py-3 border-t border-[#dbdfe6] dark:border-slate-800 list-none">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">folder</span>
+<p class="text-[#111318] dark:text-white text-sm font-bold">Category</p>
+</div>
+<span class="material-symbols-outlined text-[#616f89] group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="flex flex-col gap-2 pb-4 pl-9">
+<label class="flex items-center gap-3 cursor-pointer group/item">
+<input checked="" class="form-checkbox rounded text-primary border-[#dbdfe6] focus:ring-primary/20" type="checkbox"/>
+<span class="text-sm text-[#616f89] group-hover/item:text-primary transition-colors">PHP Scripts (42)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group/item">
+<input class="form-checkbox rounded text-primary border-[#dbdfe6] focus:ring-primary/20" type="checkbox"/>
+<span class="text-sm text-[#616f89] group-hover/item:text-primary transition-colors">WordPress (128)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group/item pl-4">
+<input class="form-checkbox rounded text-primary border-[#dbdfe6] focus:ring-primary/20" type="checkbox"/>
+<span class="text-sm text-[#616f89] group-hover/item:text-primary transition-colors">eCommerce (18)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group/item">
+<input class="form-checkbox rounded text-primary border-[#dbdfe6] focus:ring-primary/20" type="checkbox"/>
+<span class="text-sm text-[#616f89] group-hover/item:text-primary transition-colors">Mobile Apps (56)</span>
+</label>
+</div>
+</details>
+<!-- Price Range Accordion -->
+<details class="group" open="">
+<summary class="flex cursor-pointer items-center justify-between py-3 border-t border-[#dbdfe6] dark:border-slate-800 list-none">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">payments</span>
+<p class="text-[#111318] dark:text-white text-sm font-bold">Price Range</p>
+</div>
+<span class="material-symbols-outlined text-[#616f89] group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="flex flex-col gap-4 pb-6 px-1">
+<div class="relative w-full h-1 bg-[#f0f2f4] dark:bg-slate-800 rounded-full mt-4">
+<div class="absolute left-1/4 right-1/4 h-full bg-primary rounded-full"></div>
+<div class="absolute left-1/4 -translate-x-1/2 -top-1.5 size-4 bg-white border-2 border-primary rounded-full shadow cursor-pointer"></div>
+<div class="absolute right-1/4 translate-x-1/2 -top-1.5 size-4 bg-white border-2 border-primary rounded-full shadow cursor-pointer"></div>
+</div>
+<div class="flex items-center justify-between gap-3">
+<div class="flex flex-col flex-1">
+<span class="text-[10px] font-bold text-[#616f89] uppercase tracking-wider">Min</span>
+<input class="w-full bg-[#f0f2f4] dark:bg-slate-800 border-none rounded-lg text-sm font-medium focus:ring-1 focus:ring-primary" type="text" value="$50"/>
+</div>
+<div class="flex flex-col flex-1">
+<span class="text-[10px] font-bold text-[#616f89] uppercase tracking-wider">Max</span>
+<input class="w-full bg-[#f0f2f4] dark:bg-slate-800 border-none rounded-lg text-sm font-medium focus:ring-1 focus:ring-primary" type="text" value="$250"/>
+</div>
+</div>
+</div>
+</details>
+<!-- Profitability Accordion -->
+<details class="group" open="">
+<summary class="flex cursor-pointer items-center justify-between py-3 border-t border-[#dbdfe6] dark:border-slate-800 list-none">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">monitoring</span>
+<p class="text-[#111318] dark:text-white text-sm font-bold">Profitability Score</p>
+</div>
+<span class="material-symbols-outlined text-[#616f89] group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="flex flex-col gap-4 pb-6 px-1">
+<p class="text-xs text-[#616f89]">Estimated likelihood of ROI based on sales velocity and niche competition.</p>
+<div class="h-2 w-full profitability-gradient rounded-full relative">
+<div class="absolute left-[75%] -top-2 size-6 bg-white border-4 border-primary rounded-full shadow-lg flex items-center justify-center text-[10px] font-bold">75</div>
+</div>
+<div class="flex justify-between text-[10px] font-bold text-[#616f89]">
+<span>LOW</span>
+<span>MEDIUM</span>
+<span>HIGH</span>
+</div>
+</div>
+</details>
+<!-- Technologies Accordion -->
+<details class="group" open="">
+<summary class="flex cursor-pointer items-center justify-between py-3 border-t border-[#dbdfe6] dark:border-slate-800 list-none">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">code</span>
+<p class="text-[#111318] dark:text-white text-sm font-bold">Technologies</p>
+</div>
+<span class="material-symbols-outlined text-[#616f89] group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="grid grid-cols-2 gap-2 pb-4">
+<button class="flex items-center gap-2 p-2 rounded-lg bg-primary/5 border border-primary/20 text-primary text-xs font-semibold">
+<span class="material-symbols-outlined text-[18px]">javascript</span> React
+                            </button>
+<button class="flex items-center gap-2 p-2 rounded-lg bg-[#f0f2f4] dark:bg-slate-800 text-[#616f89] text-xs font-semibold hover:border-primary transition-all">
+<span class="material-symbols-outlined text-[18px]">database</span> Laravel
+                            </button>
+<button class="flex items-center gap-2 p-2 rounded-lg bg-[#f0f2f4] dark:bg-slate-800 text-[#616f89] text-xs font-semibold hover:border-primary transition-all">
+<span class="material-symbols-outlined text-[18px]">terminal</span> Node.js
+                            </button>
+<button class="flex items-center gap-2 p-2 rounded-lg bg-[#f0f2f4] dark:bg-slate-800 text-[#616f89] text-xs font-semibold hover:border-primary transition-all">
+<span class="material-symbols-outlined text-[18px]">flutter</span> Flutter
+                            </button>
+</div>
+</details>
+</div>
+</aside>
+<!-- Main Results Area -->
+<div class="flex-1 flex flex-col gap-6">
+<!-- Results Header -->
+<div class="flex items-center justify-between bg-white dark:bg-slate-900 p-4 rounded-xl border border-[#dbdfe6] dark:border-slate-800">
+<h2 class="text-base font-bold text-[#111318] dark:text-white">Showing 42 results for "e-commerce scripts"</h2>
+<div class="flex items-center gap-4">
+<span class="text-sm text-[#616f89]">Sort by:</span>
+<select class="bg-transparent border-none text-sm font-bold text-primary focus:ring-0 cursor-pointer">
+<option>Highest Sales</option>
+<option>Newest Items</option>
+<option>Profitability Score</option>
+<option>Price: Low to High</option>
+</select>
+</div>
+</div>
+<!-- Product Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Product Card 1 -->
+<div class="bg-white dark:bg-slate-900 border border-[#dbdfe6] dark:border-slate-800 rounded-xl overflow-hidden hover:shadow-xl hover:border-primary/30 transition-all group flex flex-col">
+<div class="relative h-48 w-full bg-slate-200">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Modern e-commerce dashboard preview" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCx_T9I6VhXtAPqkwWfP7aanYV9W4wujW4BjWzGBR1TmVpn0wIYWHvvhAq7l2IwBKuZNJ4osgxYMFVpi92ByNJQ1HGVb6HGj113_5ozEEIehM99WpDSP6a8Sc_5I2OnCU21TVhQsO6hrLp0u7W73zMIP1cj4jIiLUFtj-vLCNgqlE0BnzrduygdgY_u1ghVvp9p2Ft-oqZUoNptCa9JinjFX5pMsErllvMXyAju7o6b9Nre_nZXK4v-1GNvLadjPoNM5SVr_HQjLwR4");'></div>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur rounded-lg px-2 py-1 flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-green-500 text-[18px] fill-1">trending_up</span>
+<span class="text-xs font-bold text-green-600">88 Score</span>
+</div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex items-start justify-between mb-2">
+<h3 class="text-base font-bold text-[#111318] dark:text-white group-hover:text-primary transition-colors">Ultimate Multi-Vendor SaaS Platform</h3>
+<span class="text-lg font-black text-primary">$69</span>
+</div>
+<p class="text-sm text-[#616f89] line-clamp-2 mb-4">Complete PHP Laravel based multi-vendor e-commerce solution with mobile apps and robust dashboard.</p>
+<div class="mt-auto flex items-center justify-between pt-4 border-t border-[#f0f2f4] dark:border-slate-800">
+<div class="flex gap-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[#616f89] text-[18px]">shopping_cart</span>
+<span class="text-xs font-bold text-[#111318] dark:text-slate-300">1.2k Sales</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-400 text-[18px] fill-1">star</span>
+<span class="text-xs font-bold text-[#111318] dark:text-slate-300">4.9 (120)</span>
+</div>
+</div>
+<span class="text-[10px] font-bold py-1 px-2 bg-primary/10 text-primary rounded uppercase">Laravel</span>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-white dark:bg-slate-900 border border-[#dbdfe6] dark:border-slate-800 rounded-xl overflow-hidden hover:shadow-xl hover:border-primary/30 transition-all group flex flex-col">
+<div class="relative h-48 w-full bg-slate-200">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Food delivery mobile app UI" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAVcj4gfNtTSjRfdhTQZCCJXqd5ChU3BUm9BL8RJZawxotva-TkZE3yLgScBv6KlQW2v7OtZhv6gle39MmkZtepaCP7YCTAOQW5qKI3xHv9L6lEuOZpjoT-M832VliGNkLcslJkntwIbIdR-9d-UQosjfLz_miTA8Cbzl62w5KmFE3AmXQjMUv7WkXKu8KWD5sksfYsg99zup-g5FgzC6Rjk-ZCFIeaTdCQ2JmQ7K615TjQ671qok65IJ1IS5plfPrz8Cnr9PKJ6Kw8");'></div>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur rounded-lg px-2 py-1 flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-amber-500 text-[18px] fill-1">trending_up</span>
+<span class="text-xs font-bold text-amber-600">72 Score</span>
+</div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex items-start justify-between mb-2">
+<h3 class="text-base font-bold text-[#111318] dark:text-white group-hover:text-primary transition-colors">Grocery &amp; Food Delivery Full System</h3>
+<span class="text-lg font-black text-primary">$49</span>
+</div>
+<p class="text-sm text-[#616f89] line-clamp-2 mb-4">React Native mobile app with Firebase backend. High demand niche with low competition.</p>
+<div class="mt-auto flex items-center justify-between pt-4 border-t border-[#f0f2f4] dark:border-slate-800">
+<div class="flex gap-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[#616f89] text-[18px]">shopping_cart</span>
+<span class="text-xs font-bold text-[#111318] dark:text-slate-300">840 Sales</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-400 text-[18px] fill-1">star</span>
+<span class="text-xs font-bold text-[#111318] dark:text-slate-300">4.7 (45)</span>
+</div>
+</div>
+<span class="text-[10px] font-bold py-1 px-2 bg-primary/10 text-primary rounded uppercase">React Native</span>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="bg-white dark:bg-slate-900 border border-[#dbdfe6] dark:border-slate-800 rounded-xl overflow-hidden hover:shadow-xl hover:border-primary/30 transition-all group flex flex-col">
+<div class="relative h-48 w-full bg-slate-200">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="E-commerce analytics dashboard" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBRWz6yaouX0nCd_ONvQqOD4-P0ZoPd1LdBPUXQ0x3wnkFjRyXMahaMKmPLKPPwpKOGskqhSUuh-IJTRbX4T_2F6r5RDdrvw1Sx38W1DQiV1Mr7XjZHJzbQYtg9zumdqsrMavfvrNHBXhilUOnmVKpiy7YdvQo_vn1LnMFRKPU-eNRvbMmSeZQe8erNMCS_UexwEmRGU0m8oxYsz-gLp4ZPYCnzvJfmMPknQHK5q5ivsR0H1NGnSqywWCa2hun6-nObLgkY74I1KHon");'></div>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur rounded-lg px-2 py-1 flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-green-500 text-[18px] fill-1">trending_up</span>
+<span class="text-xs font-bold text-green-600">94 Score</span>
+</div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex items-start justify-between mb-2">
+<h3 class="text-base font-bold text-[#111318] dark:text-white group-hover:text-primary transition-colors">AI-Powered Product Recommender</h3>
+<span class="text-lg font-black text-primary">$129</span>
+</div>
+<p class="text-sm text-[#616f89] line-clamp-2 mb-4">JavaScript widget for e-commerce sites. Integrates with Shopify and WooCommerce via API.</p>
+<div class="mt-auto flex items-center justify-between pt-4 border-t border-[#f0f2f4] dark:border-slate-800">
+<div class="flex gap-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[#616f89] text-[18px]">shopping_cart</span>
+<span class="text-xs font-bold text-[#111318] dark:text-slate-300">320 Sales</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-400 text-[18px] fill-1">star</span>
+<span class="text-xs font-bold text-[#111318] dark:text-slate-300">5.0 (12)</span>
+</div>
+</div>
+<span class="text-[10px] font-bold py-1 px-2 bg-primary/10 text-primary rounded uppercase">Python / JS</span>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="bg-white dark:bg-slate-900 border border-[#dbdfe6] dark:border-slate-800 rounded-xl overflow-hidden hover:shadow-xl hover:border-primary/30 transition-all group flex flex-col opacity-80">
+<div class="relative h-48 w-full bg-slate-200">
+<div class="absolute inset-0 bg-cover bg-center grayscale" data-alt="Classic website template" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDcC_f_YnhrC5rgX75Zn_OscDrrry2xribeYjjPTXCdFSHTbhA0VNidEmWlIsiIPv7z3m4kMR-3-V9uG6N69fnDobiXdQAs_vcv4Bl7zwONi07VSyGEpSiZm_Z3WxhAVyGBLGdwuLJIzJWUhb5HkK_eFV1ZJe8550qS1x9V7kytcezm9pfab0Z8ALPKommVGMuRz9Lhq53LnrN-aSsKELPGGLuL9MsV6BViLaCxV8kaGQFtgjXxYe6IFdubmJ1zvyubrXDrAFYRQpG7");'></div>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur rounded-lg px-2 py-1 flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-red-500 text-[18px] fill-1">trending_down</span>
+<span class="text-xs font-bold text-red-600">35 Score</span>
+</div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex items-start justify-between mb-2">
+<h3 class="text-base font-bold text-[#111318] dark:text-white group-hover:text-primary transition-colors">Legacy Shop HTML Template</h3>
+<span class="text-lg font-black text-primary">$12</span>
+</div>
+<p class="text-sm text-[#616f89] line-clamp-2 mb-4">Simple HTML/CSS static shop template. Low profitability due to high competition and outdated tech.</p>
+<div class="mt-auto flex items-center justify-between pt-4 border-t border-[#f0f2f4] dark:border-slate-800">
+<div class="flex gap-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[#616f89] text-[18px]">shopping_cart</span>
+<span class="text-xs font-bold text-[#111318] dark:text-slate-300">12k Sales</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-400 text-[18px] fill-1">star</span>
+<span class="text-xs font-bold text-[#111318] dark:text-slate-300">4.2 (3k)</span>
+</div>
+</div>
+<span class="text-[10px] font-bold py-1 px-2 bg-primary/10 text-primary rounded uppercase">HTML/CSS</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-center gap-2 py-8">
+<button class="size-10 flex items-center justify-center rounded-lg border border-[#dbdfe6] dark:border-slate-800 bg-white dark:bg-slate-900 text-[#111318] dark:text-white hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="size-10 flex items-center justify-center rounded-lg bg-primary text-white font-bold">1</button>
+<button class="size-10 flex items-center justify-center rounded-lg border border-[#dbdfe6] dark:border-slate-800 bg-white dark:bg-slate-900 text-[#111318] dark:text-white hover:bg-primary/10 transition-colors font-bold">2</button>
+<button class="size-10 flex items-center justify-center rounded-lg border border-[#dbdfe6] dark:border-slate-800 bg-white dark:bg-slate-900 text-[#111318] dark:text-white hover:bg-primary/10 transition-colors font-bold">3</button>
+<span class="px-2 text-[#616f89]">...</span>
+<button class="size-10 flex items-center justify-center rounded-lg border border-[#dbdfe6] dark:border-slate-800 bg-white dark:bg-slate-900 text-[#111318] dark:text-white hover:bg-primary/10 transition-colors font-bold">12</button>
+<button class="size-10 flex items-center justify-center rounded-lg border border-[#dbdfe6] dark:border-slate-800 bg-white dark:bg-slate-900 text-[#111318] dark:text-white hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer for context -->
+<footer class="w-full bg-white dark:bg-background-dark border-t border-[#dbdfe6] dark:border-slate-800 py-12">
+<div class="max-w-[1440px] mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-3 opacity-60">
+<span class="material-symbols-outlined">insights</span>
+<span class="text-sm font-bold">CodeCanyon Intelligence © 2024</span>
+</div>
+<div class="flex gap-8 text-sm text-[#616f89] font-medium">
+<a class="hover:text-primary" href="#">Data Policy</a>
+<a class="hover:text-primary" href="#">Terms of Service</a>
+<a class="hover:text-primary" href="#">API Documentation</a>
+<a class="hover:text-primary" href="#">Help Center</a>
+</div>
+</div>
+</footer>
+</body></html>

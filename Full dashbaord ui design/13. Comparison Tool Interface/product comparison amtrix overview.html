@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Product Comparison Matrix View - CodeCanyon Intelligence</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#137fec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sticky-col {
+            position: sticky;
+            left: 0;
+            z-index: 20;
+            background-color: inherit;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111418] dark:text-white transition-colors duration-200">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#dbe0e6] dark:border-[#2a343f] bg-white dark:bg-background-dark px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-6">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.8261 17.4264C16.7203 18.1174 20.2244 18.5217 24 18.5217C27.7756 18.5217 31.2797 18.1174 34.1739 17.4264C36.9144 16.7722 39.9967 15.2331 41.3563 14.1648L24.8486 40.6391C24.4571 41.267 23.5429 41.267 23.1514 40.6391L6.64374 14.1648C8.00331 15.2331 11.0856 16.7722 13.8261 17.4264Z" fill="currentColor"></path>
+<path clip-rule="evenodd" d="M39.998 12.236C39.9944 12.2537 39.9875 12.2845 39.9748 12.3294C39.9436 12.4399 39.8949 12.5741 39.8346 12.7175C39.8168 12.7597 39.7989 12.8007 39.7813 12.8398C38.5103 13.7113 35.9788 14.9393 33.7095 15.4811C30.9875 16.131 27.6413 16.5217 24 16.5217C20.3587 16.5217 17.0125 16.131 14.2905 15.4811C12.0012 14.9346 9.44505 13.6897 8.18538 12.8168C8.17384 12.7925 8.16216 12.767 8.15052 12.7408C8.09919 12.6249 8.05721 12.5114 8.02977 12.411C8.00356 12.3152 8.00039 12.2667 8.00004 12.2612C8.00004 12.261 8 12.2607 8.00004 12.2612C8.00004 12.2359 8.0104 11.9233 8.68485 11.3686C9.34546 10.8254 10.4222 10.2469 11.9291 9.72276C14.9242 8.68098 19.1919 8 24 8C28.8081 8 33.0758 8.68098 36.0709 9.72276C37.5778 10.2469 38.6545 10.8254 39.3151 11.3686C39.9006 11.8501 39.9857 12.1489 39.998 12.236ZM4.95178 15.2312L21.4543 41.6973C22.6288 43.5809 25.3712 43.5809 26.5457 41.6973L43.0534 15.223C43.0709 15.1948 43.0878 15.1662 43.104 15.1371L41.3563 14.1648C43.104 15.1371 43.1038 15.1374 43.104 15.1371L43.1051 15.135L43.1065 15.1325L43.1101 15.1261L43.1199 15.1082C43.1276 15.094 43.1377 15.0754 43.1497 15.0527C43.1738 15.0075 43.2062 14.9455 43.244 14.8701C43.319 14.7208 43.4196 14.511 43.5217 14.2683C43.6901 13.8679 44 13.0689 44 12.2609C44 10.5573 43.003 9.22254 41.8558 8.2791C40.6947 7.32427 39.1354 6.55361 37.385 5.94477C33.8654 4.72057 29.133 4 24 4C18.867 4 14.1346 4.72057 10.615 5.94478C8.86463 6.55361 7.30529 7.32428 6.14419 8.27911C4.99695 9.22255 3.99999 10.5573 3.99999 12.2609C3.99999 13.1275 4.29264 13.9078 4.49321 14.3607C4.60375 14.6102 4.71348 14.8196 4.79687 14.9689C4.83898 15.0444 4.87547 15.1065 4.9035 15.1529C4.91754 15.1762 4.92954 15.1957 4.93916 15.2111L4.94662 15.223L4.95178 15.2312ZM35.9868 18.996L24 38.22L12.0131 18.996C12.4661 19.1391 12.9179 19.2658 13.3617 19.3718C16.4281 20.1039 20.0901 20.5217 24 20.5217C27.9099 20.5217 31.5719 20.1039 34.6383 19.3718C35.082 19.2658 35.5339 19.1391 35.9868 18.996Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em] dark:text-white">CodeCanyon Intel</h2>
+</div>
+<label class="flex flex-col min-w-64 !h-10">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+<div class="text-[#617589] flex border-none bg-background-light dark:bg-[#1c2a38] items-center justify-center pl-4 rounded-l-xl border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] dark:text-white focus:outline-0 focus:ring-0 border-none bg-background-light dark:bg-[#1c2a38] focus:border-none h-full placeholder:text-[#617589] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search scripts or plugins..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-8 items-center">
+<nav class="flex items-center gap-9">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Marketplace</a>
+<a class="text-sm font-medium text-primary" href="#">Intelligence</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Trends</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Saved</a>
+</nav>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-background-light dark:bg-[#1c2a38] hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-background-light dark:bg-[#1c2a38] hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-[20px]">account_circle</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCboS77PCgQKafzTWfX20JV1sC0kklSKfuUdJ3qHCf5AGwa1B7oSx-Hl2Mkn7hv2GRiVBw-FtizNhwiizOYfnUFeLZp9wM7YeP2G3jZdaOJ9KW5iLpVU2IgC4WOQ08tcDVqhVLOrw7z6iXsTBQKA-0Ht0xO6EXF8GFI20nIlw4kaGSyaUuL3qoJVuz45YcxpNCI86MG1JTlnb6rcYE_TCZ3egtoAb0BuOTP3e0zZ886RHQkPN-j8-xdBV6PWDo8sLWO2GD_8JOtO8UY");'></div>
+</div>
+</header>
+<!-- Sticky Comparison Bar -->
+<div class="bg-white dark:bg-[#101922] border-b border-[#dbe0e6] dark:border-[#2a343f] sticky top-[65px] z-40 px-10 py-3 shadow-sm">
+<div class="max-w-[1400px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="text-sm font-semibold text-[#617589] dark:text-slate-400">Comparing (3/4):</span>
+<div class="flex gap-3">
+<!-- Product Slot 1 -->
+<div class="flex items-center gap-2 bg-background-light dark:bg-[#1c2a38] p-1.5 pr-3 rounded-lg border border-primary/20">
+<div class="size-8 rounded bg-cover bg-center" data-alt="Product thumbnail 1" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDHWKNleyIrDpYO-XP_sBPwMtuDM9sbapx4Q0HlgdRt59LXF3qLANedWWMDVzy_vwSrssVTOxGrWOL4fTVuH4C2kVWjOw-hYKIEfQJ878otZ8Rq0RrjWFGPYdFafRrdVgxIGvZSlSWWUiW5ZuDvIdxUw3ILvfUCD1uBs9DrHB4TNAMBBk3LwXckNRI-jCVJWcecryLmKjaM0wTPGuKOce5KbcklY6LOgxeofzL4Ng5X0eHsKMfEZCsZYi7s3qENyas-kVzQ0Vp3I3_Y");'></div>
+<span class="text-xs font-bold truncate max-w-[100px]">Admin Pro</span>
+<button class="text-[#617589] hover:text-red-500"><span class="material-symbols-outlined text-[16px]">close</span></button>
+</div>
+<!-- Product Slot 2 -->
+<div class="flex items-center gap-2 bg-background-light dark:bg-[#1c2a38] p-1.5 pr-3 rounded-lg border border-primary/20">
+<div class="size-8 rounded bg-cover bg-center" data-alt="Product thumbnail 2" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAMKIFMnW1-Pi45Z1_Y352bRqGFZq_pBx7TzaDozTmE9Kg062mAUVRUXD2HuLmqS6Z_LFwo7z8uDbnEo_cn_P-Y1e2eFE2U9N60mZlh29Ny2PmrPNQ7TV2FSJ5mqij9cTz_MbE6Ldf_2C2SS12bYxmTnti2XS111E-r9Xufqp7OiFcN4ZTMErkSI1pYjbQVmGvYst-m_PlmfDdWVSl4QBj-vEbnWeMkYMNFSbbsT8I3Q2m-ehkAoj5c3UAR3YXAWNAJNVCUcqQfsYFx");'></div>
+<span class="text-xs font-bold truncate max-w-[100px]">SEO Opti</span>
+<button class="text-[#617589] hover:text-red-500"><span class="material-symbols-outlined text-[16px]">close</span></button>
+</div>
+<!-- Product Slot 3 -->
+<div class="flex items-center gap-2 bg-background-light dark:bg-[#1c2a38] p-1.5 pr-3 rounded-lg border border-primary/20">
+<div class="size-8 rounded bg-cover bg-center" data-alt="Product thumbnail 3" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCixgo8Tvsy3qfo7n3SpT79PSd7Ym85LVpWw81aNHo9qteItt_98kpaurUUywnig5bk7X-3Iir3XUnsVWOFqbc26ZTQnoELUJskirDV6r8L5oT1o_iaLGie_6vF1u4VOcu-M9JpZ9AX77sPNsv_Z5KEhjLva2qQ-cFZnVMYj5y5KOA2oaJNfJ2waFVU6sG51p0Nzm96ZL0Ew0bHjZGJGB8UeoaNYxkRcK-Tjbh5vH1ZntAgc8iw3ctcwGKXTML97ULVtQGl4NtAR1h0");'></div>
+<span class="text-xs font-bold truncate max-w-[100px]">E-Shop</span>
+<button class="text-[#617589] hover:text-red-500"><span class="material-symbols-outlined text-[16px]">close</span></button>
+</div>
+<!-- Empty Slot -->
+<div class="flex items-center gap-2 border-2 border-dashed border-[#dbe0e6] dark:border-[#2a343f] p-1.5 pr-3 rounded-lg text-[#617589]">
+<div class="size-8 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</div>
+<span class="text-xs font-medium">Add Script</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<!-- Toggle View -->
+<div class="flex h-10 w-48 items-center justify-center rounded-xl bg-background-light dark:bg-[#1c2a38] p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-xl px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-[#2a343f] has-[:checked]:shadow-sm has-[:checked]:text-primary text-[#617589] text-xs font-bold leading-normal transition-all">
+<span class="truncate">Table View</span>
+<input checked="" class="invisible w-0" name="view_mode" type="radio" value="table"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-xl px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-[#2a343f] has-[:checked]:shadow-sm has-[:checked]:text-primary text-[#617589] text-xs font-bold leading-normal transition-all">
+<span class="truncate">Grid View</span>
+<input class="invisible w-0" name="view_mode" type="radio" value="grid"/>
+</label>
+</div>
+<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 bg-primary text-white gap-2 text-sm font-bold px-6 hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">compare_arrows</span>
+<span class="truncate">Compare Now</span>
+</button>
+</div>
+</div>
+</div>
+<main class="max-w-[1400px] mx-auto px-10 py-8">
+<div class="mb-6">
+<h1 class="text-[#111418] dark:text-white tracking-tight text-[32px] font-bold leading-tight">Product Comparison Matrix</h1>
+<p class="text-[#617589] dark:text-slate-400 mt-1">Analyzing profitability and sales performance for selected items.</p>
+</div>
+<!-- Comparison Table Container -->
+<div class="bg-white dark:bg-[#101922] rounded-xl border border-[#dbe0e6] dark:border-[#2a343f] overflow-hidden shadow-sm">
+<div class="overflow-x-auto hide-scrollbar">
+<table class="w-full border-collapse">
+<thead>
+<tr class="bg-white dark:bg-[#101922] border-b border-[#dbe0e6] dark:border-[#2a343f]">
+<th class="sticky-col min-w-[240px] px-6 py-10 text-left text-sm font-bold text-[#617589] dark:text-slate-400 bg-white dark:bg-background-dark">
+                                Product Attributes
+                            </th>
+<!-- Product 1 -->
+<th class="min-w-[280px] px-6 py-10 text-center bg-primary/5 dark:bg-primary/10">
+<div class="flex flex-col items-center gap-3">
+<div class="size-20 rounded-xl bg-cover shadow-md" data-alt="Admin Dashboard Preview" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBG5dGWG21JBaTLmaAvxfDG1Ge7oBAEqEjityPk2Pb7JnM25E-qcAKUNuT6UUPJ6w6qG9kB9wPcpwEifDkvcioUTSgwUJr4wz44ChXNcPpPsu5sgj_9p67DPtLpR-QJCuW_h0m_rrbfZYWxVb9WtyCJAm4OHqsZwU14yVzRVHZrq_cbNgMwO6nZumcqXzeYsVklEBEKzdVO381lQNiKedqmtiG6ICSCbpZLue7_dvm30HXaXRnaZly_b9f6vdBu_4NRoPloWgD2_oii");'></div>
+<span class="text-base font-bold dark:text-white">Admin Dashboard Script</span>
+<span class="text-xs font-medium text-primary bg-primary/10 px-2 py-0.5 rounded">PHP Scripts</span>
+</div>
+</th>
+<!-- Product 2 -->
+<th class="min-w-[280px] px-6 py-10 text-center">
+<div class="flex flex-col items-center gap-3">
+<div class="size-20 rounded-xl bg-cover shadow-md" data-alt="SEO Pro Preview" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA98tKhDHZkAAfyicLGQFkxoPcSSmRfSaEVWGCUt3KU-vh19EiPA6yulSGp8TL8v67-GsB-5vm7bJzRlLXkYR3oQHirJZCaSr6-8isKr7rlcVu7l0ohlXo08lewWbuVVl7dV3aim0klYMUPPFzaw-aUWg2vCvcYEijjbsXzuw9oeMZIcfGrTF-VaJnvxS_5Zquwbs7ZnB5Pv87qiWLLzlgHJWg-TdLxhxnLaTsNn6Eu2twVEZtgCWJtGRVYFBcUMMNP0s8CO1d6Pyrk");'></div>
+<span class="text-base font-bold dark:text-white">SEO Optimizer Pro</span>
+<span class="text-xs font-medium text-primary bg-primary/10 px-2 py-0.5 rounded">WordPress</span>
+</div>
+</th>
+<!-- Product 3 -->
+<th class="min-w-[280px] px-6 py-10 text-center">
+<div class="flex flex-col items-center gap-3">
+<div class="size-20 rounded-xl bg-cover shadow-md" data-alt="Ecommerce Plugin Preview" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDsPHQWuR1wuTDyIt0i8ZtEmxvJwnHuyANKfpmW63F8_u3hgY8NHomIqfXM4WaYytRYt7O844g9ZlIOxN9VCM4bsNqyX16MVZz_KuOLMu4tRTJL5nS_ryAqFdznU-HpM2QWDIFAuDpwHOrcLR5sC4QLNvKnV0ZLLx5-pzZYTwCUzynJm1i1Orh_350AbQnWEzA9swLzfNMxx542hxICeEApLmGBXXuDPGMynLnnBGhe5di_4pBYQzjFW-WIAb7_UFhV-WJhjDuPqiyZ");'></div>
+<span class="text-base font-bold dark:text-white">E-commerce Plugin</span>
+<span class="text-xs font-medium text-primary bg-primary/10 px-2 py-0.5 rounded">eCommerce</span>
+</div>
+</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#dbe0e6] dark:divide-[#2a343f]">
+<!-- Metrics Group -->
+<tr class="bg-slate-50 dark:bg-[#1c2a38]">
+<td class="px-6 py-3 text-[11px] font-extrabold uppercase tracking-widest text-[#617589] dark:text-slate-500" colspan="4">Sales Intelligence</td>
+</tr>
+<tr>
+<td class="sticky-col px-6 py-5 font-semibold bg-white dark:bg-background-dark">Price</td>
+<td class="px-6 py-5 text-center bg-primary/5 dark:bg-primary/10 font-bold text-lg">$49.00</td>
+<td class="px-6 py-5 text-center text-green-600 dark:text-green-400 font-bold text-lg underline decoration-dashed underline-offset-4 decoration-green-300">
+                                $29.00
+                                <div class="text-[10px] font-normal uppercase mt-1">Best Value</div>
+</td>
+<td class="px-6 py-5 text-center font-bold text-lg">$89.00</td>
+</tr>
+<tr class="bg-slate-50/50 dark:bg-transparent">
+<td class="sticky-col px-6 py-5 font-semibold bg-white dark:bg-background-dark">Monthly Sales</td>
+<td class="px-6 py-5 text-center bg-primary/5 dark:bg-primary/10 font-medium">1,240 <span class="text-green-500 text-xs ml-1">↑ 12%</span></td>
+<td class="px-6 py-5 text-center font-medium">845 <span class="text-red-500 text-xs ml-1">↓ 3%</span></td>
+<td class="px-6 py-5 text-center font-medium">2,110 <span class="text-green-500 text-xs ml-1">↑ 24%</span></td>
+</tr>
+<tr>
+<td class="sticky-col px-6 py-5 font-semibold bg-white dark:bg-background-dark">Profitability Score</td>
+<td class="px-6 py-5 text-center bg-primary/5 dark:bg-primary/10">
+<div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-green-500 text-white font-bold text-sm">8.4 / 10</div>
+</td>
+<td class="px-6 py-5 text-center">
+<div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-amber-500 text-white font-bold text-sm">6.1 / 10</div>
+</td>
+<td class="px-6 py-5 text-center">
+<div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-green-600 text-white font-bold text-sm">9.2 / 10</div>
+</td>
+</tr>
+<!-- Features Group -->
+<tr class="bg-slate-50 dark:bg-[#1c2a38]">
+<td class="px-6 py-3 text-[11px] font-extrabold uppercase tracking-widest text-[#617589] dark:text-slate-500" colspan="4">Technical Features</td>
+</tr>
+<tr class="bg-slate-50/50 dark:bg-transparent">
+<td class="sticky-col px-6 py-5 font-semibold bg-white dark:bg-background-dark">Documentation</td>
+<td class="px-6 py-5 text-center bg-primary/5 dark:bg-primary/10 text-green-500">
+<span class="material-symbols-outlined">check_circle</span>
+</td>
+<td class="px-6 py-5 text-center text-green-500">
+<span class="material-symbols-outlined">check_circle</span>
+</td>
+<td class="px-6 py-5 text-center text-green-500">
+<span class="material-symbols-outlined">check_circle</span>
+</td>
+</tr>
+<tr>
+<td class="sticky-col px-6 py-5 font-semibold bg-white dark:bg-background-dark">Support (6 mos)</td>
+<td class="px-6 py-5 text-center bg-primary/5 dark:bg-primary/10 text-green-500">
+<span class="material-symbols-outlined">check_circle</span>
+</td>
+<td class="px-6 py-5 text-center text-red-500">
+<span class="material-symbols-outlined">cancel</span>
+</td>
+<td class="px-6 py-5 text-center text-green-500">
+<span class="material-symbols-outlined">check_circle</span>
+</td>
+</tr>
+<tr class="bg-slate-50/50 dark:bg-transparent">
+<td class="sticky-col px-6 py-5 font-semibold bg-white dark:bg-background-dark">Regular Updates</td>
+<td class="px-6 py-5 text-center bg-primary/5 dark:bg-primary/10 text-green-500">
+<span class="material-symbols-outlined">check_circle</span>
+</td>
+<td class="px-6 py-5 text-center text-green-500">
+<span class="material-symbols-outlined">check_circle</span>
+</td>
+<td class="px-6 py-5 text-center text-red-500">
+<span class="material-symbols-outlined">cancel</span>
+<div class="text-[9px] text-red-400 mt-1 uppercase font-bold">Last update: 2023</div>
+</td>
+</tr>
+<tr>
+<td class="sticky-col px-6 py-5 font-semibold bg-white dark:bg-background-dark">Rating</td>
+<td class="px-6 py-5 text-center bg-primary/5 dark:bg-primary/10">
+<div class="flex justify-center text-amber-400">
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="material-symbols-outlined text-[18px]">star_half</span>
+</div>
+<div class="text-xs mt-1 text-[#617589]">4.5/5 (210)</div>
+</td>
+<td class="px-6 py-5 text-center">
+<div class="flex justify-center text-amber-400">
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="material-symbols-outlined text-[18px]">star_outline</span>
+</div>
+<div class="text-xs mt-1 text-[#617589]">4.0/5 (45)</div>
+</td>
+<td class="px-6 py-5 text-center">
+<div class="flex justify-center text-amber-400">
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="material-symbols-outlined text-[18px]">star</span>
+</div>
+<div class="text-xs mt-1 text-[#617589]">5.0/5 (1.2k)</div>
+</td>
+</tr>
+<!-- Actions Row -->
+<tr class="bg-slate-50/50 dark:bg-[#1c2a38]/50">
+<td class="sticky-col px-6 py-10 bg-white dark:bg-background-dark"></td>
+<td class="px-6 py-10 text-center bg-primary/5 dark:bg-primary/10">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-xl transition-colors">View Product</button>
+</td>
+<td class="px-6 py-10 text-center">
+<button class="w-full border-2 border-primary text-primary hover:bg-primary/5 font-bold py-3 rounded-xl transition-colors">View Product</button>
+</td>
+<td class="px-6 py-10 text-center">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-xl transition-colors">View Product</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mt-8 flex justify-between items-center text-sm text-[#617589] dark:text-slate-400">
+<p>Data last updated: 4 hours ago. Intelligence score is relative to category benchmarks.</p>
+<div class="flex gap-4">
+<button class="flex items-center gap-2 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span> Export PDF
+                </button>
+<button class="flex items-center gap-2 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">share</span> Share Matrix
+                </button>
+</div>
+</div>
+</main>
+<!-- Simple Footer -->
+<footer class="mt-20 border-t border-[#dbe0e6] dark:border-[#2a343f] px-10 py-8 text-center text-[#617589] dark:text-slate-500 text-sm">
+        © 2024 CodeCanyon Intelligence. All metrics are proprietary and for research purposes only.
+    </footer>
+</body></html>

@@ -1,0 +1,112 @@
+<div
+    class="bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden animate-in fade-in zoom-in duration-500">
+    <div class="flex flex-col lg:flex-row">
+        <!-- Thumbnail / Meta -->
+        <div class="lg:w-1/3 bg-gray-900 p-8 flex flex-col justify-between">
+            <div>
+                <img src="{{ product.screenshots[0] if product.screenshots else 'https://via.placeholder.com/600x400?text=No+Image' }}"
+                    alt="{{ product.title }}"
+                    class="w-full aspect-video object-cover rounded-xl shadow-2xl transition-transform hover:scale-105 duration-500">
+                <div class="mt-6 flex flex-wrap gap-2">
+                    {% for tech in product.technologies[:5] %}
+                    <span class="px-3 py-1 bg-white/10 text-white/80 text-xs font-bold rounded-lg">{{ tech }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-white/10">
+                <div class="flex items-center justify-between text-white/60 mb-2">
+                    <span class="text-sm">Current Price</span>
+                    <span class="text-2xl font-bold text-white">${{ product.price }}</span>
+                </div>
+                <div class="flex items-center justify-between text-white/60">
+                    <span class="text-sm">Total Sales</span>
+                    <span class="text-xl font-bold text-success">{{ product.total_sales }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="lg:w-2/3 p-8 lg:p-12">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <span class="text-primary font-bold text-sm uppercase tracking-widest mb-2 block">{{
+                        product.category }}</span>
+                    <h2 class="text-3xl font-extrabold text-gray-900 leading-tight">{{ product.title }}</h2>
+                    <p class="text-gray-500 mt-2">By <span class="font-bold text-gray-700">{{ product.author_name
+                            }}</span></p>
+                </div>
+                <div class="flex flex-col items-end">
+                    <div
+                        class="flex items-center bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full font-bold text-sm shadow-lg shadow-yellow-400/20">
+                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                            </path>
+                        </svg>
+                        {{ product.rating }}
+                    </div>
+                    <span class="text-xs text-gray-400 mt-1 uppercase font-bold tracking-tighter">{{
+                        product.review_count }} Reviews</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                <div>
+                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">Core Features</h3>
+                    <ul class="space-y-3">
+                        {% for feature in product.features[:6] %}
+                        <li class="flex items-center text-gray-700 font-medium">
+                            <svg class="w-5 h-5 mr-3 text-success" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            {{ feature }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-2 text-center">Trust
+                        Indicator</h3>
+                    <div class="relative pt-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold text-gray-500">Scuffed Analysis</span>
+                            <span class="text-xs font-bold text-primary">Pending Phase 3</span>
+                        </div>
+                        <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                            <div class="h-full bg-primary w-1/4 animate-pulse"></div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-4 leading-relaxed">
+                        Full profitability analysis and market saturation scores will be available once the Phase 3
+                        Analyzer Engine is deployed.
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="{{ product.url }}" target="_blank"
+                    class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-900 font-bold py-4 px-8 rounded-xl transition-all text-center flex items-center justify-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                    </svg>
+                    Original Item
+                </a>
+                <button
+                    class="flex-1 bg-primary hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-xl transition-all shadow-lg shadow-primary/30 flex items-center justify-center">
+                    Download Intelligence Report
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Header Toast on success -->
+<div hx-swap-oob="beforeend:#toast-container">
+    <div class="p-4 rounded-lg shadow-lg text-white text-sm bg-success animate-in slide-in-from-right duration-500">
+        Analysis Complete! Product data successfully harvested.
+    </div>
+</div>

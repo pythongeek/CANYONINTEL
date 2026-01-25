@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Recent Product Analysis Card - CodeCanyon Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#2463eb",
+                "background-light": "#f6f6f8",
+                "background-dark": "#111621",
+                "hover-blue": "#EFF6FF",
+              },
+              fontFamily: {
+                "display": ["Inter", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+        .profit-ring {
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#f0f1f4] dark:border-gray-800 bg-white dark:bg-gray-900 px-10 py-3 mb-8">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-[#111318] dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.8261 17.4264C16.7203 18.1174 20.2244 18.5217 24 18.5217C27.7756 18.5217 31.2797 18.1174 34.1739 17.4264C36.9144 16.7722 39.9967 15.2331 41.3563 14.1648L24.8486 40.6391C24.4571 41.267 23.5429 41.267 23.1514 40.6391L6.64374 14.1648C8.00331 15.2331 11.0856 16.7722 13.8261 17.4264Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">CodeCanyon Intelligence</h2>
+</div>
+<label class="flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+<div class="text-[#616e89] flex border-none bg-[#f0f1f4] dark:bg-gray-800 items-center justify-center pl-4 rounded-l-xl">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-xl text-[#111318] dark:text-white focus:outline-0 focus:ring-0 border-none bg-[#f0f1f4] dark:bg-gray-800 h-full placeholder:text-[#616e89] px-4 pl-2 text-base font-normal" placeholder="Search products..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-8 items-center">
+<nav class="flex items-center gap-9">
+<a class="text-[#111318] dark:text-white text-sm font-medium" href="#">Dashboard</a>
+<a class="text-[#111318] dark:text-white text-sm font-medium" href="#">Analytics</a>
+<a class="text-[#111318] dark:text-white text-sm font-medium" href="#">Reports</a>
+<a class="text-[#111318] dark:text-white text-sm font-medium" href="#">Settings</a>
+</nav>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-gray-200 dark:border-gray-700" data-alt="User profile avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA6JgUgiMIvlftDWBab5zVt9SmjKc8o_rL-sgo8pWcxRRyvK_Q7uqChKMROEV4acXQIZ3R0eOc25Uf_rZAq6o8U-BsaQCTSGVcpf82YODrgR9n5_5sVuH7RcMadUSSkPrYn0CA5Ovy_I4xq0FaFjTnaqJE8_ZeycbJeZpINPJAV072K-OY-oschG5MoXTXVR1y4aODwdvWlbY1G2a47SJpYN8sfIFdvF7SIJCG4j795gF5_AR2ZaSfPNvPFIwBnWNw-fxhfZkiTzYBB");'></div>
+</div>
+</header>
+<main class="max-w-[1024px] mx-auto w-full px-4 mb-20">
+<!-- Recent Analyses Card -->
+<div class="bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden">
+<!-- Header Section -->
+<div class="flex items-center justify-between px-6 py-5 border-b border-gray-50 dark:border-gray-800">
+<h2 class="text-[#111318] dark:text-white text-xl font-bold tracking-tight">Recent Analyses</h2>
+<button class="flex items-center gap-2 bg-[#f0f1f4] dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-[#111318] dark:text-white text-sm font-medium px-4 py-2 rounded-xl">
+                    Last 7 Days
+                    <span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+<!-- List of Products -->
+<div class="divide-y divide-gray-50 dark:divide-gray-800">
+<!-- Product Row 1 -->
+<div class="flex items-center gap-6 px-6 py-5 hover:bg-hover-blue dark:hover:bg-primary/10 transition-colors cursor-pointer group">
+<div class="shrink-0">
+<div class="size-[64px] rounded-lg bg-cover bg-center border border-gray-100 dark:border-gray-700" data-alt="Software dashboard interface preview" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBUCamhgoAUOyX85nPsUlmHrqdvd4YgKUxBfoqVCGsg2ye3mlsa2WUb3Qz-RA2ckPieS4kBe76mJR7XM4_t38xydfC1H9J8qAVGte2L9Na9o-mbUNNiOdj18exp4nkm2ZfvK5NTyyLjRTwQFKOiKHhDvEkLeusGM877HPJwhLnmqm0yCUvq6rXyqwEG9bkMUC_0ZIN_QQ-khg26PPcU4VSsYfbr782AjtMKm4GoRtmHCwbz93gls6xdQSdJiWDMbumF9EIcEGI03Yd9');"></div>
+</div>
+<div class="flex-1 flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<h3 class="text-[#111318] dark:text-white font-semibold text-base group-hover:text-primary transition-colors">Ultimate SEO Plugin</h3>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400">WordPress</span>
+</div>
+<div class="flex items-center gap-4 text-sm text-[#616e89] dark:text-gray-400">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined !text-sm">payments</span>$49</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined !text-sm">trending_up</span>1.2k sales</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined !text-sm text-yellow-500">star</span>4.8</span>
+</div>
+<div class="flex gap-2 mt-1">
+<span class="px-2 py-0.5 bg-primary/10 dark:bg-primary/20 text-primary rounded text-[11px] font-medium">React</span>
+<span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded text-[11px] font-medium">Laravel</span>
+<span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded text-[11px] font-medium">MySQL</span>
+</div>
+</div>
+<div class="shrink-0 flex items-center justify-center relative size-20">
+<svg class="size-full profit-ring" viewbox="0 0 36 36">
+<circle class="text-gray-100 dark:text-gray-800" cx="18" cy="18" fill="transparent" r="16" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-green-500" cx="18" cy="18" fill="transparent" r="16" stroke="currentColor" stroke-dasharray="100" stroke-dashoffset="15" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-[#111318] dark:text-white text-lg font-bold leading-none">85</span>
+<span class="text-[9px] uppercase text-[#616e89] dark:text-gray-400 font-bold">Profit</span>
+</div>
+</div>
+</div>
+<!-- Product Row 2 -->
+<div class="flex items-center gap-6 px-6 py-5 hover:bg-hover-blue dark:hover:bg-primary/10 transition-colors cursor-pointer group">
+<div class="shrink-0">
+<div class="size-[64px] rounded-lg bg-cover bg-center border border-gray-100 dark:border-gray-700" data-alt="Minimal e-commerce app template design" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCqxklQmESCDFv8OipHU-OBi0XlCDUgF4RqKCtWNgnt7gXh51bRaCF-NQlF9eRRdhcVTwyjGKIPpjshLo1EJ97iuORHtcXMDVnBx5bq27aBwJK2vPwuU9CozpWtWEUNdRae0kBGizaom2FNzCEk2q4xTRux3XLg4xH2zE5BPDe7zeJQE4gMEXh-fXK31ubd4Hhr7ft-nmJfITmWhyFuJuj4eHnVqSo6dzB_cvGEoYiG0HxNtSLN2qghQoQssdeznjDb3sDeLdik4ovy');"></div>
+</div>
+<div class="flex-1 flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<h3 class="text-[#111318] dark:text-white font-semibold text-base group-hover:text-primary transition-colors">SwiftShop Mobile App</h3>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400">Mobile</span>
+</div>
+<div class="flex items-center gap-4 text-sm text-[#616e89] dark:text-gray-400">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined !text-sm">payments</span>$59</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined !text-sm">trending_up</span>842 sales</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined !text-sm text-yellow-500">star</span>4.9</span>
+</div>
+<div class="flex gap-2 mt-1">
+<span class="px-2 py-0.5 bg-primary/10 dark:bg-primary/20 text-primary rounded text-[11px] font-medium">Flutter</span>
+<span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded text-[11px] font-medium">Firebase</span>
+</div>
+</div>
+<div class="shrink-0 flex items-center justify-center relative size-20">
+<svg class="size-full profit-ring" viewbox="0 0 36 36">
+<circle class="text-gray-100 dark:text-gray-800" cx="18" cy="18" fill="transparent" r="16" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-green-500" cx="18" cy="18" fill="transparent" r="16" stroke="currentColor" stroke-dasharray="100" stroke-dashoffset="8" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-[#111318] dark:text-white text-lg font-bold leading-none">92</span>
+<span class="text-[9px] uppercase text-[#616e89] dark:text-gray-400 font-bold">Profit</span>
+</div>
+</div>
+</div>
+<!-- Product Row 3 -->
+<div class="flex items-center gap-6 px-6 py-5 hover:bg-hover-blue dark:hover:bg-primary/10 transition-colors cursor-pointer group">
+<div class="shrink-0">
+<div class="size-[64px] rounded-lg bg-cover bg-center border border-gray-100 dark:border-gray-700" data-alt="Security firewall illustration icon" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAv-fThm1Jpbbiiof4eZWl4ZxX1Z9jxMeSRYLNg9cJaeKOMFa1K38-S9785_zbbyiYaoJhFWFodjSPyBAKipUvTBz1-5Annd45Z9jVyd__vtzproJw-gQ8no2eoswn8VHvG0w0rnQ162rhF5yEoexJLYFanf9NjGmgQCGfuczX7geSFicOXkp6jZk560NeiQA9DV4uiXiGhkaqrDoCFuMqKKxwul6zas_OnuqxyQ4Aj9ap2aryO2i-dhsN9htu1qMRR1mAu2e_x9g3x');"></div>
+</div>
+<div class="flex-1 flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<h3 class="text-[#111318] dark:text-white font-semibold text-base group-hover:text-primary transition-colors">Vault Security Engine</h3>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400">PHP Scripts</span>
+</div>
+<div class="flex items-center gap-4 text-sm text-[#616e89] dark:text-gray-400">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined !text-sm">payments</span>$29</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined !text-sm">trending_up</span>2.4k sales</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined !text-sm text-yellow-500">star</span>4.7</span>
+</div>
+<div class="flex gap-2 mt-1">
+<span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded text-[11px] font-medium">PHP 8.2</span>
+<span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded text-[11px] font-medium">Redis</span>
+</div>
+</div>
+<div class="shrink-0 flex items-center justify-center relative size-20">
+<svg class="size-full profit-ring" viewbox="0 0 36 36">
+<circle class="text-gray-100 dark:text-gray-800" cx="18" cy="18" fill="transparent" r="16" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-primary" cx="18" cy="18" fill="transparent" r="16" stroke="currentColor" stroke-dasharray="100" stroke-dashoffset="35" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-[#111318] dark:text-white text-lg font-bold leading-none">65</span>
+<span class="text-[9px] uppercase text-[#616e89] dark:text-gray-400 font-bold">Profit</span>
+</div>
+</div>
+</div>
+<!-- Product Row 4 -->
+<div class="flex items-center gap-6 px-6 py-5 hover:bg-hover-blue dark:hover:bg-primary/10 transition-colors cursor-pointer group">
+<div class="shrink-0">
+<div class="size-[64px] rounded-lg bg-cover bg-center border border-gray-100 dark:border-gray-700" data-alt="Analytics chart abstract icon" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBs5Qn7HpI9WiPlEsdg3M5cMDe3C39EL2elffXjpy231wkB2bVUwt_lDA5E_-GQIU-iGjYxA6-b0jPDUoovJrv6rNrAHC5g7fnWWs3dysSBbapsIbCfQ9RAkd94ibMSwWBBvJd8pQwGbpeA52rYNzCiW4y6n4Ksa5Mt6xubUHaKvnyms8I8wuUr5Q9qa6Yq4o4l1WjZ4J1Wm5SI29FBBeZxJ_uSGiNP5YbxQtO5wH-YJHZ-jkQSEQ_Cv-6GcZDK73oGx6QaUwHJvd11');"></div>
+</div>
+<div class="flex-1 flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<h3 class="text-[#111318] dark:text-white font-semibold text-base group-hover:text-primary transition-colors">Metrics Dash Builder</h3>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400">Admin Panels</span>
+</div>
+<div class="flex items-center gap-4 text-sm text-[#616e89] dark:text-gray-400">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined !text-sm">payments</span>$35</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined !text-sm">trending_up</span>612 sales</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined !text-sm text-yellow-500">star</span>4.5</span>
+</div>
+<div class="flex gap-2 mt-1">
+<span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded text-[11px] font-medium">Vue.js</span>
+<span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded text-[11px] font-medium">Tailwind</span>
+</div>
+</div>
+<div class="shrink-0 flex items-center justify-center relative size-20">
+<svg class="size-full profit-ring" viewbox="0 0 36 36">
+<circle class="text-gray-100 dark:text-gray-800" cx="18" cy="18" fill="transparent" r="16" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-green-500" cx="18" cy="18" fill="transparent" r="16" stroke="currentColor" stroke-dasharray="100" stroke-dashoffset="22" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-[#111318] dark:text-white text-lg font-bold leading-none">78</span>
+<span class="text-[9px] uppercase text-[#616e89] dark:text-gray-400 font-bold">Profit</span>
+</div>
+</div>
+</div>
+<!-- Product Row 5 -->
+<div class="flex items-center gap-6 px-6 py-5 hover:bg-hover-blue dark:hover:bg-primary/10 transition-colors cursor-pointer group">
+<div class="shrink-0">
+<div class="size-[64px] rounded-lg bg-cover bg-center border border-gray-100 dark:border-gray-700" data-alt="Social media connecting nodes icon" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDZkvOEecgd3P72n_rPq1jPuCdqlEPxIkVej03hHS9sCPT6vSVZ50gwXG20_R6cFuvZ4feUsv54VD9nGKU5jiHggs5IT-3GjBMgqaLp7Ug55gtMVPIN_txqBF6RxxVF8ZAoi5r2vfw8JxluhBWxvUGl4qcsnHLYw-cYKKRddrFKYaXKHWrrYPPIzW5Uvc-zTKPfpHWbLd-LSTIYx3j0Lh-dUsW9Aswwdu0Ed_qjrMotdF4AA0yMKSJ-shEnwYW9AeP5P-_PEOLvu5i7');"></div>
+</div>
+<div class="flex-1 flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<h3 class="text-[#111318] dark:text-white font-semibold text-base group-hover:text-primary transition-colors">Social CRM Toolkit</h3>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400">Marketing</span>
+</div>
+<div class="flex items-center gap-4 text-sm text-[#616e89] dark:text-gray-400">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined !text-sm">payments</span>$19</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined !text-sm">trending_up</span>3.1k sales</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined !text-sm text-yellow-500">star</span>4.6</span>
+</div>
+<div class="flex gap-2 mt-1">
+<span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded text-[11px] font-medium">Node.js</span>
+<span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded text-[11px] font-medium">MongoDB</span>
+</div>
+</div>
+<div class="shrink-0 flex items-center justify-center relative size-20">
+<svg class="size-full profit-ring" viewbox="0 0 36 36">
+<circle class="text-gray-100 dark:text-gray-800" cx="18" cy="18" fill="transparent" r="16" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-green-500" cx="18" cy="18" fill="transparent" r="16" stroke="currentColor" stroke-dasharray="100" stroke-dashoffset="19" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-[#111318] dark:text-white text-lg font-bold leading-none">81</span>
+<span class="text-[9px] uppercase text-[#616e89] dark:text-gray-400 font-bold">Profit</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card Footer -->
+<div class="px-6 py-4 bg-gray-50 dark:bg-gray-800/50 flex justify-center">
+<button class="text-primary text-sm font-semibold hover:underline flex items-center gap-1">
+                    View All Analyses
+                    <span class="material-symbols-outlined">arrow_right_alt</span>
+</button>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CodeCanyon Intelligence - Dashboard</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                        "sidebar-start": "#1E293B",
+                        "sidebar-end": "#0F172A",
+                        "content-gray": "#F9FAFB",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sidebar-gradient {
+            background: linear-gradient(180deg, #1E293B 0%, #0F172A 100%);
+        }
+        .logo-gradient {
+            background: linear-gradient(135deg, #2463eb 0%, #a855f7 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111318] antialiased">
+<div class="flex min-h-screen overflow-hidden">
+<!-- Persistent Sidebar (280px) -->
+<aside class="sidebar-gradient w-[280px] flex-shrink-0 flex flex-col text-white z-50">
+<div class="p-6 flex flex-col h-full">
+<!-- Profile Card -->
+<div class="flex items-center gap-3 mb-10">
+<div class="size-10 rounded-full bg-center bg-cover border-2 border-primary/30" data-alt="Professional user profile avatar headshot" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDDoztMrzr2ps5uzohoVg47q8l1BjeOkBCyY7UiBndXgwi5fD0s54dcJ9cGgj3hwzV0TzNlM-n1qhlx-QuF1h1sqj1iJEFd-6CcIxs8_cFoyvyAEQDsvpm5Gyis6Flxu0KCEWfejkjHw2gn86Yx-LZQauLHtRmvj5qMTwAcSqCQIWBJZi1BkXgdse9cRxDTfSC9n76Rh3QlJYn2-_0eih5SIsJXufnqqLFetinfVMENDmyxSeYcog069Uo48ge0wtWiX_AqC79Z0sfU");'></div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold">Alex Thompson</span>
+<span class="text-xs text-slate-400">Pro Plan Member</span>
+</div>
+</div>
+<!-- Tiered Navigation Sections -->
+<nav class="flex-1 space-y-6">
+<div>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-3 px-3">Main Menu</p>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-white/10 text-white group" href="#">
+<span class="material-symbols-outlined text-primary group-hover:text-white">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-white/5 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-sm font-medium">Discovery</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-white/5 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm font-medium">Analysis</span>
+</a>
+</div>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-3 px-3">Intelligence</p>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-white/5 hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined text-purple-400 group-hover:text-purple-300">auto_awesome</span>
+<span class="text-sm font-medium">AI Features</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-white/5 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">folder</span>
+<span class="text-sm font-medium">Projects</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-white/5 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="text-sm font-medium">Resources</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- Upgrade CTA Card -->
+<div class="mt-auto pt-6">
+<div class="bg-primary/20 border border-primary/30 rounded-xl p-4 flex flex-col gap-3">
+<p class="text-xs font-medium text-blue-200 leading-snug">Need more processing power? Get Enterprise limits.</p>
+<button class="bg-primary hover:bg-blue-600 text-white text-xs font-bold py-2 rounded-lg transition-colors">
+                            Upgrade to Enterprise
+                        </button>
+</div>
+<div class="mt-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined size-5 text-sm">settings</span>
+<span class="text-sm">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined size-5 text-sm">help</span>
+<span class="text-sm">Support</span>
+</a>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col bg-content-gray dark:bg-background-dark relative overflow-y-auto">
+<!-- Sticky Top Bar (64px) -->
+<header class="h-16 sticky top-0 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-8 z-40">
+<div class="flex items-center gap-12">
+<!-- Logo -->
+<div class="flex items-center gap-2.5">
+<div class="size-8 logo-gradient rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">insights</span>
+</div>
+<h2 class="text-lg font-extrabold tracking-tight text-[#111318] dark:text-white">CodeCanyon <span class="text-primary">Intel</span></h2>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex items-center h-16">
+<div class="flex gap-8 h-full">
+<a class="flex items-center text-sm font-semibold text-primary border-b-2 border-primary px-1" href="#">Dashboard</a>
+<a class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 px-1 border-b-2 border-transparent" href="#">Discover</a>
+<a class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 px-1 border-b-2 border-transparent" href="#">Analytics</a>
+<a class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 px-1 border-b-2 border-transparent" href="#">Projects</a>
+<a class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 px-1 border-b-2 border-transparent" href="#">Research</a>
+</div>
+</nav>
+</div>
+<!-- Utilities -->
+<div class="flex items-center gap-6">
+<div class="relative w-64 group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400 text-sm">search</span>
+</div>
+<input class="block w-full pl-9 pr-3 py-1.5 bg-gray-100 dark:bg-gray-800 border-transparent rounded-lg text-sm placeholder-gray-500 focus:bg-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="Search assets, authors..." type="text"/>
+</div>
+<!-- API Usage Indicator -->
+<div class="flex flex-col items-end gap-1">
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold text-gray-500 uppercase tracking-tighter">API Usage</span>
+<span class="text-[10px] font-bold text-primary">84%</span>
+</div>
+<div class="w-24 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 84%;"></div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="size-9 flex items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 transition-colors relative">
+<span class="material-symbols-outlined text-xl">notifications</span>
+<span class="absolute top-2 right-2.5 size-2 bg-red-500 border-2 border-white dark:border-background-dark rounded-full"></span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Scrollable Content -->
+<div class="p-8 max-w-[1200px] mx-auto w-full">
+<!-- Page Heading -->
+<div class="flex items-end justify-between mb-8">
+<div class="flex flex-col gap-1">
+<h1 class="text-3xl font-black text-[#111318] dark:text-white tracking-tight">Market Intelligence Overview</h1>
+<p class="text-gray-500 dark:text-gray-400">Real-time performance metrics and predictive market trends.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">calendar_today</span>
+                            Last 30 Days
+                        </button>
+<button class="px-4 py-2 bg-primary hover:bg-blue-600 text-white rounded-lg text-sm font-bold flex items-center gap-2 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-lg">download</span>
+                            Export Report
+                        </button>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-blue-50 dark:bg-blue-900/30 text-primary rounded-lg">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<span class="text-green-600 text-xs font-bold bg-green-50 dark:bg-green-900/30 px-2 py-1 rounded-md flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+                                12.5%
+                            </span>
+</div>
+<p class="text-sm font-medium text-gray-500 dark:text-gray-400">Total Revenue Generated</p>
+<h3 class="text-2xl font-bold text-[#111318] dark:text-white mt-1">$42,850.12</h3>
+</div>
+<div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-purple-50 dark:bg-purple-900/30 text-purple-600 rounded-lg">
+<span class="material-symbols-outlined">group_add</span>
+</div>
+<span class="text-green-600 text-xs font-bold bg-green-50 dark:bg-green-900/30 px-2 py-1 rounded-md flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+                                0.8%
+                            </span>
+</div>
+<p class="text-sm font-medium text-gray-500 dark:text-gray-400">Avg. Conversion Rate</p>
+<h3 class="text-2xl font-bold text-[#111318] dark:text-white mt-1">4.2%</h3>
+</div>
+<div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-amber-50 dark:bg-amber-900/30 text-amber-600 rounded-lg">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<span class="text-red-600 text-xs font-bold bg-red-50 dark:bg-red-900/30 px-2 py-1 rounded-md flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_down</span>
+                                2.1%
+                            </span>
+</div>
+<p class="text-sm font-medium text-gray-500 dark:text-gray-400">Active Market Assets</p>
+<h3 class="text-2xl font-bold text-[#111318] dark:text-white mt-1">1,284</h3>
+</div>
+</div>
+<!-- Main Grid Section -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Placeholder Card 1: Top Selling Categories -->
+<div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden flex flex-col">
+<div class="p-6 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center">
+<h4 class="font-bold text-[#111318] dark:text-white">Top Selling Categories</h4>
+<button class="text-primary text-xs font-bold hover:underline">View All</button>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center text-sm font-medium">
+<span class="text-gray-700 dark:text-gray-300">WordPress Themes</span>
+<span class="text-gray-900 dark:text-white">$12.4k</span>
+</div>
+<div class="w-full h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 75%;"></div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center text-sm font-medium">
+<span class="text-gray-700 dark:text-gray-300">PHP Scripts</span>
+<span class="text-gray-900 dark:text-white">$8.2k</span>
+</div>
+<div class="w-full h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 55%;"></div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center text-sm font-medium">
+<span class="text-gray-700 dark:text-gray-300">Mobile Apps</span>
+<span class="text-gray-900 dark:text-white">$5.9k</span>
+</div>
+<div class="w-full h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 40%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Placeholder Card 2: Recent Market Changes -->
+<div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden">
+<div class="p-6 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center">
+<h4 class="font-bold text-[#111318] dark:text-white">Recent Market Changes</h4>
+<span class="material-symbols-outlined text-gray-400 cursor-pointer">more_horiz</span>
+</div>
+<div class="p-0">
+<div class="divide-y divide-gray-100 dark:divide-gray-700">
+<div class="p-4 flex items-center gap-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors cursor-pointer">
+<div class="size-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex-shrink-0 bg-cover bg-center" data-alt="Abstract colorful software interface thumbnail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAo7xvDAty5Gpz--HeFrkVz2R_R3KRa4lqIEtDet-iaiwbOD10L8CBzlm-i2x6mpUeG19eQ2ivfTOIlF9ER4ea-mX9Z6pX0HZVpp0NGHQhgzIczIqxo8uPOwD1XkvX5KP2Hd4TpzPor8hLv1VGVlDLfr_x_iBrvn20RTv9OxZirNPRAQGgHQqN_o0AVYWHD4E6VA9q7uqUSH9uCHdVKTTRyJmkrp0r3CJA45EFwF6EwPgQE8KacXQNCP-nD28qOaSyeP1cAJ0ZQlEt2");'></div>
+<div class="flex-1">
+<p class="text-sm font-bold text-gray-900 dark:text-white">CRM Plus - Ultimate Manager</p>
+<p class="text-xs text-gray-500">Price increased by 15%</p>
+</div>
+<div class="text-right">
+<p class="text-xs font-medium text-gray-400">2h ago</p>
+</div>
+</div>
+<div class="p-4 flex items-center gap-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors cursor-pointer">
+<div class="size-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex-shrink-0 bg-cover bg-center" data-alt="Abstract data visualization chart thumbnail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDugyHUXJNYqqoK_dtlT8y7t-5a1lp1CYrMA0etYiUxWhWCjLzvnZ8VLXbl-uGPY4Dq-IwZgzX-py4G7w2BtyuHG6yhqGnkoRfnyH1OaoGGn_bCNzuKeboYL-LBrGQiuqHIwHY_OILvL7y_jQi_kCydGy4k33r7YsxsoMo1x1A_k5YMQTbuYbHFpKgYN5ANlGUWVdAPYoijeBzKWZv_oUUbJnsg3r7hm7-yI0xjtudUx1C22IZyU6ih86r078n63nkWA8uF6BCPbpZp");'></div>
+<div class="flex-1">
+<p class="text-sm font-bold text-gray-900 dark:text-white">Saasify React Dashboard</p>
+<p class="text-xs text-gray-500">New major version release</p>
+</div>
+<div class="text-right">
+<p class="text-xs font-medium text-gray-400">5h ago</p>
+</div>
+</div>
+<div class="p-4 flex items-center gap-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors cursor-pointer">
+<div class="size-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex-shrink-0 bg-cover bg-center" data-alt="Dark code editor programming interface thumbnail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBJ8s9mX6jYZFnqx4rBUZTUFTObWdasS7-8jt6Vm1Mc0_Y7NGa9lulneHO6BgA6nElxg03TCiskjrORjnTo5QlYNmPTbkz67vqyWfWwI9AeQfL9Ly-zfBCkwprZhIV8UllO3JkOzwM0HtY_kld2XW9xngmD9Wn6XWdFu7biMTFC2tAryihFR1FR0uoiKMOv5ro7oD7R8-ow9KSltSbRUsaT1YaM5lmP_pwjemxTP0333uHx8pSYAARa0UgZS2IVOiyfRG95URjqCicC");'></div>
+<div class="flex-1">
+<p class="text-sm font-bold text-gray-900 dark:text-white">GoCommerce API Core</p>
+<p class="text-xs text-gray-500">Trending in PHP Scripts</p>
+</div>
+<div class="text-right">
+<p class="text-xs font-medium text-gray-400">Yesterday</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Full-Width Card: Predictive Market Insights -->
+<div class="mt-8 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-8">
+<div class="flex items-center gap-4 mb-6">
+<div class="size-12 rounded-full bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center text-purple-600">
+<span class="material-symbols-outlined text-3xl">psychology</span>
+</div>
+<div>
+<h4 class="text-xl font-bold text-[#111318] dark:text-white">AI-Driven Predictive Insights</h4>
+<p class="text-sm text-gray-500">Smart forecasting based on your historical data and market trends.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-700/30 border border-gray-100 dark:border-gray-700">
+<p class="text-xs font-bold text-slate-400 uppercase tracking-tighter mb-1">Growth Forecast</p>
+<p class="text-lg font-bold text-primary">+22.4%</p>
+</div>
+<div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-700/30 border border-gray-100 dark:border-gray-700">
+<p class="text-xs font-bold text-slate-400 uppercase tracking-tighter mb-1">High Demand Alert</p>
+<p class="text-lg font-bold text-purple-600">E-learning Themes</p>
+</div>
+<div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-700/30 border border-gray-100 dark:border-gray-700">
+<p class="text-xs font-bold text-slate-400 uppercase tracking-tighter mb-1">Risk Factor</p>
+<p class="text-lg font-bold text-green-600">Low (Stable)</p>
+</div>
+<div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-700/30 border border-gray-100 dark:border-gray-700">
+<p class="text-xs font-bold text-slate-400 uppercase tracking-tighter mb-1">Optimal Pricing</p>
+<p class="text-lg font-bold text-gray-900 dark:text-white">$49.00 - $65.00</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

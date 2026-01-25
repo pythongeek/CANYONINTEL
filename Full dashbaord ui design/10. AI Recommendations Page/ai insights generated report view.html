@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Insights - Generated Report View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#8c2bee",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#0a0a0a",
+                        "surface-dark": "#161616",
+                        "border-dark": "#2d2d2d",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #2d2d2d;
+            border-radius: 10px;
+        }
+        .glass-card {
+            background: rgba(22, 22, 22, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid #2d2d2d;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-border-dark bg-background-light dark:bg-background-dark flex flex-col shrink-0">
+<div class="p-6 flex items-center gap-3">
+<div class="size-10 bg-primary rounded-lg flex items-center justify-center text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined fill-1">insights</span>
+</div>
+<div>
+<h1 class="font-bold text-lg leading-none tracking-tight">CodeCanyon</h1>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium mt-1 uppercase tracking-wider">Intelligence</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto custom-scrollbar">
+<div class="text-xs font-semibold text-slate-500 dark:text-slate-500 uppercase px-3 py-2">Navigation</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary/10 text-primary border border-primary/20" href="#">
+<span class="material-symbols-outlined text-[22px]">view_kanban</span>
+<span class="text-sm font-semibold">Report Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 hover:bg-white/5 transition-colors" href="#feature-gaps">
+<span class="material-symbols-outlined text-[22px]">format_list_bulleted</span>
+<span class="text-sm font-medium">Feature Gaps</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 hover:bg-white/5 transition-colors" href="#pricing">
+<span class="material-symbols-outlined text-[22px]">payments</span>
+<span class="text-sm font-medium">Pricing Model</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 hover:bg-white/5 transition-colors" href="#strategy">
+<span class="material-symbols-outlined text-[22px]">ads_click</span>
+<span class="text-sm font-medium">Market Strategy</span>
+</a>
+<div class="pt-8 text-xs font-semibold text-slate-500 dark:text-slate-500 uppercase px-3 py-2">Archives</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">history</span>
+<span class="text-sm font-medium">Generation History</span>
+</a>
+</nav>
+<div class="p-4 border-t border-border-dark">
+<div class="flex items-center gap-3 p-2 rounded-xl bg-white/5">
+<div class="size-8 rounded-full bg-slate-700" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBNIjSuuQInkc6b4wvX3zctSdQghJWn7nfr2Vrckzbbfu_Y858LnyxS0P26oz4K9oDvsYjLppetOk0ZPjjVN8LGQcHlP03irOLGW6FXxcHCfqGLy6xu9ygOl0cmEGXxHgG5cxtHA30cVzD_B70Cs6x79GcaV44sySPfPij--iyXjKBf6gTDVYbQV0jLgCUVk-9Y78vpfCNuUdbpqoy1v4ykGQGIbKW4Zwrpy5Dx5FEAa6trFB9w2kRFTaXot3ay6bNrpoaOBNK53NLx"); background-size: cover;'></div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-semibold truncate">Alex Chen</p>
+<p class="text-[10px] text-slate-500 uppercase font-bold">Pro Plan</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 overflow-y-auto custom-scrollbar">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-30 flex items-center justify-between h-16 px-8 border-b border-border-dark bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 text-xs text-slate-500 font-medium">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">AI Generator</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-slate-300">Generated Report View</span>
+</div>
+<div class="h-4 w-px bg-border-dark mx-2"></div>
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-green-500 animate-pulse"></div>
+<span class="text-xs font-bold text-green-500 uppercase tracking-tighter">Analysis Live</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border-dark hover:bg-white/5 transition-colors text-xs font-bold">
+<span class="material-symbols-outlined text-[18px]">share</span>
+                        Share
+                    </button>
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-dark border border-border-dark hover:bg-white/5 transition-colors text-xs font-bold">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        Export CSV
+                    </button>
+<button class="flex items-center gap-2 px-4 py-1.5 rounded-lg bg-primary text-white hover:bg-primary/90 transition-shadow shadow-lg shadow-primary/20 text-xs font-bold">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+                        Export Report
+                    </button>
+</div>
+</header>
+<div class="p-8 max-w-7xl mx-auto w-full space-y-8">
+<!-- Hero Heading Section -->
+<div class="space-y-2">
+<h2 class="text-3xl font-bold tracking-tight">AI Insights: SaaS Optimization Report</h2>
+<p class="text-slate-500 dark:text-slate-400 max-w-2xl">Generated on October 24, 2023. Based on market signals from 420 competitors and current SaaS trends in automation.</p>
+</div>
+<!-- 2-Column Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Column (8 cols) -->
+<div class="lg:col-span-7 space-y-6">
+<!-- Section: Feature Gaps Table -->
+<div class="bg-surface-dark rounded-xl border border-border-dark overflow-hidden" id="feature-gaps">
+<div class="p-5 border-b border-border-dark flex justify-between items-center">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">analytics</span>
+<h3 class="font-bold text-lg">Feature Gaps Analysis</h3>
+</div>
+<span class="px-2.5 py-1 rounded-md bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest">Recommended</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-white/5">
+<th class="px-6 py-4 text-xs font-bold uppercase text-slate-500">Feature Name</th>
+<th class="px-6 py-4 text-xs font-bold uppercase text-slate-500 text-center">Impact</th>
+<th class="px-6 py-4 text-xs font-bold uppercase text-slate-500">Difficulty</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-dark">
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-5">
+<div class="font-medium text-sm">Advanced API Access</div>
+<div class="text-[11px] text-slate-500">Enable 3rd party integrations</div>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 text-[10px] font-bold">HIGH</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="flex-1 h-1.5 rounded-full bg-slate-800 overflow-hidden">
+<div class="h-full bg-primary" style="width: 45%"></div>
+</div>
+<span class="text-xs font-medium text-slate-400">45/100</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-5">
+<div class="font-medium text-sm">White Labeling</div>
+<div class="text-[11px] text-slate-500">Custom domains for enterprise</div>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold">V. HIGH</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="flex-1 h-1.5 rounded-full bg-slate-800 overflow-hidden">
+<div class="h-full bg-primary" style="width: 85%"></div>
+</div>
+<span class="text-xs font-medium text-slate-400">85/100</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-5">
+<div class="font-medium text-sm">Custom Webhooks</div>
+<div class="text-[11px] text-slate-500">Real-time event broadcasting</div>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-500 text-[10px] font-bold">MEDIUM</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="flex-1 h-1.5 rounded-full bg-slate-800 overflow-hidden">
+<div class="h-full bg-primary" style="width: 20%"></div>
+</div>
+<span class="text-xs font-medium text-slate-400">20/100</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Section: Pricing Strategy Card -->
+<div class="bg-surface-dark rounded-xl border border-border-dark p-6 grid grid-cols-1 md:grid-cols-2 gap-8 relative overflow-hidden" id="pricing">
+<div class="absolute top-0 right-0 p-8 opacity-10">
+<span class="material-symbols-outlined text-[120px]">currency_exchange</span>
+</div>
+<div class="space-y-4 relative z-10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">monitoring</span>
+<h3 class="font-bold text-lg">Optimal Pricing Model</h3>
+</div>
+<div class="space-y-1">
+<p class="text-slate-400 text-sm font-medium uppercase tracking-tight">AI Recommended Price</p>
+<div class="flex items-baseline gap-2">
+<span class="text-5xl font-extrabold text-white">$69</span>
+<span class="text-slate-500 font-medium">/ month</span>
+</div>
+</div>
+<p class="text-sm text-slate-400 leading-relaxed">
+                                    Increasing your base price to <span class="text-white font-bold">$69</span> is projected to yield a <span class="text-emerald-400 font-bold">24% increase</span> in total MRR with a churn risk of only 2.1%.
+                                </p>
+</div>
+<div class="relative z-10 space-y-4">
+<div class="h-32 w-full flex items-end gap-1.5">
+<div class="flex-1 bg-white/5 rounded-t-lg h-[40%]"></div>
+<div class="flex-1 bg-white/5 rounded-t-lg h-[45%]"></div>
+<div class="flex-1 bg-white/5 rounded-t-lg h-[55%]"></div>
+<div class="flex-1 bg-white/5 rounded-t-lg h-[50%]"></div>
+<div class="flex-1 bg-primary/40 rounded-t-lg h-[65%]"></div>
+<div class="flex-1 bg-primary/60 rounded-t-lg h-[75%]"></div>
+<div class="flex-1 bg-primary rounded-t-lg h-[95%] relative">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-bold text-primary">MAX</div>
+</div>
+</div>
+<div class="flex justify-between text-[10px] font-bold uppercase text-slate-500 tracking-wider">
+<span>Current ($49)</span>
+<span>Projected Growth</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column (5 cols) -->
+<div class="lg:col-span-5 space-y-6">
+<!-- USPs Section -->
+<div class="bg-surface-dark rounded-xl border border-border-dark p-5">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary">verified</span>
+<h3 class="font-bold text-lg">Unique Selling Propositions</h3>
+</div>
+<div class="space-y-4">
+<div class="group p-4 rounded-xl border border-border-dark bg-white/5 hover:bg-primary/5 hover:border-primary/20 transition-all cursor-default">
+<div class="flex gap-4">
+<div class="size-10 shrink-0 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<div>
+<h4 class="text-sm font-bold mb-1">Lowest Latency Guarantee</h4>
+<p class="text-xs text-slate-400 leading-normal">Your product ranks in the top 5% for response speed among direct competitors.</p>
+</div>
+</div>
+</div>
+<div class="group p-4 rounded-xl border border-border-dark bg-white/5 hover:bg-primary/5 hover:border-primary/20 transition-all cursor-default">
+<div class="flex gap-4">
+<div class="size-10 shrink-0 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500">
+<span class="material-symbols-outlined">hub</span>
+</div>
+<div>
+<h4 class="text-sm font-bold mb-1">Seamless Integration Ecosystem</h4>
+<p class="text-xs text-slate-400 leading-normal">Our AI detected unique compatibility with Shopify that rivals aren't exploiting.</p>
+</div>
+</div>
+</div>
+<div class="group p-4 rounded-xl border border-border-dark bg-white/5 hover:bg-primary/5 hover:border-primary/20 transition-all cursor-default">
+<div class="flex gap-4">
+<div class="size-10 shrink-0 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">auto_fix</span>
+</div>
+<div>
+<h4 class="text-sm font-bold mb-1">AI-First User Experience</h4>
+<p class="text-xs text-slate-400 leading-normal">The workflow efficiency is 3.5x higher than the market standard UI/UX patterns.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Effort Timeline Section -->
+<div class="bg-surface-dark rounded-xl border border-border-dark p-5">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<h3 class="font-bold text-lg">Development Effort</h3>
+</div>
+<div class="relative pl-8 space-y-8 before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-px before:bg-border-dark">
+<div class="relative">
+<div class="absolute -left-8 top-1 size-6 rounded-full bg-surface-dark border-2 border-primary flex items-center justify-center">
+<div class="size-2 rounded-full bg-primary"></div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-sm font-bold">Phase 1: API Core</h4>
+<p class="text-xs text-slate-500">Infrastructure &amp; Auth</p>
+</div>
+<span class="text-[10px] font-bold text-slate-400 bg-white/5 px-2 py-1 rounded">2 WEEKS</span>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -left-8 top-1 size-6 rounded-full bg-surface-dark border-2 border-border-dark flex items-center justify-center">
+<div class="size-2 rounded-full bg-slate-700"></div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-sm font-bold">Phase 2: White Labeling</h4>
+<p class="text-xs text-slate-500">Domain mapping &amp; UI</p>
+</div>
+<span class="text-[10px] font-bold text-slate-400 bg-white/5 px-2 py-1 rounded">6 WEEKS</span>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -left-8 top-1 size-6 rounded-full bg-surface-dark border-2 border-border-dark flex items-center justify-center">
+<div class="size-2 rounded-full bg-slate-700"></div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-sm font-bold">Phase 3: Automation</h4>
+<p class="text-xs text-slate-500">Custom webhooks</p>
+</div>
+<span class="text-[10px] font-bold text-slate-400 bg-white/5 px-2 py-1 rounded">3 WEEKS</span>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-5 border-t border-border-dark flex justify-between items-center">
+<span class="text-xs text-slate-500 font-medium">Total Timeline Estimate</span>
+<span class="text-sm font-extrabold text-white">11 Weeks</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Strategy Section (Bottom wide) -->
+<div class="bg-primary/5 rounded-2xl border border-primary/20 p-8 relative overflow-hidden" id="strategy">
+<div class="absolute top-0 right-0 -mr-20 -mt-20 size-80 bg-primary/10 rounded-full blur-[100px]"></div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+<div class="md:col-span-2 space-y-4">
+<h3 class="text-2xl font-bold">Strategy Summary</h3>
+<p class="text-slate-400 leading-relaxed">
+                                To dominate the CodeCanyon ecosystem, pivot your marketing towards <span class="text-primary font-bold">Enterprise Readiness</span>. By implementing the missing White Labeling and API features, you can justify the <span class="text-white font-bold">$69/mo</span> price point and position yourself as the premium alternative to incumbents who lack modern UI speeds.
+                            </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<div class="flex items-center gap-2 bg-background-dark/50 px-4 py-2 rounded-lg border border-border-dark">
+<span class="material-symbols-outlined text-primary text-[20px]">verified_user</span>
+<span class="text-xs font-bold uppercase tracking-widest">Market Leader Potential</span>
+</div>
+<div class="flex items-center gap-2 bg-background-dark/50 px-4 py-2 rounded-lg border border-border-dark">
+<span class="material-symbols-outlined text-primary text-[20px]">rocket_launch</span>
+<span class="text-xs font-bold uppercase tracking-widest">Growth Factor: 3.2x</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col justify-center gap-3">
+<button class="w-full py-4 rounded-xl bg-primary text-white font-bold text-sm shadow-xl shadow-primary/30 hover:scale-[1.02] transition-transform">
+                                Approve Strategy Implementation
+                            </button>
+<button class="w-full py-4 rounded-xl bg-surface-dark border border-border-dark text-slate-300 font-bold text-sm hover:bg-white/5 transition-colors">
+                                Schedule AI Strategy Sync
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Space -->
+<footer class="p-8 mt-12 border-t border-border-dark flex justify-between items-center text-slate-500">
+<p class="text-xs">© 2023 CodeCanyon Intelligence. All AI models powered by CC-Insights-v4.</p>
+<div class="flex gap-6">
+<a class="text-xs hover:text-white transition-colors" href="#">Help Center</a>
+<a class="text-xs hover:text-white transition-colors" href="#">Documentation</a>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

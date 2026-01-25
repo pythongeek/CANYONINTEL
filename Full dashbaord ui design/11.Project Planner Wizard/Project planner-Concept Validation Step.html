@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Project Planner - Concept Validation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b8cee",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="w-80 border-r border-slate-200 dark:border-slate-800 flex flex-col bg-white dark:bg-background-dark fixed h-full overflow-y-auto">
+<div class="p-8">
+<div class="flex flex-col mb-10">
+<h1 class="text-xl font-bold tracking-tight flex items-center gap-2">
+<span class="text-primary material-symbols-outlined active-fill">insights</span>
+                        CodeCanyon Intelligence
+                    </h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Project Planner Wizard</p>
+</div>
+<!-- Progress Header -->
+<div class="mb-8 p-4 rounded-xl bg-primary/10 border border-primary/20">
+<div class="flex justify-between items-end mb-2">
+<span class="text-xs font-semibold uppercase tracking-wider text-primary">Current Progress</span>
+<span class="text-2xl font-black text-primary leading-none">16%</span>
+</div>
+<div class="h-2 w-full bg-primary/20 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 16%;"></div>
+</div>
+<p class="text-[10px] mt-2 text-primary/70 font-medium">Step 1 of 6: Concept Validation</p>
+</div>
+<!-- Steps List -->
+<nav class="space-y-2">
+<div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined active-fill">check_circle</span>
+<span class="text-sm font-semibold">Concept Validation</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-slate-400">
+<span class="material-symbols-outlined">list</span>
+<span class="text-sm font-medium">Feature Specification</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-slate-400">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm font-medium">Market Analysis</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-slate-400">
+<span class="material-symbols-outlined">terminal</span>
+<span class="text-sm font-medium">Tech Stack</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-slate-400">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-sm font-medium">Monetization</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-slate-400">
+<span class="material-symbols-outlined">content_paste_search</span>
+<span class="text-sm font-medium">Final Review</span>
+</div>
+</nav>
+</div>
+<div class="mt-auto p-8 border-t border-slate-200 dark:border-slate-800 space-y-2">
+<div class="flex items-center gap-3 px-4 py-2 text-slate-400 hover:text-slate-100 cursor-pointer">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-2 text-slate-400 hover:text-slate-100 cursor-pointer">
+<span class="material-symbols-outlined">help_center</span>
+<span class="text-sm font-medium">Support</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-80 p-12">
+<div class="max-w-4xl mx-auto">
+<!-- Header -->
+<header class="mb-10">
+<h2 class="text-4xl font-black tracking-tight mb-2">Project Concept</h2>
+<p class="text-slate-500 dark:text-slate-400 text-lg">Define your project identity and validate market potential using our AI-driven engine.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Form Side -->
+<div class="lg:col-span-8 space-y-8">
+<!-- Project Name Field -->
+<div class="bg-white dark:bg-slate-900/50 p-6 rounded-xl border border-slate-200 dark:border-slate-800">
+<label class="block mb-4">
+<span class="text-sm font-bold uppercase tracking-wider text-slate-500 mb-2 block">Project Identity</span>
+<div class="relative">
+<input class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg h-14 px-4 text-lg font-medium focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all pr-12" placeholder="e.g. Nexus Social Dashboard" type="text" value="AI Content Generator Pro"/>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
+<span class="material-symbols-outlined">text_fields</span>
+</div>
+</div>
+<p class="text-right text-xs text-slate-400 mt-2 font-medium">26 / 50 characters</p>
+</label>
+<label class="block mt-6">
+<span class="text-xs font-semibold text-slate-500 mb-2 block">Category</span>
+<div class="relative">
+<select class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg h-12 px-4 appearance-none focus:ring-2 focus:ring-primary outline-none">
+<option>SaaS Frameworks</option>
+<option selected="">Artificial Intelligence / ML</option>
+<option>E-commerce Solutions</option>
+<option>Mobile App Templates</option>
+</select>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</label>
+</div>
+<!-- Inspiration Card -->
+<div class="bg-white dark:bg-slate-900/50 p-6 rounded-xl border border-slate-200 dark:border-slate-800">
+<span class="text-sm font-bold uppercase tracking-wider text-slate-500 mb-4 block">Inspiration Product</span>
+<div class="flex items-center gap-4 p-4 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-dashed border-slate-300 dark:border-slate-700">
+<div class="w-16 h-16 rounded bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white shrink-0">
+<span class="material-symbols-outlined text-3xl">auto_awesome</span>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-slate-900 dark:text-white">Ultimate AI Writer v2.0</h4>
+<p class="text-xs text-slate-500">Item ID: 4829103 • CodeCanyon</p>
+</div>
+<a class="text-primary text-sm font-bold flex items-center gap-1 hover:underline" href="#">
+                                    View Source <span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Description Editor -->
+<div class="bg-white dark:bg-slate-900/50 p-6 rounded-xl border border-slate-200 dark:border-slate-800">
+<span class="text-sm font-bold uppercase tracking-wider text-slate-500 mb-4 block">Core Project Description</span>
+<div class="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden bg-slate-50 dark:bg-slate-900">
+<div class="flex gap-2 p-2 border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-400">
+<span class="material-symbols-outlined text-xl">format_bold</span>
+</button>
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-400">
+<span class="material-symbols-outlined text-xl">format_italic</span>
+</button>
+<div class="w-px bg-slate-200 dark:bg-slate-700 mx-1"></div>
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-400">
+<span class="material-symbols-outlined text-xl">format_list_bulleted</span>
+</button>
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-400">
+<span class="material-symbols-outlined text-xl">link</span>
+</button>
+</div>
+<textarea class="w-full bg-transparent border-none focus:ring-0 p-4 min-h-[160px] text-slate-700 dark:text-slate-300 resize-none" placeholder="Describe what makes your version unique..."></textarea>
+</div>
+</div>
+</div>
+<!-- Sidebar Content (Market Intelligence) -->
+<div class="lg:col-span-4 space-y-6">
+<!-- AI Opportunity Card -->
+<div class="bg-gradient-to-br from-primary to-blue-700 p-1 rounded-2xl shadow-xl shadow-primary/20">
+<div class="bg-slate-900 rounded-[0.9rem] p-6 h-full text-white">
+<div class="flex items-center justify-between mb-6">
+<span class="px-2 py-1 bg-primary/20 text-primary text-[10px] font-bold rounded uppercase tracking-widest border border-primary/30">AI Insights</span>
+<span class="material-symbols-outlined text-primary">psychology</span>
+</div>
+<div class="text-center mb-6">
+<p class="text-slate-400 text-xs font-medium mb-1">Market Opportunity Score</p>
+<div class="flex items-center justify-center gap-2">
+<span class="text-6xl font-black text-white">92</span>
+<span class="text-2xl font-bold text-primary">/100</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-green-400 mt-0.5">trending_up</span>
+<div>
+<p class="text-xs font-bold">High Demand</p>
+<p class="text-[11px] text-slate-400">Searches for 'AI Content' grew by 140% this quarter.</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-blue-400 mt-0.5">groups</span>
+<div>
+<p class="text-xs font-bold">Low Competition</p>
+<p class="text-[11px] text-slate-400">Few tools currently offer the specialized hooks you planned.</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-8 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-xs font-bold transition-all">
+                                    View Full Market Report
+                                </button>
+</div>
+</div>
+<!-- Tip Box -->
+<div class="bg-slate-100 dark:bg-slate-800/50 p-6 rounded-xl border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-2 text-slate-900 dark:text-white mb-3">
+<span class="material-symbols-outlined text-primary">lightbulb</span>
+<span class="font-bold text-sm">Planner Tip</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                                Most successful projects on CodeCanyon start with a narrow niche. Try to focus your concept on a specific user group rather than being a generic tool.
+                            </p>
+</div>
+</div>
+</div>
+<!-- Sticky Footer Action -->
+<footer class="mt-12 flex justify-end gap-4 pb-20">
+<button class="px-6 py-4 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-white font-bold rounded-xl transition-all">
+                        Save Draft
+                    </button>
+<button class="px-8 py-4 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl shadow-lg shadow-primary/30 flex items-center gap-3 transition-all">
+<span>Next: Feature Specification</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</footer>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CodeCanyon Intelligence - Search Suggestions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b6cee",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-[#111318]">
+<!-- Overlay/Scrim -->
+<div class="fixed inset-0 bg-black/20 backdrop-blur-sm z-40"></div>
+<div class="relative z-50 flex flex-col items-center">
+<!-- Top Navigation Bar Container -->
+<header class="w-full bg-white dark:bg-background-dark border-b border-gray-200 dark:border-gray-800 px-6 py-3">
+<div class="max-w-[1200px] mx-auto flex items-center justify-between gap-8">
+<!-- Logo -->
+<div class="flex items-center gap-3 shrink-0">
+<div class="bg-primary text-white p-1.5 rounded-lg">
+<span class="material-symbols-outlined block">insights</span>
+</div>
+<h2 class="text-[#111318] dark:text-white text-lg font-bold leading-tight tracking-tight">CodeCanyon Intelligence</h2>
+</div>
+<!-- Navigation Links -->
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#111318] dark:text-gray-300 text-sm font-medium hover:text-primary transition-colors" href="#">Marketplace</a>
+<a class="text-[#111318] dark:text-gray-300 text-sm font-medium hover:text-primary transition-colors" href="#">Analytics</a>
+<a class="text-[#111318] dark:text-gray-300 text-sm font-medium hover:text-primary transition-colors" href="#">Portfolio</a>
+</div>
+<!-- User Actions -->
+<div class="flex items-center gap-4 shrink-0">
+<button class="bg-primary text-white px-5 py-2 rounded-xl text-sm font-bold hover:bg-primary/90 transition-all">Upgrade</button>
+<div class="size-10 rounded-full bg-gray-200 bg-cover bg-center border border-gray-100" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBCrhJ9k-p_uWFj8SLTXC0JsBAomalZpToVNffmz-rJk1w_nSkMDuSnYSGcFiII6YB-T-jW88oeBLCnGb_RRM-_MdkGL_sR72VaXYwQFJ1tBOJQTw0-HRHXoJottqbH3rNmvoZCiTlO9yxQLlxgVj_IxJULwrzaRhChSDuI9Ezcx4Wv1qlsxASsbLXIyhfVV068rosmuFVLuR_JZqDxdvKLIRZTQA4QYVl-rP03ffdzPX_em0EMqO5Bwp1IvfFXwDCngDAL2xhqqKBL");'></div>
+</div>
+</div>
+</header>
+<!-- Focused Search Container -->
+<div class="w-full max-w-[800px] mt-8 px-4">
+<!-- Focused Search Bar -->
+<div class="relative group">
+<div class="flex items-center bg-white dark:bg-gray-900 rounded-xl border-2 border-primary shadow-[0_0_0_4px_rgba(43,108,238,0.1)] transition-all">
+<div class="pl-4 flex items-center text-primary">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full bg-transparent border-none focus:ring-0 text-lg py-4 px-3 text-[#111318] dark:text-white placeholder:text-gray-400" placeholder="Search products, scripts, tools..." type="text" value="React Admin Dashboard"/>
+<button class="pr-4 flex items-center text-gray-400 hover:text-gray-600 transition-colors">
+<span class="material-symbols-outlined">cancel</span>
+</button>
+</div>
+<!-- Suggestions Dropdown -->
+<div class="absolute top-full left-0 right-0 mt-3 bg-white dark:bg-gray-900 rounded-xl shadow-2xl border border-gray-100 dark:border-gray-800 overflow-hidden z-50">
+<div class="flex flex-col md:flex-row">
+<!-- Left Panel: Recent & Popular -->
+<div class="w-full md:w-5/12 border-r border-gray-100 dark:border-gray-800 p-2">
+<!-- Recent Searches -->
+<div class="mb-4">
+<h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-4 py-3">Recent Searches</h4>
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-3 px-4 py-2.5 hover:bg-primary/5 rounded-lg cursor-pointer group transition-colors">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary text-xl">history</span>
+<span class="text-sm text-[#111318] dark:text-gray-200">Flutter E-commerce UI</span>
+<span class="material-symbols-outlined text-gray-300 ml-auto text-sm hover:text-red-400">close</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-2.5 hover:bg-primary/5 rounded-lg cursor-pointer group transition-colors">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary text-xl">history</span>
+<span class="text-sm text-[#111318] dark:text-gray-200">Laravel SaaS Boilerplate</span>
+<span class="material-symbols-outlined text-gray-300 ml-auto text-sm hover:text-red-400">close</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-2.5 hover:bg-primary/5 rounded-lg cursor-pointer group transition-colors bg-primary/5">
+<span class="material-symbols-outlined text-primary text-xl">history</span>
+<span class="text-sm font-medium text-primary">React Admin Dashboard</span>
+<span class="material-symbols-outlined text-gray-300 ml-auto text-sm hover:text-red-400">close</span>
+</div>
+</div>
+</div>
+<!-- Popular Searches -->
+<div>
+<h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-4 py-3">Popular Right Now</h4>
+<div class="flex flex-wrap gap-2 px-4 pb-4">
+<div class="flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 dark:bg-gray-800 rounded-full text-xs font-medium text-gray-600 dark:text-gray-300 hover:bg-primary/10 hover:text-primary cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-sm">trending_up</span> AI Chatbot
+                                    </div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 dark:bg-gray-800 rounded-full text-xs font-medium text-gray-600 dark:text-gray-300 hover:bg-primary/10 hover:text-primary cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-sm">trending_up</span> Python
+                                    </div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 dark:bg-gray-800 rounded-full text-xs font-medium text-gray-600 dark:text-gray-300 hover:bg-primary/10 hover:text-primary cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-sm">trending_up</span> Tailwind
+                                    </div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 dark:bg-gray-800 rounded-full text-xs font-medium text-gray-600 dark:text-gray-300 hover:bg-primary/10 hover:text-primary cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-sm">trending_up</span> NFT
+                                    </div>
+</div>
+</div>
+</div>
+<!-- Right Panel: Suggested Products -->
+<div class="w-full md:w-7/12 bg-gray-50/50 dark:bg-gray-900/50 p-2">
+<h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-4 py-3">Suggested Products</h4>
+<div class="flex flex-col gap-1 px-2">
+<!-- Product Card 1 -->
+<div class="flex items-center gap-4 p-3 bg-white dark:bg-gray-800 border border-transparent hover:border-primary/20 hover:shadow-md rounded-xl transition-all cursor-pointer group">
+<div class="size-12 rounded-lg overflow-hidden shrink-0 border border-gray-100 bg-gray-200" data-alt="Product thumbnail preview">
+<img alt="Metronic" class="size-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDkdzFeCt9VpWiO_2GZO_6J0Qwl9wbztYsm-bJmF2SVf7zd2SpwpEbW2y4Kh4Hw1k_3DuSHa2XTOko9Nbxzqxr6Pu5EjFjlcPVvy2MtWzDteZZCHzLsj70ZY7SM43hXw-QwpS0yidvOgrjoSysVXqog7YK4TueKHG4Vic4rF7vtTBKc3BTAkmf_glWd2rYl2_WG26a95kNK5MoLnXI5e92VUiCI2tPE6BtTvsu1LVQuBKKIVtQjoeAUOZO-fmE8MKGYFZXx5xinoKx"/>
+</div>
+<div class="flex-1 min-w-0">
+<h5 class="text-sm font-semibold text-[#111318] dark:text-white truncate group-hover:text-primary transition-colors">Metronic - Bootstrap 5 &amp; React Dashboard</h5>
+<p class="text-xs text-gray-500 truncate">Ultimate admin panel with 100+ layouts</p>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="text-[10px] font-bold bg-green-100 text-green-700 px-1.5 py-0.5 rounded uppercase">9.8/10</span>
+<span class="text-sm font-bold text-primary mt-1">$39</span>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="flex items-center gap-4 p-3 bg-white dark:bg-gray-800 border border-transparent hover:border-primary/20 hover:shadow-md rounded-xl transition-all cursor-pointer group">
+<div class="size-12 rounded-lg overflow-hidden shrink-0 border border-gray-100 bg-gray-200" data-alt="Product thumbnail preview">
+<img alt="StackFood" class="size-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZGEV3T13sHtYDs6OBkPisM6ttaZgEmiHSBMtfO5MAmiAFJdIrNzzsSUk7zwpgQtH_-Sgh6Xn2NwuVzY3g28HpRnym1YLf0GY8GZs8rbFUepDKElIicPaW682BcIXOEMHQUzCPe9IigdIwZGu9oGAyQL21h-ocKFWecSadLhQOodUmrrpd1t4PAnt0UaeZb2JTFNUdEisxg4BGRGyM-ASXZQY94eU2W0nDK_EeHjeOyHj2wIsvkLB_jnEJrQYRNap98frPpm_eNgz2"/>
+</div>
+<div class="flex-1 min-w-0">
+<h5 class="text-sm font-semibold text-[#111318] dark:text-white truncate group-hover:text-primary transition-colors">StackFood Multi-Restaurant App</h5>
+<p class="text-xs text-gray-500 truncate">Complete delivery solution for businesses</p>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="text-[10px] font-bold bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded uppercase">9.5/10</span>
+<span class="text-sm font-bold text-primary mt-1">$59</span>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="flex items-center gap-4 p-3 bg-white dark:bg-gray-800 border border-transparent hover:border-primary/20 hover:shadow-md rounded-xl transition-all cursor-pointer group">
+<div class="size-12 rounded-lg overflow-hidden shrink-0 border border-gray-100 bg-gray-200" data-alt="Product thumbnail preview">
+<img alt="Workdo" class="size-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBLB_8hFOI2-BSXLFIBNhyN4jO-Wk3O5qs9suDn6HufnKfLDeoXMtAr9o1qZGqL1iUastSGjLOi1xbDg7lmjSVnlrD-_kYMzZVl9H_t3JDwDoR_ZhIeJuOcMGoSj5VUZfEkgCFw1G-xm23hM8CBTA06cipCQJ8ukhJW_cFMNN4CfZlP21IedgitCQbhXjQmG1GZXVB4wtKDdjkil7Djh4HHUNA_IsKGC2W2sheAifukSbl-ge_xKHMgoVo1cQGeGbwnpyjcGS52qxA"/>
+</div>
+<div class="flex-1 min-w-0">
+<h5 class="text-sm font-semibold text-[#111318] dark:text-white truncate group-hover:text-primary transition-colors">WorkDo SaaS - Open Source HRM &amp; CRM</h5>
+<p class="text-xs text-gray-500 truncate">Enterprise resource planning platform</p>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="text-[10px] font-bold bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded uppercase">9.2/10</span>
+<span class="text-sm font-bold text-primary mt-1">$69</span>
+</div>
+</div>
+</div>
+<!-- View All Footer -->
+<div class="px-4 py-3 mt-2 border-t border-gray-100 dark:border-gray-800">
+<button class="w-full text-center text-xs font-bold text-primary hover:underline flex items-center justify-center gap-1">
+                                    See all results for "React Admin Dashboard"
+                                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Background Content (Simulated Dashboard) -->
+<main class="w-full max-w-[1200px] mt-12 px-6 opacity-40 pointer-events-none select-none">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="h-40 bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
+<div class="h-4 w-24 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+<div class="h-8 w-40 bg-gray-100 dark:bg-gray-700 rounded mb-6"></div>
+<div class="h-10 bg-gray-50 dark:bg-gray-700/50 rounded"></div>
+</div>
+<div class="h-40 bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
+<div class="h-4 w-24 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+<div class="h-8 w-40 bg-gray-100 dark:bg-gray-700 rounded mb-6"></div>
+<div class="h-10 bg-gray-50 dark:bg-gray-700/50 rounded"></div>
+</div>
+<div class="h-40 bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
+<div class="h-4 w-24 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+<div class="h-8 w-40 bg-gray-100 dark:bg-gray-700 rounded mb-6"></div>
+<div class="h-10 bg-gray-50 dark:bg-gray-700/50 rounded"></div>
+</div>
+</div>
+<div class="mt-8 bg-white dark:bg-gray-800 rounded-xl shadow-sm p-8 h-[400px]">
+<div class="flex justify-between items-center mb-8">
+<div class="h-6 w-48 bg-gray-200 dark:bg-gray-700 rounded"></div>
+<div class="h-6 w-32 bg-gray-100 dark:bg-gray-700 rounded"></div>
+</div>
+<div class="space-y-4">
+<div class="h-12 w-full bg-gray-50 dark:bg-gray-700/50 rounded-lg"></div>
+<div class="h-12 w-full bg-gray-50 dark:bg-gray-700/50 rounded-lg"></div>
+<div class="h-12 w-full bg-gray-50 dark:bg-gray-700/50 rounded-lg"></div>
+<div class="h-12 w-full bg-gray-50 dark:bg-gray-700/50 rounded-lg"></div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

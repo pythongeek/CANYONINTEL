@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Right Sidebar - AI Insights &amp; Actions</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#ad2bee",
+              "background-light": "#f7f6f8",
+              "background-dark": "#1c1022",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .scrollbar-hide::-webkit-scrollbar {
+            width: 4px;
+        }
+        .scrollbar-hide::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .scrollbar-hide::-webkit-scrollbar-thumb {
+            background: #e2dbe6;
+            border-radius: 10px;
+        }
+        .purple-gradient-border {
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(to right, #ad2bee, #e2dbe6) border-box;
+            border: 2px solid transparent;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex justify-end">
+<!-- Right Sidebar Container (320px) -->
+<aside class="w-[320px] h-screen overflow-y-auto bg-white dark:bg-background-dark border-l border-[#e2dbe6] dark:border-[#31203b] p-4 flex flex-col gap-6 scrollbar-hide">
+<!-- 1. AI Insights Panel -->
+<section class="flex flex-col gap-3">
+<div class="flex items-center gap-2 px-1">
+<span class="material-symbols-outlined text-primary text-[20px] fill-1">auto_awesome</span>
+<h2 class="text-[#161118] dark:text-white text-sm font-semibold uppercase tracking-wider">AI Insights</h2>
+</div>
+<div class="purple-gradient-border rounded-lg p-3 bg-white dark:bg-[#25182d] shadow-md flex flex-col gap-3">
+<!-- Insight 1 -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<div class="text-primary flex items-center justify-center rounded bg-primary/10 shrink-0 size-8">
+<span class="material-symbols-outlined text-[18px]">lightbulb</span>
+</div>
+<div class="flex flex-col overflow-hidden">
+<p class="text-[#161118] dark:text-white text-[13px] font-medium leading-tight truncate">Growth Opportunity</p>
+<p class="text-[#7c6189] dark:text-[#a68bb3] text-[11px]">SaaS niche in EMEA market</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 rounded-full bg-[#f3f0f4] dark:bg-[#31203b] overflow-hidden">
+<div class="h-full bg-primary w-[95%] rounded-full"></div>
+</div>
+<span class="text-[#161118] dark:text-white text-[10px] font-bold">95%</span>
+</div>
+</div>
+<!-- Insight 2 -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<div class="text-[#161118] dark:text-white flex items-center justify-center rounded bg-[#f3f0f4] dark:bg-[#31203b] shrink-0 size-8">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+</div>
+<div class="flex flex-col overflow-hidden">
+<p class="text-[#161118] dark:text-white text-[13px] font-medium leading-tight truncate">Market Trend</p>
+<p class="text-[#7c6189] dark:text-[#a68bb3] text-[11px]">AI automation search volume up</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 rounded-full bg-[#f3f0f4] dark:bg-[#31203b] overflow-hidden">
+<div class="h-full bg-primary w-[88%] rounded-full"></div>
+</div>
+<span class="text-[#161118] dark:text-white text-[10px] font-bold">88%</span>
+</div>
+</div>
+<!-- Insight 3 -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<div class="text-[#161118] dark:text-white flex items-center justify-center rounded bg-[#f3f0f4] dark:bg-[#31203b] shrink-0 size-8">
+<span class="material-symbols-outlined text-[18px]">target</span>
+</div>
+<div class="flex flex-col overflow-hidden">
+<p class="text-[#161118] dark:text-white text-[13px] font-medium leading-tight truncate">Competitor Alert</p>
+<p class="text-[#7c6189] dark:text-[#a68bb3] text-[11px]">New pricing update detected</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 rounded-full bg-[#f3f0f4] dark:bg-[#31203b] overflow-hidden">
+<div class="h-full bg-primary w-[72%] rounded-full"></div>
+</div>
+<span class="text-[#161118] dark:text-white text-[10px] font-bold">72%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. Quick Actions Card -->
+<section class="flex flex-col gap-3">
+<h2 class="text-[#161118] dark:text-white text-sm font-semibold px-1">Quick Actions</h2>
+<div class="bg-white dark:bg-[#25182d] rounded-lg shadow-md p-2 flex flex-col gap-2">
+<button class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors group">
+<span class="material-symbols-outlined text-[20px]">link</span>
+<span class="text-sm font-medium">Scrape URL</span>
+</button>
+<button class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg border border-[#e2dbe6] dark:border-[#31203b] text-[#161118] dark:text-white hover:bg-[#f3f0f4] dark:hover:bg-[#31203b] transition-colors">
+<span class="material-symbols-outlined text-[20px] text-primary">compare_arrows</span>
+<span class="text-sm font-medium">Compare Products</span>
+</button>
+<button class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg border border-[#e2dbe6] dark:border-[#31203b] text-[#161118] dark:text-white hover:bg-[#f3f0f4] dark:hover:bg-[#31203b] transition-colors">
+<span class="material-symbols-outlined text-[20px] text-primary">download</span>
+<span class="text-sm font-medium">Export Report</span>
+</button>
+<button class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg border border-dashed border-primary/40 text-primary hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span class="text-sm font-medium">Plan New Product</span>
+</button>
+</div>
+</section>
+<!-- 3. Activity Feed Card -->
+<section class="flex flex-col gap-3">
+<h2 class="text-[#161118] dark:text-white text-sm font-semibold px-1">Recent Activity</h2>
+<div class="bg-white dark:bg-[#25182d] rounded-lg shadow-md p-4 max-h-[280px] overflow-y-auto scrollbar-hide relative">
+<div class="absolute left-[25px] top-4 bottom-4 w-px bg-[#e2dbe6] dark:bg-[#31203b]"></div>
+<div class="flex flex-col gap-6">
+<!-- Feed Item 1 -->
+<div class="flex gap-4 relative z-10">
+<div class="size-5 rounded-full bg-green-500 border-4 border-white dark:border-[#25182d] shrink-0"></div>
+<div class="flex flex-col gap-0.5">
+<p class="text-[#161118] dark:text-white text-[13px] font-medium leading-tight">Report Generated</p>
+<p class="text-[#7c6189] dark:text-[#a68bb3] text-[11px]">2 mins ago</p>
+</div>
+</div>
+<!-- Feed Item 2 -->
+<div class="flex gap-4 relative z-10">
+<div class="size-5 rounded-full bg-primary border-4 border-white dark:border-[#25182d] shrink-0"></div>
+<div class="flex flex-col gap-0.5">
+<p class="text-[#161118] dark:text-white text-[13px] font-medium leading-tight">Market Scrape Complete</p>
+<p class="text-[#7c6189] dark:text-[#a68bb3] text-[11px]">15 mins ago</p>
+</div>
+</div>
+<!-- Feed Item 3 -->
+<div class="flex gap-4 relative z-10">
+<div class="size-5 rounded-full bg-orange-400 border-4 border-white dark:border-[#25182d] shrink-0"></div>
+<div class="flex flex-col gap-0.5">
+<p class="text-[#161118] dark:text-white text-[13px] font-medium leading-tight">Price Change Detected</p>
+<p class="text-[#7c6189] dark:text-[#a68bb3] text-[11px]">1 hour ago</p>
+</div>
+</div>
+<!-- Feed Item 4 -->
+<div class="flex gap-4 relative z-10">
+<div class="size-5 rounded-full bg-[#ad2bee] border-4 border-white dark:border-[#25182d] shrink-0"></div>
+<div class="flex flex-col gap-0.5">
+<p class="text-[#161118] dark:text-white text-[13px] font-medium leading-tight">New Competitor Added</p>
+<p class="text-[#7c6189] dark:text-[#a68bb3] text-[11px]">3 hours ago</p>
+</div>
+</div>
+<!-- Feed Item 5 -->
+<div class="flex gap-4 relative z-10">
+<div class="size-5 rounded-full bg-[#161118] dark:bg-white border-4 border-white dark:border-[#25182d] shrink-0"></div>
+<div class="flex flex-col gap-0.5">
+<p class="text-[#161118] dark:text-white text-[13px] font-medium leading-tight">API Sync Complete</p>
+<p class="text-[#7c6189] dark:text-[#a68bb3] text-[11px]">Yesterday</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Usage Quota Widget -->
+<section class="mt-auto pt-4 border-t border-[#e2dbe6] dark:border-[#31203b]">
+<div class="bg-white dark:bg-[#25182d] rounded-lg shadow-md p-4 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h2 class="text-[#161118] dark:text-white text-xs font-bold uppercase tracking-tight">Monthly Usage</h2>
+<span class="text-primary text-[10px] font-bold bg-primary/10 px-1.5 py-0.5 rounded">PRO PLAN</span>
+</div>
+<div class="space-y-4">
+<!-- Usage 1 -->
+<div class="space-y-1.5">
+<div class="flex justify-between items-center text-[11px]">
+<span class="text-[#7c6189] dark:text-[#a68bb3]">Analyses</span>
+<span class="text-[#161118] dark:text-white font-medium">12 / 50</span>
+</div>
+<div class="w-full h-1.5 bg-[#f3f0f4] dark:bg-[#31203b] rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-right from-primary to-[#d887ff] w-[24%] rounded-full"></div>
+</div>
+</div>
+<!-- Usage 2 -->
+<div class="space-y-1.5">
+<div class="flex justify-between items-center text-[11px]">
+<span class="text-[#7c6189] dark:text-[#a68bb3]">Scrapes</span>
+<span class="text-[#161118] dark:text-white font-medium">84 / 200</span>
+</div>
+<div class="w-full h-1.5 bg-[#f3f0f4] dark:bg-[#31203b] rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-right from-primary to-[#d887ff] w-[42%] rounded-full"></div>
+</div>
+</div>
+<!-- Usage 3 -->
+<div class="space-y-1.5">
+<div class="flex justify-between items-center text-[11px]">
+<span class="text-[#7c6189] dark:text-[#a68bb3]">AI Recommendations</span>
+<span class="text-[#161118] dark:text-white font-medium">45 / 50</span>
+</div>
+<div class="w-full h-1.5 bg-[#f3f0f4] dark:bg-[#31203b] rounded-full overflow-hidden">
+<div class="h-full bg-orange-500 w-[90%] rounded-full"></div>
+</div>
+</div>
+</div>
+<button class="w-full h-9 bg-primary text-white text-[13px] font-semibold rounded-lg flex items-center justify-center gap-2 hover:bg-primary/90 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[18px]">upgrade</span>
+                    Upgrade Quota
+                </button>
+</div>
+</section>
+</aside>
+</body></html>

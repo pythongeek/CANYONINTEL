@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CodeCanyon Intelligence - URL Scraper</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-button {
+            background: linear-gradient(135deg, #135bec 0%, #3b82f6 100%);
+        }
+        .soft-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen">
+<div class="flex flex-col min-h-screen">
+<!-- Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#dbdfe6] dark:border-gray-800 bg-white dark:bg-background-dark px-6 md:px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-4 text-[#111318] dark:text-white">
+<div class="text-primary">
+<span class="material-symbols-outlined text-3xl">insights</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] font-display">CodeCanyon Intelligence</h2>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-[#f0f2f4] dark:bg-gray-800 text-[#111318] dark:text-white">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-[#f0f2f4] dark:bg-gray-800 text-[#111318] dark:text-white">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-gray-200 dark:border-gray-700" data-alt="User profile avatar with professional look" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA9yak80YLipWm5MFcbdfP5LKY0NDHOE-t87GYlg-Bn0OCXe4a24gl0OQDBusBSamUUwfniIpy-udOhn5y1gTJ4Z26ZQfefAHSymWcqdkHg2eGgqSS2mavpXU_y_0xNAc4NXjYp9UMAnXgo1u72uuHL0iz6v_W8IUr8XRGhkhvzQDeMhpdamJlwJEh4VbxDz6dPKADpfYhlUL1mkrPRxYH4IZ7yvoGKCSEAwyinewlj14q4osGvKHF8ScMnkYpN9XHzE-NDvGqa7Cwd");'></div>
+</div>
+</header>
+<main class="flex-1 flex flex-col items-center py-12 px-4 max-w-[1200px] mx-auto w-full">
+<!-- Hero Title -->
+<div class="text-center mb-10">
+<h1 class="text-[#111318] dark:text-white tracking-tight text-[40px] font-bold leading-tight pb-3">Scrape CodeCanyon Product</h1>
+<p class="text-[#616f89] dark:text-gray-400 text-lg max-w-[600px] mx-auto">Paste a product URL to analyze market trends, profitability scores, and competitor data in seconds.</p>
+</div>
+<!-- Primary Scraper Card -->
+<div class="w-full max-w-[800px] bg-white dark:bg-gray-900 rounded-xl soft-shadow p-8 mb-16 border border-[#dbdfe6] dark:border-gray-800">
+<div class="flex flex-col gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-[#111318] dark:text-white text-base font-semibold leading-normal">Product URL</label>
+<div class="relative flex w-full items-stretch group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#616f89]">
+<span class="material-symbols-outlined">link</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 rounded-xl text-[#111318] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-800 h-16 pl-12 pr-24 text-lg font-normal placeholder:text-[#616f89]" placeholder="https://codecanyon.net/item/..." value=""/>
+<div class="absolute inset-y-2 right-2 flex items-center">
+<button class="px-4 py-2 bg-[#f0f2f4] dark:bg-gray-700 text-sm font-bold text-[#111318] dark:text-white rounded-lg hover:bg-gray-200 transition-colors">
+                                    Paste
+                                </button>
+</div>
+</div>
+</div>
+<div class="flex justify-center">
+<button class="gradient-button w-full sm:w-auto min-w-[240px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-8 text-white text-lg font-bold leading-normal tracking-[0.015em] shadow-lg shadow-primary/20 hover:opacity-90 transition-opacity">
+<div class="flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">bolt</span>
+<span>Scrape Product</span>
+</div>
+</button>
+</div>
+<!-- Recent URL Chips -->
+<div class="flex flex-col gap-3 pt-4 border-t border-[#f0f2f4] dark:border-gray-800">
+<p class="text-[#616f89] dark:text-gray-400 text-sm font-medium">Recently searched:</p>
+<div class="flex gap-2 flex-wrap">
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#f0f2f4] dark:bg-gray-800 pl-3 pr-4 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined text-sm text-[#616f89]">history</span>
+<p class="text-[#111318] dark:text-white text-sm font-medium">admin-panel-pro</p>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#f0f2f4] dark:bg-gray-800 pl-3 pr-4 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined text-sm text-[#616f89]">history</span>
+<p class="text-[#111318] dark:text-white text-sm font-medium">ecommerce-app-flutter</p>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#f0f2f4] dark:bg-gray-800 pl-3 pr-4 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined text-sm text-[#616f89]">history</span>
+<p class="text-[#111318] dark:text-white text-sm font-medium">social-saas-template</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="w-full">
+<div class="flex items-center justify-between mb-6 px-4">
+<h2 class="text-xl font-bold text-[#111318] dark:text-white">Your Scraped Products</h2>
+<button class="text-primary font-semibold text-sm hover:underline">View All History</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
+<!-- Product Card 1 -->
+<div class="bg-white dark:bg-gray-900 rounded-lg p-4 soft-shadow border border-[#dbdfe6] dark:border-gray-800 group cursor-pointer hover:border-primary/50 transition-all">
+<div class="aspect-video w-full bg-gray-100 dark:bg-gray-800 rounded-lg mb-4 overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" data-alt="Modern dashboard UI template thumbnail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDW7F79rgjZTawM4bwoNsElEVbWJOYP3q_9SfBcyHBi0YKwDmpSs2cW8qeb7FchnCMGqWZyc752SQX2Eb_CW9Hy4-YcULswNQY_a1Sn01V_8cA9oUQeZrCrEVJwLeq9STp8zlUyoHZq63BQPT4iAeJlxF3mU2yDbLGhCRhm3PQcv21CsXigzv9dFJ-kYy6hV8mq-9iPD5BvxBGbO5n3VxqEkajYZBdeDpa9RY16OEf7pujNcI9WyPfXI15r5GtOCqCD0ZRdUG1-p8HD");'></div>
+<div class="absolute top-2 right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                92/100
+                            </div>
+</div>
+<h3 class="font-bold text-[#111318] dark:text-white text-sm mb-1 truncate">Admin Panel Pro - SaaS Kit</h3>
+<div class="flex justify-between items-center text-xs text-[#616f89] dark:text-gray-400">
+<span>2 hours ago</span>
+<span class="text-primary font-medium">$49.00</span>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-white dark:bg-gray-900 rounded-lg p-4 soft-shadow border border-[#dbdfe6] dark:border-gray-800 group cursor-pointer hover:border-primary/50 transition-all">
+<div class="aspect-video w-full bg-gray-100 dark:bg-gray-800 rounded-lg mb-4 overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" data-alt="Mobile ecommerce app template thumbnail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAe_REcHhW9J3UhRj6kVF4dXq70P0KEZlJlmB1a_dfNQQUaifN7A-ByXz5fXXIa47nxL0vBo2P0yd5TsRQblbv7UAR4fcO-kQ6QmKZyHdS3hBpeeOSbd2rHtA4McIoMnOk1kRgAZmongATjA4tTIXGlNYyTLyIOJKu6NoX71luRD2J841COOEqjNS5uwfUBToNOekMT4YYvAnMyyhdN4fibg1Y3iVqjLqGdSyM-ypQs5m_7tWHxny76jf2HSEJ3p0qfn2Wgznhxlc8s");'></div>
+<div class="absolute top-2 right-2 bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                78/100
+                            </div>
+</div>
+<h3 class="font-bold text-[#111318] dark:text-white text-sm mb-1 truncate">Flutter E-commerce Full App</h3>
+<div class="flex justify-between items-center text-xs text-[#616f89] dark:text-gray-400">
+<span>5 hours ago</span>
+<span class="text-primary font-medium">$59.00</span>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="bg-white dark:bg-gray-900 rounded-lg p-4 soft-shadow border border-[#dbdfe6] dark:border-gray-800 group cursor-pointer hover:border-primary/50 transition-all">
+<div class="aspect-video w-full bg-gray-100 dark:bg-gray-800 rounded-lg mb-4 overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" data-alt="Social media management tool UI thumbnail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDtnp7jCxWWsluhZeH0awqMl9gga6sdhoPiKNEyf98Ux7Tu5-fVMwA6chkI0y465J9k4krXkH_mJH57SSWXx0oGzJET4HpFs8MlVNJ7BL-WTo2iihVe8toKu6cHdA5mwuRYhBcuvrtSO5GESczm4gzhpkjEe7SmCv21YSgg0A4q0ZkkAbGEJ8PaYotaPz0nEkCUtwOKaW0w2sa18Udfe82Cu4TskvliVf7t9sNZjU1qdYJvp5E2BfYMeJY0P159GfuBJFphyVghXLus");'></div>
+<div class="absolute top-2 right-2 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                65/100
+                            </div>
+</div>
+<h3 class="font-bold text-[#111318] dark:text-white text-sm mb-1 truncate">Social Media Scheduler SaaS</h3>
+<div class="flex justify-between items-center text-xs text-[#616f89] dark:text-gray-400">
+<span>Yesterday</span>
+<span class="text-primary font-medium">$29.00</span>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="bg-white dark:bg-gray-900 rounded-lg p-4 soft-shadow border border-[#dbdfe6] dark:border-gray-800 group cursor-pointer hover:border-primary/50 transition-all">
+<div class="aspect-video w-full bg-gray-100 dark:bg-gray-800 rounded-lg mb-4 overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" data-alt="Web3 crypto wallet interface thumbnail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC89WZL9JxZ9mnK6rvcA5IYtDuZjZMoNFfP2doJ88Z4i7xcZd-O3UBm6kdvf6h8QqYLNS4O1eyST_XzqdABZmQxlj6iW57YfVMUui6mxalXdbop6D6jG0oYmSLracQBj5lFUROvgODBCjkgUoAwe26CA3AsRRNndHGoUu-fEs4AywAMMJKmCMcLdEJd5vp766baw8GhpvfvKRCw3OCXRv7_-XGCr_E6lKF81d32JEAWLCiBibHNxgjJBoqa4ntq7IOidjSZHjyj0H2s");'></div>
+<div class="absolute top-2 right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                89/100
+                            </div>
+</div>
+<h3 class="font-bold text-[#111318] dark:text-white text-sm mb-1 truncate">Web3 Wallet Integration Kit</h3>
+<div class="flex justify-between items-center text-xs text-[#616f89] dark:text-gray-400">
+<span>2 days ago</span>
+<span class="text-primary font-medium">$89.00</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-auto py-8 text-center text-[#616f89] dark:text-gray-500 text-sm">
+<p>© 2024 CodeCanyon Intelligence. All insights are generated via AI analysis.</p>
+</footer>
+</div>
+</body></html>

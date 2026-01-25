@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Settings &amp; Profile Management - CodeCanyon Intelligence</title>
+<!-- Material Symbols Link -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen">
+<div class="flex h-full flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-[#111418] dark:text-white">
+<div class="size-8 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.8261 17.4264C16.7203 18.1174 20.2244 18.5217 24 18.5217C27.7756 18.5217 31.2797 18.1174 34.1739 17.4264C36.9144 16.7722 39.9967 15.2331 41.3563 14.1648L24.8486 40.6391C24.4571 41.267 23.5429 41.267 23.1514 40.6391L6.64374 14.1648C8.00331 15.2331 11.0856 16.7722 13.8261 17.4264Z" fill="currentColor"></path>
+<path clip-rule="evenodd" d="M39.998 12.236C39.9944 12.2537 39.9875 12.2845 39.9748 12.3294C39.9436 12.4399 39.8949 12.5741 39.8346 12.7175C39.8168 12.7597 39.7989 12.8007 39.7813 12.8398C38.5103 13.7113 35.9788 14.9393 33.7095 15.4811C30.9875 16.131 27.6413 16.5217 24 16.5217C20.3587 16.5217 17.0125 16.131 14.2905 15.4811C12.0012 14.9346 9.44505 13.6897 8.18538 12.8168C8.17384 12.7925 8.16216 12.767 8.15052 12.7408C8.09919 12.6249 8.05721 12.5114 8.02977 12.411C8.00356 12.3152 8.00039 12.2667 8.00004 12.2612C8.00004 12.261 8 12.2607 8.00004 12.2612C8.00004 12.2359 8.0104 11.9233 8.68485 11.3686C9.34546 10.8254 10.4222 10.2469 11.9291 9.72276C14.9242 8.68098 19.1919 8 24 8C28.8081 8 33.0758 8.68098 36.0709 9.72276C37.5778 10.2469 38.6545 10.8254 39.3151 11.3686C39.9006 11.8501 39.9857 12.1489 39.998 12.236ZM4.95178 15.2312L21.4543 41.6973C22.6288 43.5809 25.3712 43.5809 26.5457 41.6973L43.0534 15.223C43.0709 15.1948 43.0878 15.1662 43.104 15.1371L41.3563 14.1648C43.104 15.1371 43.1038 15.1374 43.104 15.1371L43.1051 15.135L43.1065 15.1325L43.1101 15.1261L43.1199 15.1082C43.1276 15.094 43.1377 15.0754 43.1497 15.0527C43.1738 15.0075 43.2062 14.9455 43.244 14.8701C43.319 14.7208 43.4196 14.511 43.5217 14.2683C43.6901 13.8679 44 13.0689 44 12.2609C44 10.5573 43.003 9.22254 41.8558 8.2791C40.6947 7.32427 39.1354 6.55361 37.385 5.94477C33.8654 4.72057 29.133 4 24 4C18.867 4 14.1346 4.72057 10.615 5.94478C8.86463 6.55361 7.30529 7.32428 6.14419 8.27911C4.99695 9.22255 3.99999 10.5573 3.99999 12.2609C3.99999 13.1275 4.29264 13.9078 4.49321 14.3607C4.60375 14.6102 4.71348 14.8196 4.79687 14.9689C4.83898 15.0444 4.87547 15.1065 4.9035 15.1529C4.91754 15.1762 4.92954 15.1957 4.93916 15.2111L4.94662 15.223L4.95178 15.2312ZM35.9868 18.996L24 38.22L12.0131 18.996C12.4661 19.1391 12.9179 19.2658 13.3617 19.3718C16.4281 20.1039 20.0901 20.5217 24 20.5217C27.9099 20.5217 31.5719 20.1039 34.6383 19.3718C35.082 19.2658 35.5339 19.1391 35.9868 18.996Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">CodeCanyon AI</h2>
+</div>
+<label class="flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full overflow-hidden">
+<div class="text-[#617589] flex bg-[#f0f2f4] dark:bg-gray-800 items-center justify-center pl-4">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden text-[#111418] dark:text-white focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] dark:bg-gray-800 h-full placeholder:text-[#617589] px-4 pl-2 text-sm font-normal" placeholder="Quick search..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-[#f0f2f4] dark:bg-gray-800 text-[#111418] dark:text-white hover:bg-gray-200 transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-[#f0f2f4] dark:bg-gray-800 text-[#111418] dark:text-white hover:bg-gray-200 transition-colors">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+</div>
+<div class="flex items-center gap-3 pl-4 border-l border-gray-200 dark:border-gray-800">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAHjUfZqmz_akoZzcgqF7d0xtKLvZN_hVG3Y3bZGG3su7xy6Y6NnCinN0642YB9EqM-blxceHoCo6kHsuNkZKAuJ53e9hUnhDR1ZxY0HpPXfFvuxltx436Ah-gUp4_-En06AAZ69tNzR4lhyCT4TUoHaOv7rklD4A-rsKB32ZoO23eBay1ygScEPNWxCkrOh3J5pDSiXRJ4PYTOknGev1X4pAVWEFqiIdNLo3EqEOEbiGxCCXqyqHo6WDpyfQsp2gy8y2emVMFNFAPn");'></div>
+</div>
+</div>
+</header>
+<!-- Main Layout -->
+<div class="flex flex-1 max-w-[1280px] w-full mx-auto px-6 py-10 gap-8">
+<!-- Left Sidebar Navigation -->
+<aside class="w-[240px] flex-shrink-0">
+<div class="flex flex-col gap-6 sticky top-28">
+<div class="flex gap-3 px-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12" data-alt="Small profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCyCexyeaBy0VU3xwRDKZZXCYHwjDtGw_SwWFEP5ZufQeVvgO8efZ_mhQ3d3BtMOAYzNDFUeaIxtQxgQfiWSNYGWQc0fmOof_f-WcJzdGC7uuCoKlzNgwS4GSU-1ORp2EeBOygZBhj_CT_sQr1JGhOwMrO7qaSdPf-JmHA0mcDVR9H7iHxL98QzV6SZX43jUAmhDGP3dZkdBQOy1RetYg-tQZGEFCeLSVoJMp1NrBq2jYfP0hH4fO2YI8pp-hYBmWITgGtCkTop9Igb");'></div>
+<div class="flex flex-col justify-center">
+<h1 class="text-[#111418] dark:text-white text-base font-bold leading-none">Alex Rivers</h1>
+<p class="text-[#617589] text-xs font-medium mt-1 uppercase tracking-wider">Pro Plan Member</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary text-white shadow-md shadow-primary/20 transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">person</span>
+<span class="text-sm font-semibold">Profile</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-white dark:hover:bg-gray-800 transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">security</span>
+<span class="text-sm font-medium">Security</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-white dark:hover:bg-gray-800 transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="text-sm font-medium">Notifications</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-white dark:hover:bg-gray-800 transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">credit_card</span>
+<span class="text-sm font-medium">Subscription</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-white dark:hover:bg-gray-800 transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">terminal</span>
+<span class="text-sm font-medium">API Management</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-white dark:hover:bg-gray-800 transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">settings_input_component</span>
+<span class="text-sm font-medium">Integrations</span>
+</a>
+</nav>
+<div class="mt-10 px-4">
+<button class="flex items-center gap-3 text-red-500 text-sm font-semibold hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-[22px]">logout</span>
+                            Logout
+                        </button>
+</div>
+</div>
+</aside>
+<!-- Right Content Area -->
+<main class="flex-1 flex flex-col gap-8 max-w-[960px]">
+<!-- Page Heading -->
+<div class="flex flex-col gap-2">
+<h1 class="text-[#111418] dark:text-white text-4xl font-black tracking-tight">Account Settings</h1>
+<p class="text-[#617589] text-base">Manage your personal details, subscription plan, and workspace preferences.</p>
+</div>
+<!-- Profile Section Card -->
+<section class="bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden">
+<div class="p-8">
+<h2 class="text-lg font-bold text-[#111418] dark:text-white mb-6">Profile Information</h2>
+<!-- Avatar Upload Section -->
+<div class="flex items-center gap-8 mb-10">
+<div class="relative group">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-[120px] ring-4 ring-primary/10 border-4 border-white dark:border-gray-800 shadow-lg transition-transform group-hover:scale-[1.02]" data-alt="Main profile avatar display" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCaxlH3ZLK3Do84mmOBxiju8LxDQPd4cEkcESA-EizS-M9uV1RblOVDUkp_OtrNK92p_w5KQSVuvH1_k4ovTg26TX5yZFaFs5dEGhS7KqrIv5uoBj_84iK371rn-QNBDRk1O_Byw97UHlVFnrNmN_2BKIsZ0b-baJmJNFzwVvsMJCK9y3mYBk9_d5p5zNGjUls5R8zIoXVpGppDyA9nApsRBcttS1nuWKFXrjk9_yOLd1d5ezUqef1KjSZrYbz0mAve6h7B4rK7hDdg");'></div>
+<label class="absolute inset-0 flex items-center justify-center bg-black/40 rounded-full opacity-0 group-hover:opacity-100 cursor-pointer transition-opacity text-white text-xs font-bold text-center p-2">
+<span class="material-symbols-outlined mr-1">photo_camera</span>
+                                    Edit Photo
+                                    <input class="hidden" type="file"/>
+</label>
+</div>
+<div class="flex flex-col gap-3">
+<h3 class="text-[#111418] dark:text-white text-xl font-bold">Alex Rivers</h3>
+<p class="text-[#617589] text-sm max-w-sm">JPG, GIF or PNG. Max size of 800K.</p>
+<div class="flex gap-2">
+<button class="bg-primary/10 text-primary px-4 py-2 rounded-lg text-sm font-bold hover:bg-primary/20 transition-colors">Upload new</button>
+<button class="bg-gray-100 dark:bg-gray-800 text-gray-500 px-4 py-2 rounded-lg text-sm font-bold hover:bg-gray-200 transition-colors">Delete</button>
+</div>
+</div>
+</div>
+<!-- Form Grid -->
+<div class="grid grid-cols-2 gap-6">
+<div class="flex flex-col gap-2 col-span-2 md:col-span-1">
+<label class="text-sm font-bold text-gray-700 dark:text-gray-300">Full Name</label>
+<input class="w-full bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-lg p-3 text-sm focus:ring-primary focus:border-primary" type="text" value="Alex Rivers"/>
+</div>
+<div class="flex flex-col gap-2 col-span-2 md:col-span-1">
+<label class="text-sm font-bold text-gray-700 dark:text-gray-300">Email Address</label>
+<div class="relative">
+<input class="w-full bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-lg p-3 pr-24 text-sm focus:ring-primary focus:border-primary" type="email" value="alex.rivers@codecanyon.ai"/>
+<span class="absolute right-2 top-1.5 flex items-center gap-1 bg-green-100 text-green-700 px-2 py-1 rounded text-[10px] font-black uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">verified</span> Verified
+                                    </span>
+</div>
+</div>
+<div class="flex flex-col gap-2 col-span-2">
+<label class="text-sm font-bold text-gray-700 dark:text-gray-300">Bio</label>
+<textarea class="w-full bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-lg p-3 text-sm focus:ring-primary focus:border-primary" rows="4">Passionate about leveraging artificial intelligence to automate developer workflows. Working on the future of code generation.</textarea>
+</div>
+</div>
+<div class="mt-10 flex justify-end">
+<button class="bg-primary text-white px-8 py-3 rounded-lg font-bold shadow-lg shadow-primary/30 hover:bg-blue-600 transition-all">Save Profile Changes</button>
+</div>
+</div>
+</section>
+<!-- Subscription & Billing Section -->
+<section class="bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden">
+<div class="p-8">
+<div class="flex justify-between items-start mb-8">
+<h2 class="text-lg font-bold text-[#111418] dark:text-white">Subscription &amp; Billing</h2>
+<button class="text-primary text-sm font-bold hover:underline">Change Plan</button>
+</div>
+<!-- Active Plan Card -->
+<div class="bg-blue-50/50 dark:bg-primary/5 border border-primary/20 rounded-lg p-6 mb-8 flex flex-col md:flex-row gap-8 items-center">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-primary text-white text-[10px] font-black uppercase px-2 py-0.5 rounded">Current Plan</span>
+<h3 class="text-2xl font-black text-primary">Pro Plan</h3>
+</div>
+<p class="text-gray-600 dark:text-gray-400 text-sm">Your next billing date is <span class="font-bold">October 12, 2023</span> for <span class="font-bold text-[#111418] dark:text-white">$29.00</span>.</p>
+</div>
+<div class="w-full md:w-64 space-y-4">
+<div>
+<div class="flex justify-between text-xs font-bold mb-1.5">
+<span class="text-gray-500">API Usage</span>
+<span class="text-primary">8,500 / 10,000 requests</span>
+</div>
+<div class="w-full h-2.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs font-bold mb-1.5">
+<span class="text-gray-500">Storage</span>
+<span class="text-primary">12 GB / 25 GB</span>
+</div>
+<div class="w-full h-2.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 48%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Billing History -->
+<div class="mt-8">
+<h3 class="text-sm font-bold text-gray-700 dark:text-gray-300 mb-4 uppercase tracking-widest">Recent Billing History</h3>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="border-b border-gray-100 dark:border-gray-800">
+<th class="py-4 text-xs font-black text-gray-400 uppercase tracking-wider">Date</th>
+<th class="py-4 text-xs font-black text-gray-400 uppercase tracking-wider">Description</th>
+<th class="py-4 text-xs font-black text-gray-400 uppercase tracking-wider text-right">Amount</th>
+<th class="py-4 text-xs font-black text-gray-400 uppercase tracking-wider text-right">Invoice</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-50 dark:divide-gray-800">
+<tr>
+<td class="py-4 text-sm text-[#111418] dark:text-white font-medium">Sep 12, 2023</td>
+<td class="py-4 text-sm text-gray-500">Pro Plan Monthly Subscription</td>
+<td class="py-4 text-sm text-[#111418] dark:text-white font-bold text-right">$29.00</td>
+<td class="py-4 text-right">
+<button class="text-primary hover:text-blue-700">
+<span class="material-symbols-outlined">download</span>
+</button>
+</td>
+</tr>
+<tr>
+<td class="py-4 text-sm text-[#111418] dark:text-white font-medium">Aug 12, 2023</td>
+<td class="py-4 text-sm text-gray-500">Pro Plan Monthly Subscription</td>
+<td class="py-4 text-sm text-[#111418] dark:text-white font-bold text-right">$29.00</td>
+<td class="py-4 text-right">
+<button class="text-primary hover:text-blue-700">
+<span class="material-symbols-outlined">download</span>
+</button>
+</td>
+</tr>
+<tr>
+<td class="py-4 text-sm text-[#111418] dark:text-white font-medium">Jul 12, 2023</td>
+<td class="py-4 text-sm text-gray-500">Pro Plan Monthly Subscription</td>
+<td class="py-4 text-sm text-[#111418] dark:text-white font-bold text-right">$29.00</td>
+<td class="py-4 text-right">
+<button class="text-primary hover:text-blue-700">
+<span class="material-symbols-outlined">download</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+</div>
+</body></html>

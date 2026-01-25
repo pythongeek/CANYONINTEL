@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CodeCanyon Intelligence - URL Scraper Success</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#195de6",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<div class="w-full flex justify-center border-b border-solid border-slate-200 dark:border-[#292e38] bg-white/50 dark:bg-background-dark/50 backdrop-blur-sm sticky top-0 z-50">
+<div class="layout-content-container flex flex-col w-full max-w-[1200px]">
+<header class="flex items-center justify-between whitespace-nowrap px-6 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary dark:text-white">
+<div class="size-6 text-primary">
+<span class="material-symbols-outlined text-3xl">analytics</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">CodeCanyon Intelligence</h2>
+</div>
+<div class="hidden md:flex items-center gap-9">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Dashboard</a>
+<a class="text-primary dark:text-white text-sm font-bold leading-normal" href="#">Scraper</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Analytics</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Reports</a>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<label class="hidden lg:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full border border-slate-200 dark:border-none">
+<div class="text-[#9da6b8] flex bg-slate-50 dark:bg-[#292e38] items-center justify-center pl-4 rounded-l-xl">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 rounded-xl text-slate-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-slate-50 dark:bg-[#292e38] h-full placeholder:text-[#9da6b8] px-4 rounded-l-none pl-2 text-sm" placeholder="Search items..." value=""/>
+</div>
+</label>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-slate-200 dark:border-slate-700" data-alt="User profile avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDvIvHH4jqkbvOxg-AghztgDB3I1HmJCBHRfyAUYcI85nYHOsb8v-WXFpi5xZP2y53Jfm-6Ch1vHbg6LBa4a29FwbwgWvU0uIUO9lcoTsvwcfkCReQfiqK2PO8t0-tFPihRB624w1cFUTCVlW_V9L1p2Y5c4cdmI4_trSRCiF0DsQ6jXvXfd-UvKFj_iEkgwbGkCkbZwV2TSz7zczl41ciykii6BjUT-mf0Nz2vJmGzTzxHnL2Gm0yEn_5ebJ8xHm4X370_s3vt0sP9");'></div>
+</div>
+</header>
+</div>
+</div>
+<!-- Main Content Container -->
+<main class="flex flex-1 flex-col items-center justify-center px-4 py-12">
+<div class="w-full max-w-[640px] flex flex-col gap-8">
+<!-- Success Header -->
+<div class="flex flex-col items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-700">
+<div class="flex items-center justify-center size-12 rounded-full bg-emerald-500/10 text-emerald-500 mb-2 border border-emerald-500/20">
+<span class="material-symbols-outlined text-3xl font-bold">check_circle</span>
+</div>
+<h1 class="text-slate-900 dark:text-white text-2xl font-bold tracking-tight text-center">Analysis Complete!</h1>
+<p class="text-slate-500 dark:text-[#9da6b8] text-sm text-center">The URL was successfully scraped and the product intelligence report is ready.</p>
+</div>
+<!-- Result Card Component -->
+<div class="p-1 rounded-2xl bg-gradient-to-b from-primary/20 to-transparent">
+<div class="flex flex-col sm:flex-row items-stretch justify-between gap-6 rounded-xl bg-white dark:bg-[#1c1f26] p-6 shadow-2xl border border-white/10">
+<div class="flex flex-[1.5_1.5_0px] flex-col justify-between gap-6">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-primary/10 text-primary dark:bg-primary/20 dark:text-blue-400 text-[10px] font-bold uppercase tracking-wider">WordPress</span>
+<span class="text-slate-400 dark:text-[#9da6b8] text-xs font-medium">• Plugin</span>
+</div>
+<h3 class="text-slate-900 dark:text-white text-2xl font-extrabold leading-tight">Slider Revolution</h3>
+<p class="text-slate-500 dark:text-[#9da6b8] text-sm font-normal leading-relaxed">Responsive WordPress Slider Plugin that helps beginner and mid-level designers wow their clients with pro visuals.</p>
+</div>
+<div class="flex items-center gap-4">
+<!-- Stats Mini Card -->
+<div class="flex flex-col gap-1 rounded-lg bg-slate-50 dark:bg-[#292e38] p-3 border border-slate-100 dark:border-white/5">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wide">Trust Score</p>
+<div class="flex items-baseline gap-1">
+<span class="text-2xl font-black text-emerald-500 tracking-tighter">94</span>
+<span class="text-slate-400 text-sm font-medium">/100</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-emerald-500 text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                                            +2% vs Avg
+                                        </p>
+<p class="text-slate-400 text-xs font-normal">Highly Reliable</p>
+</div>
+</div>
+</div>
+<div class="flex-1 min-h-[160px] sm:min-h-0 relative">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover rounded-xl shadow-inner border border-slate-200 dark:border-white/10 overflow-hidden" data-alt="Thumbnail of Slider Revolution WordPress plugin preview" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDLjVmKi3v34Hz_bjadTr2ccF6mbsd4yZtzjerPJwU5KPVxwOztbI5HS5lgpWx0LZ1zNazIRI8Z-E5_6zuqqpjU-8W7GYW3y5YjTS-zc1rhc0Q0ahyC3GllmJWAYjsQiKa8u_yjZvguZygaw-jh9wZcg76AZxAgC8jTvNuBF3PHdoyAiQiWOSAEsj0oXh8qmvhK0DIeHnI1OrdeMoA-i7qmdqOsXFeQb1tfTFztvPY9yDUELz8ToQJJkBBNJ7CS3GTjRZ6iI1kW8zXV");'>
+<!-- Glass Overlay -->
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent"></div>
+</div>
+<!-- Floating Score Badge -->
+<div class="absolute -top-2 -right-2 size-10 bg-emerald-500 text-white rounded-full flex items-center justify-center font-bold text-sm shadow-lg border-2 border-white dark:border-[#1c1f26]">
+                                    A+
+                                </div>
+</div>
+</div>
+</div>
+<!-- Action Button Group -->
+<div class="flex flex-col gap-4 w-full animate-in fade-in slide-in-from-bottom-2 duration-1000 delay-300">
+<div class="flex flex-col sm:flex-row gap-3">
+<button class="flex-1 flex cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-primary text-white text-sm font-bold leading-normal tracking-wide shadow-lg shadow-primary/20 hover:bg-blue-600 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined mr-2">visibility</span>
+<span class="truncate">View Full Analysis</span>
+</button>
+<button class="flex-1 flex cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-slate-100 dark:bg-[#292e38] text-slate-900 dark:text-white text-sm font-bold leading-normal tracking-wide hover:bg-slate-200 dark:hover:bg-slate-700 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined mr-2">dashboard_customize</span>
+<span class="truncate">Add to Dashboard</span>
+</button>
+</div>
+<button class="flex items-center justify-center w-full h-12 px-6 bg-transparent text-slate-500 dark:text-slate-400 text-sm font-bold border border-slate-300 dark:border-[#3c4453] rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-all">
+<span class="material-symbols-outlined mr-2">replay</span>
+<span class="truncate">Scrape Another URL</span>
+</button>
+</div>
+<!-- Additional Stats Row -->
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+<div class="flex flex-col gap-2 rounded-xl p-4 border border-slate-200 dark:border-[#3c4453] bg-white/50 dark:bg-transparent">
+<p class="text-slate-500 dark:text-[#9da6b8] text-xs font-medium uppercase tracking-wider">Quality</p>
+<p class="text-slate-900 dark:text-white text-xl font-bold leading-tight">Excellent</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-4 border border-slate-200 dark:border-[#3c4453] bg-white/50 dark:bg-transparent">
+<p class="text-slate-500 dark:text-[#9da6b8] text-xs font-medium uppercase tracking-wider">Performance</p>
+<p class="text-slate-900 dark:text-white text-xl font-bold leading-tight">98%</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-4 border border-slate-200 dark:border-[#3c4453] bg-white/50 dark:bg-transparent col-span-2 sm:col-span-1">
+<p class="text-slate-500 dark:text-[#9da6b8] text-xs font-medium uppercase tracking-wider">Security</p>
+<p class="text-slate-900 dark:text-white text-xl font-bold leading-tight">Safe</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Meta -->
+<footer class="w-full flex justify-center py-8">
+<div class="layout-content-container flex flex-col w-full max-w-[1200px] px-6">
+<div class="flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-[10px] uppercase tracking-[0.2em] font-bold">
+<p>© 2024 CODECANYON INTELLIGENCE ENGINE</p>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="hover:text-primary transition-colors" href="#">API Status</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

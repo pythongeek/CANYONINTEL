@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mobile Dashboard - CodeCanyon Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .snap-x-mandatory { scroll-snap-type: x mandatory; }
+        .snap-start { scroll-snap-align: start; }
+    </style>
+</head>
+<body class="bg-slate-200 font-display flex justify-center items-center min-h-screen">
+<!-- Mobile Frame Simulation -->
+<div class="relative w-[375px] h-[812px] bg-background-light dark:bg-background-dark overflow-hidden shadow-2xl flex flex-col border border-gray-300 dark:border-gray-800">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between px-4 py-3 bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-slate-800 z-10 shrink-0">
+<button class="flex items-center justify-center size-10 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="flex items-center gap-2">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.8261 17.4264C16.7203 18.1174 20.2244 18.5217 24 18.5217C27.7756 18.5217 31.2797 18.1174 34.1739 17.4264C36.9144 16.7722 39.9967 15.2331 41.3563 14.1648L24.8486 40.6391C24.4571 41.267 23.5429 41.267 23.1514 40.6391L6.64374 14.1648C8.00331 15.2331 11.0856 16.7722 13.8261 17.4264Z"></path>
+</svg>
+</div>
+<h1 class="text-slate-900 dark:text-white font-bold text-sm leading-tight">CodeCanyon Intelligence</h1>
+</div>
+<div class="size-8 rounded-full bg-center bg-cover border border-gray-100 dark:border-slate-700" data-alt="User profile avatar portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuALL1FiEogE9X9QHSTFTvWz6ZO2FDpBgV5yoe3d2kVfPMVY4eacfx7kTZPO6IZVuqYi5blpoC2zZMHWNF_bbM8XL_axBeFczpodlvChxzOEiKlwJFNAFr9Qcp2wz6Oqo8z-I7DXZo4FkMqiy2fHx9XybjznUffsoyBtcIX2JflygQRaah_zvJQehIRrs9ag2to6oBgkGUJVzVC-mPffTC5WEOdIB_64FBpaO6nTNB1w_KOZooF3LWMTkASgK-jjDEfssDTRqE59urXm');"></div>
+</header>
+<!-- Scrollable Content Area -->
+<main class="flex-1 overflow-y-auto pb-20 no-scrollbar">
+<!-- Welcome Header -->
+<div class="px-4 pt-6 pb-2">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white">Dashboard Overview</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400">Welcome back, Alex</p>
+</div>
+<!-- Metric Snap-Scroll Row -->
+<div class="flex overflow-x-auto snap-x-mandatory no-scrollbar px-4 py-4 gap-4">
+<!-- Card 1 -->
+<div class="min-w-[280px] snap-start bg-white dark:bg-slate-900 p-5 rounded-xl shadow-sm border border-gray-100 dark:border-slate-800">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<span class="text-[#078838] text-xs font-bold px-2 py-1 bg-green-50 dark:bg-green-900/20 rounded-full">+5.2%</span>
+</div>
+<div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Products</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-white">1,240</p>
+</div>
+</div>
+<!-- Card 2 (Peeked) -->
+<div class="min-w-[280px] snap-start bg-white dark:bg-slate-900 p-5 rounded-xl shadow-sm border border-gray-100 dark:border-slate-800">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<span class="text-primary text-xs font-bold px-2 py-1 bg-primary/5 rounded-full">Projected</span>
+</div>
+<div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Revenue Potential</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-white">$45,210.00</p>
+</div>
+</div>
+</div>
+<!-- Analysis Activity Section -->
+<div class="px-4 py-2">
+<div class="bg-white dark:bg-slate-900 rounded-xl p-5 border border-gray-100 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h3 class="text-base font-bold text-slate-900 dark:text-white">Analysis Activity</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Weekly trend overview</p>
+</div>
+<span class="material-symbols-outlined text-slate-400">more_horiz</span>
+</div>
+<div class="h-[180px] w-full relative flex flex-col justify-end">
+<svg class="absolute inset-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 472 150" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25" fill="none" stroke="#137fec" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+<div class="flex justify-between mt-auto pt-4 border-t border-gray-50 dark:border-slate-800">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Mon</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Wed</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Fri</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Sun</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Analyses Section -->
+<div class="px-4 py-4">
+<div class="flex justify-between items-center mb-3">
+<h3 class="text-base font-bold text-slate-900 dark:text-white px-1">Recent Analyses</h3>
+<button class="text-xs font-semibold text-primary">View All</button>
+</div>
+<div class="space-y-3">
+<!-- Item 1 -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-4 rounded-xl border border-gray-100 dark:border-slate-800 shadow-sm">
+<div class="size-12 rounded-lg bg-slate-100 dark:bg-slate-800 bg-center bg-cover shrink-0" data-alt="PHP script software preview thumbnail" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCBAqCKrsCh7ZwUoMNSEX47e2toUJlPGFhgUEwZiELDbgChzNrT9w-heh2MSdjDC4LrMNC6reCpi4WB3tRLRT4gmanvLedH_DiPmyqy4or7MBzhLeE-oIBG1jE9T896j59BNZRTsgAe6nkJA7DYsV40I9ElKvL_4f4Nh6eOs5OqbzmIUnXhQHMJJrSmiTupFHJ_zasmBf9uVb5mUxcszMMbjfypAUNMIczJq8bAAKUC5-onyTadfmvGmN3fVDrH4fAlNkoXK67RiAgS');"></div>
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-semibold text-slate-900 dark:text-white truncate">SaaS Boilerplate - Laravel</h4>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="text-[10px] text-slate-500 dark:text-slate-400">24m ago</span>
+<span class="size-1 rounded-full bg-slate-300"></span>
+<span class="text-[10px] font-bold text-green-600 uppercase">Completed</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-lg">chevron_right</span>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-4 rounded-xl border border-gray-100 dark:border-slate-800 shadow-sm">
+<div class="size-12 rounded-lg bg-slate-100 dark:bg-slate-800 bg-center bg-cover shrink-0" data-alt="Ecommerce UI kit design preview" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDLwISMzoG7-a_a2rRT3VNP8yDQqwG9ZIvjJ3X2YDscoNvEhu2eW7HwlnMLkEZg4c3uIn2y_diCvZan3PpP4uwy7pW0x4cVPTTi6oQLSYJwDlGYgCmL7g-zJTYqWJ49EmH9VbqE2MJy4Ne6UXzjnqjQ7NnCQbj3MX8a4Q5CAFSbAfb6Di4I-StPYWiUaY2e6E6zAdnnNW-Zid1RgXPfrGtAEgIlKTu_zVlvf-T6rQ71OPmXeo9WjMSAT8O06ksgVnYKOXgNZYL87QCm');"></div>
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-semibold text-slate-900 dark:text-white truncate">E-commerce UI Kit Pro</h4>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="text-[10px] text-slate-500 dark:text-slate-400">1h ago</span>
+<span class="size-1 rounded-full bg-slate-300"></span>
+<span class="text-[10px] font-bold text-primary uppercase">Analyzing</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-lg">chevron_right</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Fixed Bottom Navigation Bar -->
+<nav class="absolute bottom-0 left-0 right-0 h-16 bg-white dark:bg-slate-900 border-t border-gray-100 dark:border-slate-800 flex items-center justify-around px-2 z-20">
+<button class="flex flex-col items-center justify-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Discover</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Analytics</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">folder</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Projects</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">search_insights</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Research</span>
+</button>
+</nav>
+<!-- Bottom Indicator Bar (iOS Style) -->
+<div class="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-32 h-1 bg-slate-200 dark:bg-slate-800 rounded-full z-30 pointer-events-none"></div>
+</div>
+</body></html>

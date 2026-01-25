@@ -1,0 +1,7 @@
+<div
+    class="flex items-center space-x-2 p-2 rounded-lg {% if status == 'success' %}bg-green-50 text-success{% else %}bg-red-50 text-danger{% endif %}">
+    <div
+        class="h-2 w-2 rounded-full {% if status == 'success' %}bg-success{% else %}bg-danger{% endif %} animate-pulse">
+    </div>
+    <span class="font-medium">{{ message }}</span>
+</div>

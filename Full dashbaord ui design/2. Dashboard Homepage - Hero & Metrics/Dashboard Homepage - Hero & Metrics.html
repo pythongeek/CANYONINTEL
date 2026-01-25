@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CodeCanyon Intelligence - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .sparkline-gradient {
+            background: linear-gradient(180deg, rgba(36, 99, 235, 0.1) 0%, rgba(36, 99, 235, 0) 100%);
+        }
+        .progress-ring-circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex flex-col w-full">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8 flex items-center justify-center bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined">insights</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">CodeCanyon Intelligence</h2>
+</div>
+<label class="flex flex-col min-w-64 !h-10 max-w-md">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-slate-500 flex border-none bg-slate-100 dark:bg-slate-800 items-center justify-center pl-4 rounded-l-lg" data-icon="search">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-slate-100 dark:bg-slate-800 focus:border-none h-full placeholder:text-slate-500 px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal" placeholder="Search analytics, products, or reports..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-6">
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-slate-200 dark:border-slate-700" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAFhQYY80wi_CcK_GSgqkPZXKitNWKT6TCEpmisDWQM8YFzLQNgnqwRgKVbfnS1d3xLWyV9oS6TdaIKg5vati70MjFYXTv5PGkFvuD5E5GLtz47WQMafJJ1ee7ueyIe2ZAwtYYYSofqbnQun_H1Z-yOLK_VBRy-kOpP9k__BkCCPHuQsFANNUFIa5zIARuwvsXvBwJubj0hHzmM-cNtiZPXemkP7NetaOPjcdBLrX0R1cfgdf1-i9jy9THRNTIYYFGTcszADlWHQ0Pn");'></div>
+</div>
+</header>
+<main class="max-w-[1280px] mx-auto w-full p-6 space-y-6">
+<!-- Hero Banner Section -->
+<section class="relative w-full overflow-hidden rounded-xl h-[200px] flex flex-col justify-center px-8 bg-gradient-to-r from-[#2563EB] to-[#7C3AED] shadow-lg">
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;"></div>
+<div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div>
+<h1 class="text-white text-3xl font-bold tracking-tight mb-2">Welcome back, Alex</h1>
+<p class="text-blue-100 text-base opacity-90">Your market insights are updated. You have 3 trending products to review.</p>
+</div>
+<div class="flex flex-wrap gap-3">
+<button class="flex items-center gap-2 px-4 py-2.5 bg-white text-primary font-bold text-sm rounded-lg hover:bg-blue-50 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                            Scrape New Product
+                        </button>
+<button class="flex items-center gap-2 px-4 py-2.5 bg-white/10 text-white border border-white/20 backdrop-blur-sm font-bold text-sm rounded-lg hover:bg-white/20 transition-all">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+                            Browse Trending
+                        </button>
+<button class="flex items-center gap-2 px-4 py-2.5 bg-white/10 text-white border border-white/20 backdrop-blur-sm font-bold text-sm rounded-lg hover:bg-white/20 transition-all">
+<span class="material-symbols-outlined text-[18px]">description</span>
+                            Generate Report
+                        </button>
+</div>
+</div>
+</section>
+<!-- Metrics Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1: Total Products -->
+<div class="bg-white dark:bg-background-dark border border-slate-200 dark:border-slate-800 rounded-xl p-6 relative flex flex-col justify-between overflow-hidden group hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined absolute top-4 right-4 text-primary opacity-10 text-6xl pointer-events-none">inventory_2</span>
+<div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">Total Products Analyzed</p>
+<div class="flex items-baseline gap-2">
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white">1,284</h3>
+<span class="text-emerald-500 text-sm font-bold flex items-center">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+                                12%
+                            </span>
+</div>
+</div>
+<div class="mt-6 h-10 w-full flex items-end gap-1">
+<!-- Simplified CSS Sparkline -->
+<div class="w-full h-full flex items-end gap-1 px-1">
+<div class="bg-primary/20 hover:bg-primary/40 transition-colors rounded-t h-[40%] flex-1"></div>
+<div class="bg-primary/20 hover:bg-primary/40 transition-colors rounded-t h-[60%] flex-1"></div>
+<div class="bg-primary/20 hover:bg-primary/40 transition-colors rounded-t h-[50%] flex-1"></div>
+<div class="bg-primary/20 hover:bg-primary/40 transition-colors rounded-t h-[80%] flex-1"></div>
+<div class="bg-primary/20 hover:bg-primary/40 transition-colors rounded-t h-[70%] flex-1"></div>
+<div class="bg-primary hover:bg-primary/80 transition-colors rounded-t h-[95%] flex-1"></div>
+</div>
+</div>
+</div>
+<!-- Card 2: Average Profitability -->
+<div class="bg-white dark:bg-background-dark border border-slate-200 dark:border-slate-800 rounded-xl p-6 relative flex flex-col justify-between overflow-hidden group hover:shadow-md transition-shadow">
+<div class="absolute top-4 right-4">
+<!-- Progress Ring -->
+<svg class="size-16" viewbox="0 0 100 100">
+<circle class="text-slate-100 dark:text-slate-800 stroke-current" cx="50" cy="50" fill="transparent" r="40" stroke-width="8"></circle>
+<circle class="text-emerald-500 progress-ring-circle stroke-current" cx="50" cy="50" fill="transparent" r="40" stroke-dasharray="251.2" stroke-dashoffset="40.2" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+</div>
+<div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">Average Profitability</p>
+<div class="flex items-baseline gap-2">
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white">84%</h3>
+<span class="text-emerald-500 text-sm font-bold flex items-center">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+                                3%
+                            </span>
+</div>
+</div>
+<div class="mt-6">
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-1.5 overflow-hidden">
+<div class="bg-emerald-500 h-full w-[84%] rounded-full"></div>
+</div>
+<p class="text-[10px] text-slate-400 mt-2 uppercase tracking-wider font-bold">Industry Average: 62%</p>
+</div>
+</div>
+<!-- Card 3: Revenue Potential -->
+<div class="bg-white dark:bg-background-dark border border-slate-200 dark:border-slate-800 rounded-xl p-6 relative flex flex-col justify-between overflow-hidden group hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined absolute top-4 right-4 text-emerald-500 opacity-10 text-6xl pointer-events-none">payments</span>
+<div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">Total Revenue Potential</p>
+<div class="flex items-baseline gap-2">
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white">$124.5k</h3>
+<span class="text-emerald-500 text-sm font-bold flex items-center">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+                                5.2%
+                            </span>
+</div>
+</div>
+<div class="mt-6 h-10 w-full flex items-end gap-1">
+<div class="w-full h-full flex items-end gap-1 px-1">
+<div class="bg-emerald-500/20 rounded-t h-[30%] flex-1"></div>
+<div class="bg-emerald-500/20 rounded-t h-[45%] flex-1"></div>
+<div class="bg-emerald-500/20 rounded-t h-[35%] flex-1"></div>
+<div class="bg-emerald-500/20 rounded-t h-[60%] flex-1"></div>
+<div class="bg-emerald-500/20 rounded-t h-[85%] flex-1"></div>
+<div class="bg-emerald-500 rounded-t h-[75%] flex-1"></div>
+</div>
+</div>
+</div>
+<!-- Card 4: Active Projects -->
+<div class="bg-white dark:bg-background-dark border border-slate-200 dark:border-slate-800 rounded-xl p-6 relative flex flex-col justify-between overflow-hidden group hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined absolute top-4 right-4 text-[#7C3AED] opacity-10 text-6xl pointer-events-none">folder_managed</span>
+<div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">Active Projects</p>
+<div class="flex items-baseline gap-2">
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white">12</h3>
+<span class="text-emerald-500 text-sm font-bold flex items-center">
+<span class="material-symbols-outlined text-[16px]">trending_flat</span>
+                                Stable
+                            </span>
+</div>
+</div>
+<div class="mt-6">
+<div class="flex items-center -space-x-2">
+<div class="size-7 rounded-full border-2 border-white dark:border-background-dark bg-blue-500 text-[10px] text-white flex items-center justify-center font-bold">JD</div>
+<div class="size-7 rounded-full border-2 border-white dark:border-background-dark bg-purple-500 text-[10px] text-white flex items-center justify-center font-bold">AS</div>
+<div class="size-7 rounded-full border-2 border-white dark:border-background-dark bg-emerald-500 text-[10px] text-white flex items-center justify-center font-bold">RK</div>
+<div class="size-7 rounded-full border-2 border-white dark:border-background-dark bg-slate-200 dark:bg-slate-700 text-[10px] text-slate-600 dark:text-slate-300 flex items-center justify-center font-bold">+9</div>
+</div>
+<p class="text-[10px] text-slate-400 mt-2 uppercase tracking-wider font-bold">3 projects due this week</p>
+</div>
+</div>
+</section>
+<!-- Secondary Content Area placeholder to maintain layout balance -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 bg-white dark:bg-background-dark border border-slate-200 dark:border-slate-800 rounded-xl p-6 h-[300px] flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-4xl text-slate-300 mb-4">bar_chart_4_bars</span>
+<h4 class="text-slate-900 dark:text-white font-semibold">Detailed Trend Analysis</h4>
+<p class="text-slate-500 max-w-xs mt-2 text-sm">Main performance chart will appear here as more data is collected from your active scrapers.</p>
+</div>
+<div class="bg-white dark:bg-background-dark border border-slate-200 dark:border-slate-800 rounded-xl p-6 h-[300px]">
+<h4 class="text-slate-900 dark:text-white font-semibold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">bolt</span>
+                        Recent Activity
+                    </h4>
+<div class="space-y-4">
+<div class="flex items-start gap-3">
+<div class="size-2 rounded-full bg-emerald-500 mt-2"></div>
+<div>
+<p class="text-sm font-medium text-slate-800 dark:text-slate-200">Scrape complete: "React Admin UI"</p>
+<p class="text-xs text-slate-500">2 minutes ago</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="size-2 rounded-full bg-blue-500 mt-2"></div>
+<div>
+<p class="text-sm font-medium text-slate-800 dark:text-slate-200">New report generated: Q3 Forecast</p>
+<p class="text-xs text-slate-500">1 hour ago</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="size-2 rounded-full bg-purple-500 mt-2"></div>
+<div>
+<p class="text-sm font-medium text-slate-800 dark:text-slate-200">Project "SaaS Metrics" shared with team</p>
+<p class="text-xs text-slate-500">4 hours ago</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>
