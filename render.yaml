@@ -1,0 +1,15 @@
+services:
+  - type: worker
+    name: canyon-worker
+    env: docker
+    dockerfilePath: ./worker/Dockerfile
+    dockerContext: .
+    region: oregon
+    plan: starter # Background workers are a paid feature on Render ($7/mo start), required for persistent execution.
+    envVars:
+      - key: DATABASE_URL
+        sync: false # You must set this in the Render Dashboard securely
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: PYTHONPATH
+        value: /app
