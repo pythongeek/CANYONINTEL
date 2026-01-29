@@ -6,12 +6,15 @@ from app.database import get_db
 from app.models.product import Product
 from app.models.analysis import AnalysisResult
 from app.utils.templates import templates
+from app.services.ai import AIRecommendationService
+from app.utils.auth import get_current_user
+from app.models.user import User
 import uuid
 
 router = APIRouter(prefix="/planner", tags=["Planner"])
 
 @router.get("/", response_class=HTMLResponse)
-async def planner_list(request: Request, db: AsyncSession = Depends(get_db)):
+async def planner_list(request: Request, db: AsyncSession = Depends(get_db), current_user: User = Depends(get_current_user)):
     # Fetch products that have at least one analysis result
     stmt = select(Product).join(AnalysisResult).distinct().order_by(Product.created_at.desc())
     result = await db.execute(stmt)
@@ -32,7 +35,7 @@ async def planner_list(request: Request, db: AsyncSession = Depends(get_db)):
     })
 
 @router.get("/{product_id}", response_class=HTMLResponse)
-async def planner_home(product_id: str, request: Request, db: AsyncSession = Depends(get_db)):
+async def planner_home(product_id: str, request: Request, db: AsyncSession = Depends(get_db), current_user: User = Depends(get_current_user)):
     product_uuid = uuid.UUID(product_id)
     product = await db.get(Product, product_uuid)
     if not product:
@@ -51,7 +54,7 @@ async def planner_home(product_id: str, request: Request, db: AsyncSession = Dep
     })
 
 @router.get("/{product_id}/step/{step}", response_class=HTMLResponse)
-async def planner_step(product_id: str, step: int, request: Request, db: AsyncSession = Depends(get_db)):
+async def planner_step(product_id: str, step: int, request: Request, db: AsyncSession = Depends(get_db), current_user: User = Depends(get_current_user)):
     product_uuid = uuid.UUID(product_id)
     product = await db.get(Product, product_uuid)
     
@@ -66,6 +69,32 @@ async def planner_step(product_id: str, step: int, request: Request, db: AsyncSe
         "analysis": analysis,
         "step": step
     })
+
+@router.get("/{product_id}/ai-insights/{step}", response_class=HTMLResponse)
+async def ai_insights_fragment(product_id: str, step: int, request: Request, db: AsyncSession = Depends(get_db), current_user: User = Depends(get_current_user)):
+    product_uuid = uuid.UUID(product_id)
+    product = await db.get(Product, product_uuid)
+    
+    ai_service = AIRecommendationService()
+    try:
+        ai_content = await ai_service.generate_step_content(product.__dict__, step)
+        response = templates.TemplateResponse("components/planner/ai_insights_content.html", {
+            "request": request,
+            "ai_content": ai_content,
+            "product": product,
+            "step": step
+        })
+        return response
+    except Exception as e:
+        ai_content = f"Error generating insights: {str(e)}"
+        response = templates.TemplateResponse("components/planner/ai_insights_content.html", {
+            "request": request,
+            "ai_content": ai_content,
+            "product": product,
+            "step": step
+        })
+        response.headers["HX-Trigger"] = '{"showMessage": {"message": "AI Generation Error", "level": "danger"}}'
+        return response
 
 @router.get("/generate/{product_id}", response_class=HTMLResponse)
 async def generate_blueprint_api(product_id: str, request: Request, db: AsyncSession = Depends(get_db)):

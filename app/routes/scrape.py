@@ -7,6 +7,8 @@ from app.models.job import ScrapingJob
 from app.models.product import Product
 # from app.services.scraper import CodeCanyonScraper
 from app.utils.templates import templates
+from app.utils.auth import get_current_user
+from app.models.user import User
 from datetime import datetime
 import uuid
 
@@ -16,7 +18,8 @@ router = APIRouter(prefix="/api/scrape", tags=["Scraping"])
 async def init_scrape(
     request: Request,
     url: str = Form(...),
-    db: AsyncSession = Depends(get_db)
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user)
 ):
     # Basic URL validation
     valid_keywords = ["codecanyon.net/item/", "codecanyon.net/search", "codecanyon.net/category/", "codecanyon.net/popular_item/"]
@@ -65,7 +68,8 @@ async def init_scrape(
 async def get_job_status(
     job_id: str,
     request: Request,
-    db: AsyncSession = Depends(get_db)
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user)
 ):
     try:
         job_uuid = uuid.UUID(job_id)
@@ -146,9 +150,13 @@ async def get_job_status(
             </div>
             """
         )
+        response.headers["HX-Trigger"] = '{"showMessage": {"message": "Intel Successfully Harvested!", "level": "success"}}'
+        return response
 
     if job.status == "failed":
-        return HTMLResponse(f"<div class='p-4 bg-red-100 text-red-700 rounded-lg'>Scraping failed: {job.error_message}</div>")
+        response = HTMLResponse(f"<div class='p-4 bg-red-100 text-red-700 rounded-lg'>Scraping failed: {job.error_message}</div>")
+        response.headers["HX-Trigger"] = '{"showMessage": {"message": "Scraping Failed. Please check the URL.", "level": "danger"}}'
+        return response
 
     # While pending or processing, show progress
     progress = 10 if job.status == "pending" else 50

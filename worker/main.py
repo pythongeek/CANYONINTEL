@@ -18,6 +18,7 @@ from app.models.product import Product
 from app.models.analysis import AnalysisResult
 from worker.scraper import PlaywrightScraper
 from worker.analyzer import MarketAnalyzer
+from app.services.analyzer import ProfitabilityAnalyzer
 
 load_dotenv()
 
@@ -102,18 +103,41 @@ async def process_job(job: ScrapingJob, session: AsyncSession):
 
         logger.info(f"Scraped Data: {raw_data.get('title', 'N/A')}")
 
+        # 2.6 Deterministic Profitability Score
+        logger.info(f"Calculating deterministic profitability score for [{raw_data.get('title', 'Unknown')}]...")
+        prof_analyzer = ProfitabilityAnalyzer()
+        det_score = prof_analyzer.calculate_score(raw_data)
+        raw_data["profitability_score"] = det_score
+        raw_data["market_verdict"] = prof_analyzer.get_market_verdict(det_score)
+
         # 3. Analyze (Gemini)
         logger.info(f"Calling Gemini AI for [{raw_data.get('title', 'Unknown')}]...")
         analyzer = MarketAnalyzer()
-        analysis = await analyzer.analyze_product(raw_data)
+        
+        try:
+            analysis = await analyzer.analyze_product(raw_data)
+        except Exception as e:
+            logger.error(f"Analysis Failed: {e}")
+            job.status = "failed"
+            job.error_message = f"AI Analysis Failed: {str(e)}"
+            await session.commit()
+            return
         
         # 3.5 Generate Blueprint (Gap Analysis)
         logger.info(f"Generating AI Blueprint for [{raw_data.get('title', 'Unknown')}]...")
         comments = raw_data.get("comments", [])
-        blueprint = await analyzer.generate_blueprint(raw_data, comments)
+        
+        try:
+            blueprint = await analyzer.generate_blueprint(raw_data, comments)
+        except Exception as e:
+            logger.error(f"Blueprint Generation Failed: {e}")
+            job.status = "failed"
+            job.error_message = f"Blueprint Generation Failed: {str(e)}"
+            await session.commit()
+            return
         
         # Merge basic metrics back to product raw data
-        raw_data["profitability_score"] = analysis.get("profitability_score", 0)
+        # raw_data["profitability_score"] = analysis.get("profitability_score", 0) # Use deterministic score instead
         raw_data["market_saturation"] = analysis.get("market_saturation", 0)
         raw_data["scraped_at"] = datetime.now()
 

@@ -12,9 +12,12 @@ from app.models.analysis import AnalysisResult, UserProject
 
 router = APIRouter(tags=["Dashboard"])
 
+from app.utils.auth import get_current_user
+from app.models.user import User
+
 @router.get("/", response_class=HTMLResponse)
 @router.get("/dashboard", response_class=HTMLResponse)
-async def dashboard(request: Request, db: AsyncSession = Depends(get_db)):
+async def dashboard(request: Request, db: AsyncSession = Depends(get_db), current_user: User = Depends(get_current_user)):
     # Fetch stats
     try:
         total_products = await db.scalar(select(func.count(Product.id)))
@@ -87,8 +90,22 @@ async def dashboard(request: Request, db: AsyncSession = Depends(get_db)):
     return templates.TemplateResponse("pages/dashboard.html", context)
 
 @router.get("/products", response_class=HTMLResponse)
-async def products_library(request: Request, sort: str = "date", db: AsyncSession = Depends(get_db)):
+async def products_library(
+    request: Request, 
+    sort: str = "date", 
+    min_score: int = 0,
+    category: str = None,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
     query = select(Product)
+    
+    # Apply filters
+    if min_score > 0:
+        query = query.where(Product.profitability_score >= min_score)
+    
+    if category and category != "":
+        query = query.where(Product.category == category)
     
     if sort == "sales":
         query = query.order_by(desc(Product.total_sales))
@@ -132,7 +149,7 @@ async def get_discovery_stats(request: Request, db: AsyncSession = Depends(get_d
         "discovery_stats": discovery_stats
     })
 @router.get("/product/{product_id}", response_class=HTMLResponse)
-async def product_detail(product_id: str, request: Request, db: AsyncSession = Depends(get_db)):
+async def product_detail(product_id: str, request: Request, db: AsyncSession = Depends(get_db), current_user: User = Depends(get_current_user)):
     try:
         product_uuid = uuid.UUID(product_id)
     except ValueError:

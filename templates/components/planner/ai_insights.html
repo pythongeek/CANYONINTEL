@@ -1,0 +1,51 @@
+<div
+    class="bg-indigo-50 dark:bg-indigo-900/10 border border-indigo-100 dark:border-indigo-900/20 rounded-2xl overflow-hidden animate-in fade-in zoom-in duration-500 shadow-sm mt-6">
+    <div
+        class="px-6 py-4 border-b border-indigo-100 dark:border-indigo-900/20 flex items-center justify-between bg-indigo-50/50 dark:bg-indigo-900/20">
+        <div class="flex items-center gap-2">
+            <div
+                class="size-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-600/20">
+                <span class="material-symbols-outlined text-lg">auto_awesome</span>
+            </div>
+            <h4 class="text-sm font-black uppercase tracking-widest text-indigo-900 dark:text-indigo-100">AI
+                Intelligence Pulse</h4>
+        </div>
+        <div
+            class="flex items-center gap-1.5 px-2 py-1 bg-white dark:bg-slate-900 rounded-full border border-indigo-100 dark:border-indigo-900/20">
+            <div class="size-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
+            <span class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-tighter">Live
+                Analysis</span>
+        </div>
+    </div>
+
+    <div class="p-6">
+        <div id="ai-content-area-{{ step }}"
+            class="prose prose-sm dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 font-medium leading-relaxed"
+            hx-get="/planner/{{ product.id }}/ai-insights/{{ step }}" hx-trigger="load" hx-swap="innerHTML">
+            <div class="flex flex-col items-center justify-center py-8 text-center space-y-3">
+                <div
+                    class="size-12 rounded-full border-2 border-dashed border-indigo-300 animate-spin border-t-indigo-600">
+                </div>
+                <p class="text-sm text-indigo-400 font-bold italic">Gemini is synthesizing market data...</p>
+            </div>
+        </div>
+
+        <div class="mt-6 pt-6 border-t border-indigo-100 dark:border-indigo-900/20 flex items-center justify-between">
+            <div class="flex -space-x-2">
+                <div
+                    class="size-7 rounded-full border-2 border-white dark:border-slate-900 bg-slate-200 flex items-center justify-center text-[10px] font-bold">
+                    JD</div>
+                <div
+                    class="size-7 rounded-full border-2 border-white dark:border-slate-900 bg-indigo-100 text-indigo-600 flex items-center justify-center text-[10px] font-bold italic">
+                    AI</div>
+            </div>
+            <button
+                class="text-[10px] font-black uppercase tracking-widest text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 transition-colors flex items-center gap-1"
+                hx-get="/planner/{{ product.id }}/ai-insights/{{ step }}" hx-target="#ai-content-area-{{ step }}"
+                hx-swap="innerHTML">
+                <span class="material-symbols-outlined text-sm">refresh</span>
+                Refine Insights
+            </button>
+        </div>
+    </div>
+</div>

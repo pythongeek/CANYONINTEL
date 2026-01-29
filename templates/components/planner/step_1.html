@@ -40,6 +40,9 @@
                 placeholder="What makes your version unique?">{{ product.description|striptags|truncate(200) }}</textarea>
         </div>
 
+        <!-- AI Insights Pulse -->
+        {% include "components/planner/ai_insights.html" %}
+
         <div class="flex justify-end gap-4">
             <button
                 class="px-6 py-3 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold rounded-xl hover:bg-slate-200 transition-all">
@@ -69,11 +72,19 @@
                     <span class="text-xl font-bold text-primary">/100</span>
                 </div>
                 <div class="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                    <div class="h-full bg-primary" style="width:{{ product.profitability_score }}%"></div>
+                    <div class="h-full bg-primary transition-all duration-500" id="score-bar"
+                        data-score="{{ product.profitability_score }}"></div>
                 </div>
             </div>
         </div>
 
+        <script>
+            // Set score bar width without inline style
+            const bar = document.getElementById('score-bar');
+            if (bar) {
+                bar.style.width = bar.dataset.score + '%';
+            }
+        </script>
         <!-- Tip Box -->
         <div
             class="bg-indigo-50 dark:bg-indigo-900/20 p-6 rounded-2xl border border-indigo-100 dark:border-indigo-900/30">

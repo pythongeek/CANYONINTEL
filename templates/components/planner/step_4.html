@@ -1,0 +1,68 @@
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 animate-in fade-in slide-in-from-right-4 duration-500">
+    <div class="lg:col-span-8 space-y-6">
+        <div class="bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 rounded-2xl p-6">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 mb-6 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">payments</span>
+                Monetization & Pricing Strategy
+            </h3>
+            <div class="space-y-4">
+                <p class="text-sm text-slate-600 dark:text-slate-400">Define how your project will generate revenue
+                    based on AI market research.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div
+                        class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-800">
+                        <label for="monetization-model"
+                            class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Model</label>
+                        <select id="monetization-model" name="monetization_model" title="Select Monetization Model"
+                            class="w-full bg-transparent border-none text-sm font-bold focus:ring-0 outline-none">
+                            <option>SaaS Subscription</option>
+                            <option>One-time License</option>
+                            <option>Freemium with Add-ons</option>
+                            <option>Usage-based API</option>
+                        </select>
+                    </div>
+                    <div
+                        class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-800">
+                        <label for="target-price"
+                            class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Target
+                            Price</label>
+                        <input type="text" id="target-price" name="target_price" title="Target Price"
+                            placeholder="e.g. $29/mo" value="$29 / mo"
+                            class="w-full bg-transparent border-none text-sm font-bold focus:ring-0 outline-none">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Insights Pulse -->
+        {% include "components/planner/ai_insights.html" %}
+
+        <div class="flex justify-between">
+            <button hx-get="/planner/{{ product.id }}/step/3" hx-target="#planner-container"
+                hx-swap="innerHTML transition:true"
+                class="px-6 py-3 text-slate-500 font-bold rounded-xl flex items-center gap-2 hover:bg-slate-100 transition-all">
+                <span class="material-symbols-outlined">arrow_back</span>
+                Back
+            </button>
+            <button id="next-btn" hx-get="/planner/{{ product.id }}/step/5" hx-target="#planner-container"
+                hx-swap="innerHTML transition:true"
+                class="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl shadow-lg shadow-primary/20 flex items-center gap-2 transition-all">
+                Next: Go-to-Market
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+        </div>
+    </div>
+    <div class="lg:col-span-4">
+        <div
+            class="bg-emerald-50 dark:bg-emerald-900/10 p-6 rounded-2xl border border-emerald-100 dark:border-emerald-900/20">
+            <h4 class="text-xs font-black text-emerald-700 dark:text-emerald-400 uppercase tracking-widest mb-2">Revenue
+                Pulse</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium">AI predicts a high LTV for
+                this category if using a hybrid subscription model.</p>
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementById('progress-bar').style.width = '75%';
+    document.getElementById('progress-percent').innerText = '75%';
+</script>

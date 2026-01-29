@@ -56,6 +56,9 @@
             </div>
         </div>
 
+        <!-- AI Insights Pulse -->
+        {% include "components/planner/ai_insights.html" %}
+
         <div class="flex justify-between">
             <button hx-get="/planner/{{ product.id }}/step/1" hx-target="#planner-container"
                 hx-swap="innerHTML transition:true"

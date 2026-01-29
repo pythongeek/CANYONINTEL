@@ -4,23 +4,21 @@ import json
 import logging
 from typing import Dict, Any
 
+from app.config import settings
+
 logger = logging.getLogger(__name__)
 
 class MarketAnalyzer:
     def __init__(self):
-        api_key = os.getenv("GEMINI_API_KEY")
-        if not api_key:
-            logger.warning("GEMINI_API_KEY not found. Analysis will be mocked.")
-            self.client = None
-        else:
-            self.client = genai.Client(api_key=api_key)
+        api_key = settings.GEMINI_API_KEY
+        self.client = genai.Client(api_key=api_key)
 
     async def analyze_product(self, product_data: Dict[str, Any]) -> Dict[str, Any]:
         """
         Generates SWOT analysis, Profitability Score, and initial market assessment.
         """
         if not self.client:
-            return self._mock_analysis()
+            raise ValueError("GEMINI_API_KEY not configured.")
 
         prompt = f"""
         Act as a Senior Market Analyst & Product Manager. Perform a deep competitive analysis for this CodeCanyon product:
@@ -76,14 +74,14 @@ class MarketAnalyzer:
             return json.loads(text_content.strip())
         except Exception as e:
             logger.error(f"Analysis failed: {e}")
-            return self._mock_analysis()
+            raise
 
     async def generate_blueprint(self, product_data: Dict[str, Any], comments: list) -> Dict[str, Any]:
         """
         Generates a 4-week Development Blueprint, identifying 3 major feature gaps.
         """
         if not self.client:
-            return self._mock_blueprint()
+            raise ValueError("GEMINI_API_KEY not configured.")
 
         prompt = f"""
         Act as a Senior Product Manager. Create a "Gap Analysis" and execution roadmap to disrupt this product.
@@ -131,43 +129,4 @@ class MarketAnalyzer:
             return json.loads(text_content.strip())
         except Exception as e:
             logger.error(f"Blueprint generation failed: {e}")
-            return self._mock_blueprint()
-
-    def _mock_analysis(self):
-        return {
-            "swot": {
-                "strengths": ["High potential", "Good design"],
-                "weaknesses": ["Analysis Mocked (No API Key or Error)"],
-                "opportunities": ["Expand features"],
-                "threats": ["Competitors"]
-            },
-            "profitability_score": 75,
-            "market_saturation": 40,
-            "score_breakdown": {
-                "demand": 70,
-                "competition": 50,
-                "pricing": 80
-            },
-            "trend_analysis": {
-                "momentum": "stable",
-                "verdict": "Promising product (Mock Analysis)"
-            }
-        }
-
-    def _mock_blueprint(self):
-        return {
-            "feature_gaps": ["Real-time Analytics (Mock)", "Mobile App (Mock)", "AI Customization (Mock)"],
-            "roadmap": [
-                {"week": 1, "goal": "Foundation Setup", "milestones": ["Setup Repo", "Database Schema", "Auth System"]},
-                {"week": 2, "goal": "Core Features", "milestones": ["API Integration", "Basic UI", "User Profile"]},
-                {"week": 3, "goal": "Advanced Logic", "milestones": ["AI Engine", "Real-time updates", "Notifications"]},
-                {"week": 4, "goal": "Polish & Launch", "milestones": ["UI Polish", "Testing", "Deployment"]}
-            ],
-            "tech_stack": {
-                "frontend": "Next.js + Tailwind",
-                "backend": "Python FastAPI",
-                "database": "PostgreSQL + Supabase",
-                "infrastructure": "Vercel + Docker"
-            },
-            "competitive_edge": "Mocked Competitive Edge: Faster, cheaper, better AI."
-        }
+            raise

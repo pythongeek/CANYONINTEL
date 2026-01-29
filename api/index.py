@@ -46,6 +46,22 @@ async def csrf_middleware(request: Request, call_next):
 # So we add csrf_middleware first (closest to app), then SessionMiddleware.
 app.add_middleware(SessionMiddleware, secret_key=settings.SECRET_KEY)
 
+# Exception Handler for 401 -> Redirect to Login for HTML requests
+from fastapi.responses import JSONResponse, RedirectResponse
+from fastapi import status
+
+@app.exception_handler(HTTPException)
+async def unauthorized_exception_handler(request: Request, exc: HTTPException):
+    if exc.status_code == status.HTTP_401_UNAUTHORIZED:
+        if "text/html" in request.headers.get("accept", ""):
+            return RedirectResponse(url="/auth/login", status_code=status.HTTP_303_SEE_OTHER)
+    
+    # Return default JSON for API calls
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"detail": exc.detail},
+    )
+
 # Root route is now handled by dashboard.router
 
 @app.get("/scraper", response_class=HTMLResponse)

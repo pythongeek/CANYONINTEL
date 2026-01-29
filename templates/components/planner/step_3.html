@@ -30,6 +30,9 @@
             </div>
         </div>
 
+        <!-- AI Insights Pulse -->
+        {% include "components/planner/ai_insights.html" %}
+
         <div class="flex justify-between">
             <button hx-get="/planner/{{ product.id }}/step/2" hx-target="#planner-container"
                 hx-swap="innerHTML transition:true"
@@ -37,10 +40,11 @@
                 <span class="material-symbols-outlined">arrow_back</span>
                 Back
             </button>
-            <button
-                class="px-10 py-4 bg-success hover:bg-success/90 text-white font-bold rounded-xl shadow-lg shadow-success/20 flex items-center gap-2 transition-all">
-                Finalize Blueprint
-                <span class="material-symbols-outlined">rocket_launch</span>
+            <button id="next-btn" hx-get="/planner/{{ product.id }}/step/4" hx-target="#planner-container"
+                hx-swap="innerHTML transition:true"
+                class="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl shadow-lg shadow-primary/20 flex items-center gap-2 transition-all">
+                Next: Monetization
+                <span class="material-symbols-outlined">arrow_forward</span>
             </button>
         </div>
     </div>
@@ -63,6 +67,6 @@
 </div>
 
 <script>
-    document.getElementById('progress-bar').style.width = '100%';
-    document.getElementById('progress-percent').innerText = '100%';
+    document.getElementById('progress-bar').style.width = '60%';
+    document.getElementById('progress-percent').innerText = '60%';
 </script>

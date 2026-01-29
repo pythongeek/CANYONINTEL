@@ -1,8 +1,9 @@
-import logging
 import asyncio
+import os
 from playwright.async_api import async_playwright
 import playwright_stealth
 from bs4 import BeautifulSoup
+import logging
 
 logger = logging.getLogger(__name__)
 
@@ -23,12 +24,18 @@ class PlaywrightScraper:
         """Alias for scrape() to match Phase 3 terminology."""
         return await self.scrape(url)
 
+    def _get_scraper_api_url(self, target_url: str) -> str:
+        api_key = os.getenv('SCRAPER_API_KEY')
+        if not api_key: return target_url
+        return f"http://api.scraperapi.com?api_key={api_key}&url={target_url}&render=true&premium=true"
+
     async def scrape(self, url: str) -> dict:
         logger.info(f"Launching browser to scrape: {url}")
         async with async_playwright() as p:
+            # Launch without proxy settings, using API wrapper instead
             browser = await p.chromium.launch(
                 headless=self.headless,
-                args=["--disable-blink-features=AutomationControlled", "--no-sandbox"]
+                args=["--disable-blink-features=AutomationControlled", "--no-sandbox", "--ignore-certificate-errors"]
             )
             
             max_retries = 3
@@ -39,6 +46,7 @@ class PlaywrightScraper:
                         user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
                         viewport={"width": 1920, "height": 1080},
                         device_scale_factor=1,
+                        ignore_https_errors=True
                     )
                     
                     page = await context.new_page()
@@ -46,7 +54,9 @@ class PlaywrightScraper:
                         await stealth_async(page)
                     
                     logger.info(f"Navigating to {url} (Attempt {attempt + 1}/{max_retries})")
-                    response = await page.goto(url, wait_until="domcontentloaded", timeout=60000)
+                    target_url = self._get_scraper_api_url(url)
+                    logger.info(f"Target URL: {target_url}")
+                    response = await page.goto(target_url, wait_until="domcontentloaded", timeout=120000) # Increased timeout for proxy
                     
                     if not response:
                         logger.error("No response received")
@@ -56,6 +66,10 @@ class PlaywrightScraper:
                     logger.info(f"Response status: {status_code}")
 
                     if status_code == 404:
+                        content = await page.content()
+                        title = await page.title()
+                        logger.error(f"404 Detected. Title: {title}")
+                        logger.error(f"404 Content Start: {content[:500]}")
                         raise ValueError("Item not found (404)")
                     
                     if status_code == 403:

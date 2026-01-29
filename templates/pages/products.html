@@ -16,19 +16,22 @@
                     <div>
                         <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 block">Min
                             Profitability</label>
-                        <input type="range" class="w-full accent-primary" min="0" max="100" value="50">
+                        <input type="range" name="min_score" class="w-full accent-primary" min="0" max="100" value="0"
+                            hx-get="/products" hx-trigger="change, mouseup delay:500ms" hx-target="#product-table-body"
+                            hx-include="[name='category']">
                     </div>
 
                     <div>
                         <label
                             class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 block">Category</label>
-                        <select
-                            class="w-full bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800 rounded-lg text-sm font-medium">
-                            <option>All Categories</option>
-                            <option>PHP Scripts</option>
-                            <option>WordPress</option>
-                            <option>Mobile Apps</option>
-                            <option>HTML5</option>
+                        <select name="category"
+                            class="w-full bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800 rounded-lg text-sm font-medium"
+                            hx-get="/products" hx-target="#product-table-body" hx-include="[name='min_score']">
+                            <option value="">All Categories</option>
+                            <option value="PHP Scripts">PHP Scripts</option>
+                            <option value="WordPress">WordPress</option>
+                            <option value="Mobile Apps">Mobile Apps</option>
+                            <option value="HTML5">HTML5</option>
                         </select>
                     </div>
 
