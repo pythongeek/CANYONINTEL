@@ -1,0 +1,304 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Dashboard - CodeCanyon Intelligence{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <!-- Hero Banner Section -->
+    <section
+        class="relative w-full overflow-hidden rounded-xl h-[200px] flex flex-col justify-center px-8 bg-gradient-to-r from-[#2563EB] to-[#7C3AED] shadow-lg">
+        <div class="absolute inset-0 opacity-10 pointer-events-none"
+            style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;">
+        </div>
+        <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div>
+                <h1 class="text-white text-3xl font-bold tracking-tight mb-2">Welcome back, User</h1>
+                <p class="text-blue-100 text-base opacity-90">Your market insights are updated. Review your latest
+                    scrapes below.</p>
+
+                <!-- Discovery Progress Component -->
+                {% include "components/discovery_progress.html" %}
+            </div>
+            <div class="flex flex-wrap gap-3">
+                <a href="/scraper"
+                    class="flex items-center gap-2 px-4 py-2.5 bg-white text-primary font-bold text-sm rounded-lg hover:bg-blue-50 transition-all shadow-sm">
+                    <span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                    Scrape New Product
+                </a>
+                <button
+                    class="flex items-center gap-2 px-4 py-2.5 bg-white/10 text-white border border-white/20 backdrop-blur-sm font-bold text-sm rounded-lg hover:bg-white/20 transition-all">
+                    <span class="material-symbols-outlined text-[18px]">description</span>
+                    Generate Report
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Grid -->
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Card 1: Total Products -->
+        <div
+            class="bg-white dark:bg-background-dark border border-slate-200 dark:border-slate-800 rounded-xl p-6 relative flex flex-col justify-between overflow-hidden group hover:shadow-md transition-shadow">
+            <span
+                class="material-symbols-outlined absolute top-4 right-4 text-primary opacity-10 text-6xl pointer-events-none">inventory_2</span>
+            <div>
+                <p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">Total Products Analyzed</p>
+                <div class="flex items-baseline gap-2">
+                    <h3 class="text-3xl font-bold text-slate-900 dark:text-white">{{ stats.total_products }}</h3>
+                    <span class="text-emerald-500 text-sm font-bold flex items-center">
+                        <span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+                        Stable
+                    </span>
+                </div>
+            </div>
+            <div class="mt-6 h-10 w-full flex items-end gap-1">
+                <div class="w-full h-full flex items-end gap-1 px-1">
+                    <div class="bg-primary/20 hover:bg-primary/40 transition-colors rounded-t h-[40%] flex-1"></div>
+                    <div class="bg-primary/20 hover:bg-primary/40 transition-colors rounded-t h-[60%] flex-1"></div>
+                    <div class="bg-primary/20 hover:bg-primary/40 transition-colors rounded-t h-[50%] flex-1"></div>
+                    <div class="bg-primary/20 hover:bg-primary/40 transition-colors rounded-t h-[80%] flex-1"></div>
+                    <div class="bg-primary/20 hover:bg-primary/40 transition-colors rounded-t h-[70%] flex-1"></div>
+                    <div class="bg-primary hover:bg-primary/80 transition-colors rounded-t h-[95%] flex-1"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2: Average Profitability -->
+        <div
+            class="bg-white dark:bg-background-dark border border-slate-200 dark:border-slate-800 rounded-xl p-6 relative flex flex-col justify-between overflow-hidden group hover:shadow-md transition-shadow">
+            <div class="absolute top-4 right-4">
+                <svg class="size-16" viewbox="0 0 100 100">
+                    <circle class="text-slate-100 dark:text-slate-800 stroke-current" cx="50" cy="50" fill="transparent"
+                        r="40" stroke-width="8"></circle>
+                    <circle
+                        class="{% if stats.avg_profitability >= 70 %}text-emerald-500{% elif stats.avg_profitability >= 40 %}text-amber-500{% else %}text-red-500{% endif %} progress-ring-circle stroke-current"
+                        cx="50" cy="50" fill="transparent" r="40" stroke-dasharray="251.2"
+                        stroke-dashoffset="{{ 251.2 - (251.2 * stats.avg_profitability / 100) }}" stroke-linecap="round"
+                        stroke-width="8"></circle>
+                </svg>
+            </div>
+            <div>
+                <p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">Avg. Profitability</p>
+                <div class="flex items-baseline gap-2">
+                    <h3 class="text-3xl font-bold text-slate-900 dark:text-white">{{ stats.avg_profitability }}%</h3>
+                </div>
+            </div>
+            <div class="mt-6">
+                <div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                    <div class="{% if stats.avg_profitability >= 70 %}bg-emerald-500{% elif stats.avg_profitability >= 40 %}bg-amber-500{% else %}bg-red-500{% endif %} h-full rounded-full"
+                        style="width: {{ stats.avg_profitability }}%"></div>
+                </div>
+                <p class="text-[10px] text-slate-400 mt-2 uppercase tracking-wider font-bold">Goal: 75%</p>
+            </div>
+        </div>
+
+        <!-- Card 3: Revenue Potential -->
+        <div
+            class="bg-white dark:bg-background-dark border border-slate-200 dark:border-slate-800 rounded-xl p-6 relative flex flex-col justify-between overflow-hidden group hover:shadow-md transition-shadow">
+            <span
+                class="material-symbols-outlined absolute top-4 right-4 text-emerald-500 opacity-10 text-6xl pointer-events-none">payments</span>
+            <div>
+                <p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">Revenue Potential</p>
+                <div class="flex items-baseline gap-2">
+                    <h3 class="text-3xl font-bold text-slate-900 dark:text-white">${{
+                        "{:,.1f}k".format(stats.revenue_potential / 1000) if stats.revenue_potential >= 1000 else
+                        stats.revenue_potential }}</h3>
+                </div>
+            </div>
+            <div class="mt-6 h-10 w-full flex items-end gap-1">
+                <div class="w-full h-full flex items-end gap-1 px-1">
+                    <div class="bg-emerald-500/20 rounded-t h-[30%] flex-1"></div>
+                    <div class="bg-emerald-500/20 rounded-t h-[45%] flex-1"></div>
+                    <div class="bg-emerald-500/20 rounded-t h-[35%] flex-1"></div>
+                    <div class="bg-emerald-500/20 rounded-t h-[60%] flex-1"></div>
+                    <div class="bg-emerald-500/20 rounded-t h-[85%] flex-1"></div>
+                    <div class="bg-emerald-500 rounded-t h-[75%] flex-1"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4: Active Projects -->
+        <div
+            class="bg-white dark:bg-background-dark border border-slate-200 dark:border-slate-800 rounded-xl p-6 relative flex flex-col justify-between overflow-hidden group hover:shadow-md transition-shadow">
+            <span
+                class="material-symbols-outlined absolute top-4 right-4 text-[#7C3AED] opacity-10 text-6xl pointer-events-none">folder_managed</span>
+            <div>
+                <p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">Active Projects</p>
+                <div class="flex items-baseline gap-2">
+                    <h3 class="text-3xl font-bold text-slate-900 dark:text-white">{{ stats.active_projects }}</h3>
+                </div>
+            </div>
+            <div class="mt-6">
+                <div class="flex items-center -space-x-2">
+                    <div
+                        class="size-7 rounded-full border-2 border-white dark:border-background-dark bg-blue-500 text-[10px] text-white flex items-center justify-center font-bold uppercase">
+                        U</div>
+                    <div
+                        class="size-7 rounded-full border-2 border-white dark:border-background-dark bg-purple-500 text-[10px] text-white flex items-center justify-center font-bold uppercase">
+                        S</div>
+                </div>
+                <p class="text-[10px] text-slate-400 mt-2 uppercase tracking-wider font-bold">Updated Recently</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Insights Placeholder Section -->
+    <section
+        class="bg-white dark:bg-background-dark border border-slate-200 dark:border-slate-800 rounded-xl p-6 flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden relative">
+        <div class="absolute top-0 right-0 p-2">
+            <span class="px-2 py-1 rounded-md bg-purple-100 text-purple-700 text-[10px] font-bold uppercase">Beta</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <div
+                class="size-12 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600">
+                <span class="material-symbols-outlined animate-pulse">auto_awesome</span>
+            </div>
+            <div>
+                <h4 class="text-slate-900 dark:text-white font-bold">AI-Driven Predictive Insights</h4>
+                <p class="text-slate-500 text-sm">Our AI is analyzing market trends to predict your next big
+                    opportunity.
+                </p>
+            </div>
+        </div>
+        <div class="flex items-center gap-2 text-purple-600 font-bold text-sm">
+            <span class="size-2 bg-purple-600 rounded-full animate-bounce"></span>
+            Generating insights...
+        </div>
+    </section>
+
+    <!-- Recent Analysis & Activity -->
+    <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div
+            class="lg:col-span-2 bg-white dark:bg-background-dark border border-slate-200 dark:border-slate-800 rounded-xl p-6 flex flex-col min-h-[400px]">
+            <div class="flex justify-between items-center mb-6">
+                <h4 class="text-slate-900 dark:text-white font-bold flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-[24px]">bar_chart_4_bars</span>
+                    Recent Analysis
+                </h4>
+                <a href="/products"
+                    class="text-xs font-bold text-primary hover:underline uppercase tracking-widest">View
+                    Library</a>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr
+                            class="border-b border-slate-100 dark:border-slate-800 text-xs font-bold text-slate-500 uppercase tracking-wider">
+                            <th class="py-3 px-2">Title</th>
+                            <th class="py-3 px-2">Category</th>
+                            <th class="py-3 px-2 text-center">Score</th>
+                            <th class="py-3 px-2 text-right">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                        {% for product in recent_products %}
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                            <td class="py-3 px-2">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="size-8 rounded bg-slate-100 dark:bg-slate-800 overflow-hidden flex-shrink-0">
+                                        <img src="{{ product.screenshots[0] if product.screenshots else 'https://via.placeholder.com/100?text=No+Image' }}"
+                                            alt="" class="size-full object-cover">
+                                    </div>
+                                    <div class="flex flex-col min-w-0">
+                                        <p
+                                            class="text-sm font-bold text-slate-900 dark:text-white truncate max-w-[200px]">
+                                            {{ product.title }}</p>
+                                        <p class="text-[10px] text-slate-500 font-medium">{{ product.total_sales }}
+                                            sales</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-3 px-2">
+                                <span
+                                    class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-500 dark:text-slate-400">
+                                    {{ product.category }}
+                                </span>
+                            </td>
+                            <td class="py-3 px-2 text-center">
+                                <span class="px-2 py-1 rounded text-xs font-bold
+                                    {% if (product.profitability_score or 0) >= 70 %}bg-green-100 text-green-700
+                                    {% elif (product.profitability_score or 0) >= 40 %}bg-yellow-100 text-yellow-700
+                                    {% else %}bg-red-100 text-red-700{% endif %}">
+                                    {{ product.profitability_score|int or 0 }}%
+                                </span>
+                            </td>
+                            <div class="flex gap-2 justify-end">
+                                <a href="/product/{{ product.id }}" hx-get="/product/{{ product.id }}"
+                                    hx-target="#main-content" hx-select="#main-content" hx-push-url="true"
+                                    class="text-slate-500 hover:text-primary p-2 rounded-lg hover:bg-slate-100 transition-all shadow-sm"
+                                    title="View Analysis">
+                                    <span class="material-symbols-outlined text-[18px]">visibility</span>
+                                </a>
+                                <a href="/planner/{{ product.id }}" hx-get="/planner/{{ product.id }}"
+                                    hx-target="#main-content" hx-select="#main-content" hx-push-url="true"
+                                    class="text-primary hover:text-blue-600 p-2 rounded-lg hover:bg-blue-50 transition-all shadow-sm"
+                                    title="Open Planner">
+                                    <span class="material-symbols-outlined text-[18px]">construction</span>
+                                </a>
+                            </div>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="4" class="py-20 text-center">
+                                <div class="flex flex-col items-center gap-4">
+                                    <span
+                                        class="material-symbols-outlined text-slate-200 dark:text-slate-800 text-6xl">inventory_2</span>
+                                    <p class="text-slate-500 font-medium italic">Your library is empty. Start by
+                                        scraping a search page or individual item.</p>
+                                    <a href="/scraper" class="text-primary font-bold hover:underline">Go to Scraper
+                                        Tool</a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Recent Activity Feed -->
+        <div
+            class="bg-white dark:bg-background-dark border border-slate-200 dark:border-slate-800 rounded-xl p-6 flex flex-col h-full">
+            <h4 class="text-slate-900 dark:text-white font-bold mb-6 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary text-[20px]">bolt</span>
+                Recent Activity
+            </h4>
+            <div class="space-y-6 flex-1">
+                {% for activity in recent_activity %}
+                <div class="flex items-start gap-4 regular-timeline-item relative">
+                    {% if not loop.last %}
+                    <div class="absolute left-[7px] top-6 bottom-[-24px] w-[2px] bg-slate-100 dark:bg-slate-800"></div>
+                    {% endif %}
+                    <div class="size-4 rounded-full mt-1.5 flex-shrink-0 
+                        {% if activity.type == 'Scrape' %}bg-blue-500
+                        {% elif activity.type == 'Analysis' %}bg-purple-500
+                        {% else %}bg-emerald-500{% endif %}"></div>
+                    <div class="flex flex-col">
+                        <p class="text-sm font-bold text-slate-800 dark:text-slate-200">{{ activity.content }}</p>
+                        <div class="flex items-center gap-2">
+                            <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">{{
+                                activity.time.strftime('%H:%M • %b %d') if activity.time else 'Recently' }}</p>
+                            {% if activity.type == 'Analysis' %}
+                            <a href="/product/{{ activity.product_id if activity.product_id else '#' }}"
+                                hx-get="/product/{{ activity.product_id if activity.product_id else '#' }}"
+                                hx-target="#main-content" hx-select="#main-content" hx-push-url="true"
+                                class="text-[10px] font-bold text-primary hover:underline uppercase tracking-widest">View</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="h-full flex flex-col items-center justify-center text-center py-10">
+                    <span
+                        class="material-symbols-outlined text-slate-200 dark:text-slate-800 text-4xl mb-2">history</span>
+                    <p class="text-slate-400 text-sm italic">No recent activity found.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

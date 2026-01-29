@@ -1,18 +1,26 @@
-FROM mcr.microsoft.com/playwright:v1.41.0-jammy
+# worker/Dockerfile
+FROM mcr.microsoft.com/playwright/python:v1.40.0-jammy
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/app
 
 WORKDIR /app
 
-# Copy the entire project
-COPY . .
+# Upgrade to Python 3.11 logic
+RUN apt-get update && apt-get install -y python3.11 python3.11-venv && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install dependencies
-RUN pip install --no-cache-dir -r worker/requirements.txt
+COPY requirements-worker.txt .
+RUN pip install --no-cache-dir -r requirements-worker.txt
 
-# Create a non-root user (optional but good practice, though Playwright docker often runs as root or pwuser)
-# For simplicity in this phase, we'll run as default.
+# Install Playwright browsers (Specifically Chromium)
+RUN playwright install chromium
 
-# Set Python path to include root
-ENV PYTHONPATH=/app
+# Copy the application code
+COPY . .
 
-# Run the worker
+# Command to run the worker
 CMD ["python", "worker/main.py"]

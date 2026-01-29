@@ -1,7 +1,7 @@
 import uuid
 from sqlalchemy import String, Numeric, Integer, Date, TIMESTAMP, Text, text
 from sqlalchemy.dialects.postgresql import UUID, JSONB
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from datetime import datetime, date
 from typing import Optional
 from app.database import Base
@@ -36,3 +36,5 @@ class Product(Base):
     created_at: Mapped[datetime] = mapped_column(TIMESTAMP, server_default=text("CURRENT_TIMESTAMP"), index=True)
     updated_at: Mapped[datetime] = mapped_column(TIMESTAMP, server_default=text("CURRENT_TIMESTAMP"), onupdate=text("CURRENT_TIMESTAMP"))
     product_metadata: Mapped[dict] = mapped_column(JSONB, default={}, server_default='{}')
+
+    analysis_results = relationship("AnalysisResult", back_populates="product", cascade="all, delete-orphan")

@@ -6,6 +6,8 @@ from typing import Optional
 class Settings(BaseSettings):
     # Core
     SECRET_KEY: str = Field(..., env="SECRET_KEY")
+    ALGORITHM: str = Field("HS256", env="ALGORITHM")
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = Field(60, env="ACCESS_TOKEN_EXPIRE_MINUTES")
     DEBUG: bool = Field(False, env="DEBUG")
 
     @field_validator("DEBUG", mode="before")
@@ -16,7 +18,7 @@ class Settings(BaseSettings):
         return v
     
     # API Keys
-    GEMINI_API_KEY: str = Field(..., env="GEMINI_API_KEY")
+    GEMINI_API_KEY: Optional[str] = Field(None, env="GEMINI_API_KEY")
     
     # Database
     DATABASE_URL: str = Field(..., env="DATABASE_URL")
@@ -24,7 +26,9 @@ class Settings(BaseSettings):
     @property
     def ASYNC_DATABASE_URL(self) -> str:
         url = self.DATABASE_URL
-        if url.startswith("postgresql://"):
+        if url.startswith("postgres://"):
+            url = url.replace("postgres://", "postgresql+asyncpg://", 1)
+        elif url.startswith("postgresql://"):
             url = url.replace("postgresql://", "postgresql+asyncpg://", 1)
         # Remove sslmode if present, as it's handled in database.py for asyncpg
         if "sslmode=" in url:

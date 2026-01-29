@@ -1,0 +1,76 @@
+{% for product in products %}
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+    <td class="py-4 px-6 text-center font-bold text-slate-300 dark:text-slate-700">
+        {{ loop.index }}
+    </td>
+    <td class="py-4 px-6">
+        <div class="flex items-center gap-4">
+            <div class="size-10 rounded-lg bg-slate-100 dark:bg-slate-800 flex-shrink-0 overflow-hidden">
+                <img src="{{ product.screenshots[0] if product.screenshots else 'https://via.placeholder.com/100?text=No+Image' }}"
+                    alt="" class="size-full object-cover">
+            </div>
+            <div class="flex flex-col min-w-0">
+                <span class="text-sm font-bold text-slate-900 dark:text-white truncate max-w-[240px]">{{
+                    product.title }}</span>
+                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-tighter">{{
+                    product.author_name }} • ${{ product.price }}</span>
+            </div>
+        </div>
+    </td>
+    <td class="py-4 px-6">
+        <span
+            class="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider">
+            {{ product.category }}
+        </span>
+    </td>
+    <td class="py-4 px-6 text-center">
+        <div
+            class="inline-flex items-center justify-center size-10 rounded-full border-2 border-slate-100 dark:border-slate-800 
+            {% if (product.profitability_score or 0) >= 75 %}border-emerald-500 text-emerald-500{% elif (product.profitability_score or 0) >= 50 %}border-amber-500 text-amber-500{% else %}border-red-500 text-red-500{% endif %}">
+            <span class="text-xs font-black">{{ product.profitability_score|int or 0 }}%</span>
+        </div>
+    </td>
+    <td class="py-4 px-6 text-center">
+        <div class="flex flex-col items-center">
+            <span class="text-sm font-black text-slate-900 dark:text-white">{{ product.total_sales
+                }}</span>
+            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Total
+                Sales</span>
+        </div>
+    </td>
+    <td class="py-4 px-6 text-center text-xs text-slate-500 font-medium">
+        {{ product.created_at.strftime('%Y-%m-%d') if product.created_at else 'N/A' }}
+    </td>
+    <td class="py-4 px-6 text-right">
+        <div class="flex items-center justify-end gap-2">
+            <a href="/product/{{ product.id }}" hx-get="/product/{{ product.id }}" hx-target="#main-content"
+                hx-select="#main-content" hx-push-url="true"
+                class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-primary transition-all shadow-sm"
+                title="View Deep Analysis">
+                <span class="material-symbols-outlined text-[18px]">visibility</span>
+            </a>
+            <a href="/planner/{{ product.id }}" hx-get="/planner/{{ product.id }}" hx-target="#main-content"
+                hx-select="#main-content" hx-push-url="true"
+                class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all shadow-sm"
+                title="Generate Roadmap">
+                <span class="material-symbols-outlined text-[18px]">rocket_launch</span>
+            </a>
+            <a href="{{ product.url }}" target="_blank"
+                class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 transition-all">
+                <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+            </a>
+        </div>
+    </td>
+</tr>
+{% else %}
+<tr>
+    <td colspan="7" class="py-20 text-center">
+        <div class="flex flex-col items-center gap-4">
+            <span class="material-symbols-outlined text-slate-200 dark:text-slate-800 text-6xl">inventory_2</span>
+            <p class="text-slate-500 font-medium italic">Your library is empty. Start by scraping a
+                search page or individual item.</p>
+            <a href="/scraper" class="text-primary font-bold hover:underline">Go to Scraper Tool</a>
+        </div>
+    </td>
+</tr>
+{% endfor %}

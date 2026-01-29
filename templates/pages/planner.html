@@ -1,0 +1,30 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Project Planner Wizard - CodeCanyon Intelligence{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto py-8">
+    <!-- Progress Header -->
+    <div class="mb-12">
+        <div class="flex items-center justify-between mb-4">
+            <div>
+                <h1 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white">Project Planner Wizard
+                </h1>
+                <p class="text-slate-500 dark:text-slate-400">Transform raw data into a development blueprint.</p>
+            </div>
+            <div class="text-right">
+                <div class="text-3xl font-black text-primary" id="progress-percent">25%</div>
+                <div class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Project Completion</div>
+            </div>
+        </div>
+        <div class="h-2 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+            <div id="progress-bar" class="h-full bg-primary transition-all duration-500" style="width: 25%;"></div>
+        </div>
+    </div>
+
+    <!-- Wizard Steps Container -->
+    <div id="planner-container" class="transition-all duration-300">
+        {% include "components/planner/step_1.html" %}
+    </div>
+</div>
+{% endblock %}

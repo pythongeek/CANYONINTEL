@@ -1,40 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="light" lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>{% block title %}CodeCanyon Intelligence{% endblock %}</title>
-
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <!-- HTMX CDN -->
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
 
-    <script>
+    <script id="tailwind-config">
         tailwind.config = {
+            darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        primary: '#2563EB',
-                        secondary: '#7C3AED',
-                        success: '#10B981',
-                        warning: '#F59E0B',
-                        danger: '#EF4444'
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                        "sidebar-start": "#1E293B",
+                        "sidebar-end": "#0F172A",
+                        "content-gray": "#F9FAFB",
+                        "secondary": "#7C3AED",
+                        "success": "#10B981",
+                        "warning": "#F59E0B",
+                        "danger": "#EF4444"
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace']
-                    }
-                }
-            }
+                        "display": ["Inter", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
         }
     </script>
-
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap');
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .sidebar-gradient {
+            background: linear-gradient(180deg, #1E293B 0%, #0F172A 100%);
+        }
+
+        .logo-gradient {
+            background: linear-gradient(135deg, #2463eb 0%, #a855f7 100%);
+        }
 
         .htmx-indicator {
             display: none;
@@ -50,53 +77,194 @@
     </style>
 </head>
 
-<body class="bg-gray-50 text-gray-900 font-sans" hx-headers='{"X-CSRF-Token": "{{ csrf_token(request) }}"}'>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111318] antialiased"
+    hx-headers='{"X-CSRF-Token": "{{ csrf_token(request) }}"}'>
 
-    <!-- Global Loader -->
-    <div id="global-loader" class="htmx-indicator fixed top-0 left-0 w-full h-1 bg-primary z-[2000] animate-pulse">
-    </div>
+    <div class="flex min-h-screen overflow-hidden">
+        <!-- Persistent Sidebar (280px) -->
+        <aside class="sidebar-gradient w-[280px] flex-shrink-0 flex flex-col text-white z-50">
+            <div class="p-6 flex flex-col h-full">
+                <!-- Profile Card -->
+                <div class="flex items-center gap-3 mb-10">
+                    <div
+                        class="size-10 rounded-full bg-center bg-cover border-2 border-primary/30 flex items-center justify-center bg-gray-700 text-sm font-bold">
+                        UI
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-sm font-semibold">User Interface</span>
+                        <span class="text-xs text-slate-400">Pro Plan Member</span>
+                    </div>
+                </div>
 
-    <!-- Navigation -->
-    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <span
-                        class="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                        CodeCanyon Intelligence
-                    </span>
+                <!-- Tiered Navigation Sections -->
+                <nav class="flex-1 space-y-6">
+                    <div>
+                        <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-3 px-3">Main Menu
+                        </p>
+                        <div class="space-y-1">
+                            <a class="flex items-center gap-3 px-3 py-2 rounded-lg {% if request.url.path == '/' or request.url.path == '/dashboard' %}bg-white/10 text-white{% else %}text-slate-400 hover:bg-white/5 hover:text-white{% endif %} transition-all group"
+                                href="/" hx-get="/" hx-target="#main-content" hx-select="#main-content"
+                                hx-push-url="true">
+                                <span
+                                    class="material-symbols-outlined {% if request.url.path == '/' or request.url.path == '/dashboard' %}text-primary{% endif %} group-hover:text-white">dashboard</span>
+                                <span class="text-sm font-medium">Dashboard</span>
+                            </a>
+                            <a class="flex items-center gap-3 px-3 py-2 rounded-lg {% if request.url.path == '/scraper' %}bg-white/10 text-white{% else %}text-slate-400 hover:bg-white/5 hover:text-white{% endif %} transition-all group"
+                                href="/scraper" hx-get="/scraper" hx-target="#main-content" hx-select="#main-content"
+                                hx-push-url="true">
+                                <span
+                                    class="material-symbols-outlined {% if request.url.path == '/scraper' %}text-primary{% endif %} group-hover:text-white">travel_explore</span>
+                                <span class="text-sm font-medium">URL Scraper</span>
+                            </a>
+                            <a class="flex items-center gap-3 px-3 py-2 rounded-lg {% if request.url.path == '/products' %}bg-white/10 text-white{% else %}text-slate-400 hover:bg-white/5 hover:text-white{% endif %} transition-all group"
+                                href="/products" hx-get="/products" hx-target="#main-content" hx-select="#main-content"
+                                hx-push-url="true">
+                                <span
+                                    class="material-symbols-outlined {% if request.url.path == '/products' %}text-primary{% endif %} group-hover:text-white">analytics</span>
+                                <span class="text-sm font-medium">Analysis Library</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-3 px-3">Intelligence
+                        </p>
+                        <div class="space-y-1">
+                            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-white/5 hover:text-white transition-all group"
+                                href="/products" hx-get="/products" hx-target="#main-content" hx-select="#main-content"
+                                hx-push-url="true">
+                                <span
+                                    class="material-symbols-outlined text-purple-400 group-hover:text-purple-300">auto_awesome</span>
+                                <span class="text-sm font-medium">AI Features</span>
+                            </a>
+                            <a class="flex items-center gap-3 px-3 py-2 rounded-lg {% if request.url.path.startswith('/planner') %}bg-white/10 text-white{% else %}text-slate-400 hover:bg-white/5 hover:text-white{% endif %} transition-all group"
+                                href="/planner" hx-get="/planner" hx-target="#main-content" hx-select="#main-content"
+                                hx-push-url="true">
+                                <span
+                                    class="material-symbols-outlined {% if request.url.path.startswith('/planner') %}text-primary{% endif %} group-hover:text-white">folder</span>
+                                <span class="text-sm font-medium">Projects</span>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Upgrade CTA Card -->
+                <div class="mt-auto pt-6">
+                    <div class="bg-primary/20 border border-primary/30 rounded-xl p-4 flex flex-col gap-3">
+                        <p class="text-xs font-medium text-blue-200 leading-snug">Need more processing power? Get
+                            Enterprise limits.</p>
+                        <button
+                            class="bg-primary hover:bg-blue-600 text-white text-xs font-bold py-2 rounded-lg transition-colors">
+                            Upgrade to Enterprise
+                        </button>
+                    </div>
+                    <div class="mt-4 space-y-1">
+                        <a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white transition-colors"
+                            href="/settings" hx-get="/settings" hx-target="#main-content" hx-select="#main-content"
+                            hx-push-url="true">
+                            <span class="material-symbols-outlined size-5 text-sm">settings</span>
+                            <span class="text-sm">Settings</span>
+                        </a>
+                        <a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white transition-colors"
+                            href="/auth/logout">
+                            <span class="material-symbols-outlined size-5 text-sm">logout</span>
+                            <span class="text-sm">Logout</span>
+                        </a>
+                    </div>
                 </div>
             </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 flex flex-col bg-content-gray dark:bg-background-dark relative overflow-y-auto"
+            id="main-content">
+            <!-- Sticky Top Bar (64px) -->
+            <header
+                class="h-16 sticky top-0 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-8 z-40">
+                <div class="flex items-center gap-12">
+                    <!-- Logo -->
+                    <div class="flex items-center gap-2.5">
+                        <div class="size-8 logo-gradient rounded-lg flex items-center justify-center text-white">
+                            <span class="material-symbols-outlined">insights</span>
+                        </div>
+                        <h2 class="text-lg font-extrabold tracking-tight text-[#111318] dark:text-white">CodeCanyon
+                            <span class="text-primary">Intel</span>
+                        </h2>
+                    </div>
+                    <!-- Navigation Tabs -->
+                    <nav class="flex items-center h-16">
+                        <div class="flex gap-8 h-full">
+                            <a class="flex items-center text-sm font-semibold {% if request.url.path == '/' or request.url.path == '/dashboard' %}text-primary border-b-2 border-primary{% else %}text-gray-500 hover:text-gray-900 border-b-2 border-transparent{% endif %} px-1"
+                                href="/" hx-get="/" hx-target="#main-content" hx-select="#main-content"
+                                hx-push-url="true">Dashboard</a>
+                            <a class="flex items-center text-sm font-medium {% if request.url.path == '/scraper' %}text-primary border-b-2 border-primary{% else %}text-gray-500 hover:text-gray-900 border-b-2 border-transparent{% endif %} px-1"
+                                href="/scraper" hx-get="/scraper" hx-target="#main-content" hx-select="#main-content"
+                                hx-push-url="true">Scraper Tool</a>
+                        </div>
+                    </nav>
+                </div>
+                <!-- Utilities -->
+                <div class="flex items-center gap-6">
+                    <!-- API Usage Indicator -->
+                    <div class="flex flex-col items-end gap-1">
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] font-bold text-gray-500 uppercase tracking-tighter">System
+                                Status</span>
+                            <span class="text-[10px] font-bold text-success">Online</span>
+                        </div>
+                        <div class="w-24 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                            <div class="h-full bg-success" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Scrollable Content -->
+            <div class="p-8 max-w-[1200px] mx-auto w-full h-full">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+    </div>
+
+    <!-- Global Loader -->
+    <div id="global-loader"
+        class="htmx-indicator fixed inset-0 z-[100] flex items-center justify-center bg-white/50 backdrop-blur-[2px] transition-all duration-300 pointer-events-none">
+        <div class="flex flex-col items-center gap-4">
+            <div class="size-16 border-4 border-primary/20 border-t-primary rounded-full animate-spin"></div>
+            <p class="text-primary font-bold animate-pulse">Syncing Intel...</p>
         </div>
-    </nav>
+    </div>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {% block content %}{% endblock %}
-    </main>
+    <!-- Toast Container -->
+    <div id="toast-container" class="fixed bottom-4 right-4 z-[110] flex flex-col gap-2"></div>
 
-    <!-- Toast Notifications -->
-    <div id="toast-container" class="fixed bottom-4 right-4 z-50 flex flex-col gap-2"></div>
-
+    <script src="/static/js/app.js"></script>
     <script>
-        document.body.addEventListener('htmx:configRequest', (event) => {
-            // Additional check if needed, but hx-headers on body usually suffices
-        });
-
-        document.body.addEventListener('htmx:responseError', (event) => {
-            const status = event.detail.xhr.status;
-            showToast(`Error: ${status}`, 'danger');
-        });
-
+        // Inline showToast fallback if app.js is not loaded or for quick access
         function showToast(message, type = 'primary') {
             const container = document.getElementById('toast-container');
             const toast = document.createElement('div');
-            toast.className = `p-4 rounded-lg shadow-lg text-white text-sm transition-all duration-300 transform translate-y-0 opacity-100 bg-${type}`;
+            // Mapping standard types to Tailwind colors
+            const typeClasses = {
+                'primary': 'bg-primary',
+                'success': 'bg-success',
+                'danger': 'bg-danger',
+                'warning': 'bg-warning'
+            };
+            const bgClass = typeClasses[type] || 'bg-primary';
+
+            toast.className = `p-4 rounded-lg shadow-xl text-white text-sm font-bold transition-all duration-300 transform translate-x-12 opacity-0 ${bgClass}`;
             toast.textContent = message;
             container.appendChild(toast);
+
+            // Trigger animation
+            requestAnimationFrame(() => {
+                toast.classList.remove('translate-x-12', 'opacity-0');
+            });
+
             setTimeout(() => {
-                toast.classList.add('translate-y-2', 'opacity-0');
+                toast.classList.add('translate-x-12', 'opacity-0');
                 setTimeout(() => toast.remove(), 300);
-            }, 3000);
+            }, 5000);
         }
     </script>
 </body>

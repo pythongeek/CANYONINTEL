@@ -1,0 +1,68 @@
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 animate-in fade-in slide-in-from-right-4 duration-500">
+    <!-- Main Form Area -->
+    <div class="lg:col-span-8 space-y-6">
+        <div class="bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 rounded-2xl p-6">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 mb-6 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">terminal</span>
+                2026 Recommended Tech Stack
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {% if analysis and analysis.ai_recommendations.tech_stack %}
+                {% for key, val in analysis.ai_recommendations.tech_stack.items() %}
+                <div
+                    class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-md">
+                    <span class="text-[10px] font-bold uppercase text-slate-400 block mb-1 tracking-widest">{{ key
+                        }}</span>
+                    <p class="text-lg font-bold text-slate-900 dark:text-white">{{ val }}</p>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            <div
+                class="mt-8 p-4 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/30 flex items-start gap-4">
+                <span class="material-symbols-outlined text-blue-500">info</span>
+                <p class="text-xs text-blue-700 dark:text-blue-400 leading-relaxed">
+                    This stack is chosen for maximum velocity and scalability in 2026. All libraries are verified to be
+                    active and well-supported.
+                </p>
+            </div>
+        </div>
+
+        <div class="flex justify-between">
+            <button hx-get="/planner/{{ product.id }}/step/2" hx-target="#planner-container"
+                hx-swap="innerHTML transition:true"
+                class="px-6 py-3 text-slate-500 font-bold rounded-xl flex items-center gap-2 hover:bg-slate-100 transition-all">
+                <span class="material-symbols-outlined">arrow_back</span>
+                Back
+            </button>
+            <button
+                class="px-10 py-4 bg-success hover:bg-success/90 text-white font-bold rounded-xl shadow-lg shadow-success/20 flex items-center gap-2 transition-all">
+                Finalize Blueprint
+                <span class="material-symbols-outlined">rocket_launch</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Sidebar Info Area -->
+    <div class="lg:col-span-4 space-y-6">
+        <div
+            class="bg-gradient-to-br from-success/20 to-blue-500/20 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+            <div
+                class="size-12 bg-success text-white rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-success/20">
+                <span class="material-symbols-outlined text-2xl">verified</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Ready to Launch?</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6">
+                Your architectural blueprint is complete. Finalizing will create a project tracker and set up your
+                initial backlog.
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('progress-bar').style.width = '100%';
+    document.getElementById('progress-percent').innerText = '100%';
+</script>

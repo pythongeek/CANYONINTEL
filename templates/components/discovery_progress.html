@@ -1,0 +1,22 @@
+<div id="discovery-progress" hx-get="/api/discovery-stats" hx-trigger="every 2s" hx-swap="outerHTML">
+    {% if discovery_stats %}
+    <div class="mt-4 p-3 bg-white/10 rounded-lg border border-white/20 inline-block">
+        <div class="flex items-center gap-4 text-xs font-bold text-white uppercase tracking-widest">
+            <span class="flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px]">travel_explore</span>
+                Discovered: {{ discovery_stats.found }}
+            </span>
+            <span class="flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px]">sync</span>
+                Scraping: {{ discovery_stats.scraped }}/{{ discovery_stats.found }}
+            </span>
+            {% if discovery_stats.found > discovery_stats.scraped %}
+            <span class="flex items-center gap-1 ml-2 text-blue-200">
+                <span class="size-2 bg-blue-400 rounded-full animate-pulse"></span>
+                Processing...
+            </span>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div>

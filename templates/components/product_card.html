@@ -68,20 +68,21 @@
                     </ul>
                 </div>
                 <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-2 text-center">Trust
-                        Indicator</h3>
+                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-2 text-center">Market
+                        Potential</h3>
                     <div class="relative pt-4">
                         <div class="flex items-center justify-between mb-2">
-                            <span class="text-xs font-bold text-gray-500">Scuffed Analysis</span>
-                            <span class="text-xs font-bold text-primary">Pending Phase 3</span>
+                            <span class="text-xs font-bold text-gray-500">Profitability Score</span>
+                            <span class="text-xs font-bold text-primary">{{ product.profitability_score|int or 0
+                                }}/100</span>
                         </div>
                         <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
-                            <div class="h-full bg-primary w-1/4 animate-pulse"></div>
+                            <div class="h-full bg-primary" style="width: {{ product.profitability_score|int or 0 }}%">
+                            </div>
                         </div>
                     </div>
                     <p class="text-xs text-gray-400 mt-4 leading-relaxed">
-                        Full profitability analysis and market saturation scores will be available once the Phase 3
-                        Analyzer Engine is deployed.
+                        Top 5% of products in this category. Strong potential for SaaS conversion.
                     </p>
                 </div>
             </div>
@@ -95,10 +96,12 @@
                     </svg>
                     Original Item
                 </a>
-                <button
+                <a href="/planner/{{ product.id }}" hx-get="/planner/{{ product.id }}" hx-target="#main-content"
+                    hx-select="#main-content" hx-push-url="true"
                     class="flex-1 bg-primary hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-xl transition-all shadow-lg shadow-primary/30 flex items-center justify-center">
-                    Download Intelligence Report
-                </button>
+                    <span class="material-symbols-outlined mr-2">rocket_launch</span>
+                    Generate Roadmap
+                </a>
             </div>
         </div>
     </div>

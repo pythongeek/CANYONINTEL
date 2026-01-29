@@ -19,6 +19,7 @@ from app.database import Base
 from app.models.user import User
 from app.models.product import Product
 from app.models.job import ScrapingJob
+from app.models.analysis import AnalysisResult, UserProject
 target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,

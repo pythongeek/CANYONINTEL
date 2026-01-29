@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  worker:
+    build:
+      context: .
+      dockerfile: ./worker/Dockerfile
+    container_name: canyon_worker
+    restart: always
+    env_file: .env
+    volumes:
+      - .:/app
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    networks:
+      - canyon_network
+    healthcheck:
+      test: [ "CMD-SHELL", "pgrep -f 'python worker/main.py' || exit 1" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+networks:
+  canyon_network:
+    driver: bridge

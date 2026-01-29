@@ -1,4 +1,10 @@
-from curl_cffi import requests
+try:
+    from curl_cffi import requests
+    CURL_CFFI_AVAILABLE = True
+except ImportError:
+    import requests
+    CURL_CFFI_AVAILABLE = False
+
 from bs4 import BeautifulSoup
 import re
 import time
@@ -19,9 +25,13 @@ class CodeCanyonScraper:
         self.delay = delay
         self.ua = UserAgent()
         
-        # 1. Randomize TLS Fingerprint
-        self.impersonate_browser = random.choice(self.BROWSERS)
-        self.session = requests.Session(impersonate=self.impersonate_browser)
+        # 1. Randomize TLS Fingerprint (if available)
+        if CURL_CFFI_AVAILABLE:
+            self.impersonate_browser = random.choice(self.BROWSERS)
+            self.session = requests.Session(impersonate=self.impersonate_browser)
+        else:
+            self.session = requests.Session()
+        
         self.warmed_up = False
 
     def _get_headers(self) -> Dict[str, str]:

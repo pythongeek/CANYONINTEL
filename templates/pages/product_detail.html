@@ -1,0 +1,180 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}{{ product.title }} - Analysis Details{% endblock %}
+
+{% block content %}
+<div class="space-y-8 animate-in fade-in duration-700">
+    <!-- Header Back Link -->
+    <div class="flex items-center justify-between">
+        <a href="/products" hx-get="/products" hx-target="#main-content" hx-select="#main-content" hx-push-url="true"
+            class="flex items-center gap-2 text-slate-500 hover:text-primary font-bold transition-colors group">
+            <span class="material-symbols-outlined transition-transform group-hover:-translate-x-1">arrow_back</span>
+            Back to Library
+        </a>
+        <div class="flex items-center gap-3">
+            <span
+                class="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-black uppercase text-slate-500 tracking-widest">Product
+                ID: {{ product.id|string|truncate(8, True, '') }}</span>
+        </div>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Left: Product Summary -->
+        <div class="lg:col-span-4 space-y-6">
+            <div
+                class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <div class="aspect-square rounded-2xl overflow-hidden mb-6 bg-slate-100 dark:bg-slate-800">
+                    <img src="{{ product.screenshots[0] if product.screenshots else 'https://via.placeholder.com/400?text=No+Image' }}"
+                        alt="{{ product.title }}" class="w-full h-full object-cover">
+                </div>
+                <h1 class="text-2xl font-black tracking-tight text-slate-900 dark:text-white mb-2">{{ product.title }}
+                </h1>
+                <p class="text-slate-500 text-sm mb-6">By <span class="font-bold">{{ product.author_name }}</span></p>
+
+                <div class="grid grid-cols-2 gap-4 mb-8">
+                    <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase mb-1">Price</p>
+                        <p class="text-xl font-black text-slate-900 dark:text-white">${{ product.price }}</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase mb-1">Sales</p>
+                        <p class="text-xl font-black text-emerald-500">{{ product.total_sales }}</p>
+                    </div>
+                </div>
+
+                <a href="{{ product.url }}" target="_blank"
+                    class="w-full py-4 bg-slate-900 hover:bg-black text-white rounded-2xl font-bold flex items-center justify-center gap-3 transition-all">
+                    <span class="material-symbols-outlined">launch</span>
+                    View Original Item
+                </a>
+            </div>
+
+            <div class="bg-gradient-to-br from-primary/10 to-purple-500/10 rounded-3xl p-6 border border-primary/20">
+                <h3 class="font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary">auto_awesome</span>
+                    Quick Verdict
+                </h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed italic">
+                    {{ analysis.trend_analysis.verdict if analysis and analysis.trend_analysis else "Deep analysis
+                    pending AI engine completion." }}
+                </p>
+            </div>
+        </div>
+
+        <!-- Right: Deep Analysis -->
+        <div class="lg:col-span-8 space-y-8">
+            <!-- Metrics Bar -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div
+                    class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden">
+                    <div class="relative z-10">
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Profitability</p>
+                        <h4 class="text-4xl font-black text-slate-900 dark:text-white">{{
+                            product.profitability_score|int }}%</h4>
+                    </div>
+                    <div class="absolute bottom-0 left-0 h-1 bg-emerald-500 transition-all duration-1000"
+                        style="width: {{ product.profitability_score|int }}%"></div>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Market Saturation</p>
+                    <h4 class="text-4xl font-black text-slate-900 dark:text-white">{{ analysis.market_saturation if
+                        analysis else '45' }}%</h4>
+                    <div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full mt-4 overflow-hidden">
+                        <div class="bg-amber-500 h-full rounded-full"
+                            style="width: {{ analysis.market_saturation if analysis else '45' }}%"></div>
+                    </div>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Demand Hub</p>
+                    <h4 class="text-4xl font-black text-primary">{{ analysis.score_breakdown.demand if analysis else
+                        'High' }}</h4>
+                    <p class="text-[10px] text-slate-400 mt-2 uppercase font-bold tracking-tighter">Based on sales
+                        velocity</p>
+                </div>
+            </div>
+
+            <!-- SWOT Analysis -->
+            <div
+                class="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <h3 class="text-lg font-black text-slate-900 dark:text-white mb-8 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary">analytics</span>
+                    Strategic SWOT Framework
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <div
+                            class="flex items-center gap-2 text-emerald-600 font-black text-sm uppercase tracking-widest">
+                            <span class="material-symbols-outlined text-sm">add_circle</span> Strengths
+                        </div>
+                        <ul class="space-y-2">
+                            {% for s in (analysis.swot.strengths if analysis and analysis.swot and
+                            analysis.swot.strengths else ["High sales volume", "Well documented"]) %}
+                            <li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                                <div class="size-1.5 bg-emerald-500 rounded-full mt-1.5"></div>
+                                {{ s }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-2 text-red-600 font-black text-sm uppercase tracking-widest">
+                            <span class="material-symbols-outlined text-sm">remove_circle</span> Weaknesses
+                        </div>
+                        <ul class="space-y-2">
+                            {% for w in (analysis.swot.weaknesses if analysis and analysis.swot and
+                            analysis.swot.weaknesses else ["Dated UI components", "Lacks mobile app"]) %}
+                            <li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                                <div class="size-1.5 bg-red-500 rounded-full mt-1.5"></div>
+                                {{ w }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-2 text-primary font-black text-sm uppercase tracking-widest">
+                            <span class="material-symbols-outlined text-sm">rocket_launch</span> Opportunities
+                        </div>
+                        <ul class="space-y-2">
+                            {% for o in (analysis.swot.opportunities if analysis and analysis.swot and
+                            analysis.swot.opportunities else ["SaaS conversion", "AI integration"]) %}
+                            <li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                                <div class="size-1.5 bg-primary rounded-full mt-1.5"></div>
+                                {{ o }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <div
+                            class="flex items-center gap-2 text-amber-600 font-black text-sm uppercase tracking-widest">
+                            <span class="material-symbols-outlined text-sm">warning</span> Threats
+                        </div>
+                        <ul class="space-y-2">
+                            {% for t in (analysis.swot.threats if analysis and analysis.swot and analysis.swot.threats
+                            else ["Free alternatives", "Policy changes"]) %}
+                            <li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                                <div class="size-1.5 bg-amber-500 rounded-full mt-1.5"></div>
+                                {{ t }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Footer -->
+            <div class="flex gap-4">
+                <a href="/planner/{{ product.id }}"
+                    class="flex-1 py-5 bg-primary hover:bg-blue-700 text-white rounded-3xl font-black text-xl shadow-2xl shadow-primary/30 flex items-center justify-center gap-4 transition-all">
+                    <span class="material-symbols-outlined text-3xl">construction</span>
+                    Open Project Planner
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

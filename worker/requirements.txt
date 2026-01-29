@@ -4,8 +4,12 @@ playwright-stealth
 sqlalchemy[asyncio]==2.0.27
 asyncpg==0.29.0
 python-dotenv==1.0.1
-google-generativeai
+google-genai
 beautifulsoup4==4.12.3
 lxml==4.9.3
 uvloop
+pydantic
+pydantic-settings
+fake-useragent
+psycopg2-binary
 

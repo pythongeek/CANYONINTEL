@@ -1,0 +1,96 @@
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <!-- Main Form Area -->
+    <div class="lg:col-span-8 space-y-6">
+        <div class="bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 rounded-2xl p-6">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 mb-6 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">identity</span>
+                Project Identity
+            </h3>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 mb-2 uppercase tracking-wide">Project
+                        Name</label>
+                    <input type="text" value="{{ product.title }} Pro"
+                        class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-xl h-12 px-4 focus:ring-2 focus:ring-primary outline-none text-slate-900 dark:text-white font-medium">
+                </div>
+
+                <div>
+                    <label
+                        class="block text-xs font-semibold text-slate-500 mb-2 uppercase tracking-wide">Category</label>
+                    <select
+                        class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-xl h-12 px-4 focus:ring-2 focus:ring-primary outline-none text-slate-900 dark:text-white font-medium">
+                        <option selected>{{ product.category }}</option>
+                        <option>SaaS Frameworks</option>
+                        <option>Mobile App Templates</option>
+                        <option>E-commerce Extensions</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 rounded-2xl p-6">
+            <h3
+                class="text-sm font-bold uppercase tracking-wider text-slate-500 mb-6 font-bold flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">description</span>
+                Core Concept
+            </h3>
+            <textarea
+                class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-xl p-4 min-h-[120px] focus:ring-2 focus:ring-primary outline-none text-slate-700 dark:text-slate-300 resize-none"
+                placeholder="What makes your version unique?">{{ product.description|striptags|truncate(200) }}</textarea>
+        </div>
+
+        <div class="flex justify-end gap-4">
+            <button
+                class="px-6 py-3 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold rounded-xl hover:bg-slate-200 transition-all">
+                Save Draft
+            </button>
+            <button id="next-btn" hx-get="/planner/{{ product.id }}/step/2" hx-target="#planner-container"
+                hx-swap="innerHTML transition:true"
+                class="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl shadow-lg shadow-primary/20 flex items-center gap-2 transition-all">
+                Next: Feature Spec
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Sidebar Info Area -->
+    <div class="lg:col-span-4 space-y-6">
+        <!-- Profitability Score -->
+        <div class="bg-gradient-to-br from-primary to-purple-600 p-[1px] rounded-2xl shadow-xl shadow-primary/20">
+            <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 h-full text-center">
+                <span
+                    class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase tracking-widest border border-primary/20 mb-4 inline-block">Analysis
+                    Result</span>
+                <p class="text-slate-500 text-xs font-semibold mb-2 uppercase tracking-tighter">Profitability Score</p>
+                <div class="flex items-center justify-center gap-1 mb-4">
+                    <span class="text-6xl font-black text-slate-900 dark:text-white">{{ product.profitability_score|int
+                        }}</span>
+                    <span class="text-xl font-bold text-primary">/100</span>
+                </div>
+                <div class="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <div class="h-full bg-primary" style="width:{{ product.profitability_score }}%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tip Box -->
+        <div
+            class="bg-indigo-50 dark:bg-indigo-900/20 p-6 rounded-2xl border border-indigo-100 dark:border-indigo-900/30">
+            <div class="flex items-center gap-2 text-indigo-700 dark:text-indigo-300 mb-3">
+                <span class="material-symbols-outlined text-lg">lightbulb</span>
+                <span class="font-bold text-sm">Planner Tip</span>
+            </div>
+            <p class="text-xs text-indigo-600 dark:text-indigo-400 leading-relaxed">
+                Aim for a score above 75 to ensure a strong market entry. Your inspiration product has high sales
+                velocity.
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Update progress bar on step change
+    document.getElementById('progress-bar').style.width = '25%';
+    document.getElementById('progress-percent').innerText = '25%';
+</script>
