@@ -12,12 +12,12 @@ from app.models.analysis import AnalysisResult, UserProject
 
 router = APIRouter(tags=["Dashboard"])
 
-from app.utils.auth import get_current_user
+from app.utils.auth import login_required
 from app.models.user import User
 
 @router.get("/", response_class=HTMLResponse)
 @router.get("/dashboard", response_class=HTMLResponse)
-async def dashboard(request: Request, db: AsyncSession = Depends(get_db), current_user: User = Depends(get_current_user)):
+async def dashboard(request: Request, db: AsyncSession = Depends(get_db), current_user: User = Depends(login_required)):
     # Fetch stats
     try:
         total_products = await db.scalar(select(func.count(Product.id)))
@@ -96,7 +96,7 @@ async def products_library(
     min_score: int = 0,
     category: str = None,
     db: AsyncSession = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    current_user: User = Depends(login_required)
 ):
     query = select(Product)
     
@@ -149,7 +149,7 @@ async def get_discovery_stats(request: Request, db: AsyncSession = Depends(get_d
         "discovery_stats": discovery_stats
     })
 @router.get("/product/{product_id}", response_class=HTMLResponse)
-async def product_detail(product_id: str, request: Request, db: AsyncSession = Depends(get_db), current_user: User = Depends(get_current_user)):
+async def product_detail(product_id: str, request: Request, db: AsyncSession = Depends(get_db), current_user: User = Depends(login_required)):
     try:
         product_uuid = uuid.UUID(product_id)
     except ValueError:

@@ -61,7 +61,7 @@ class AIRecommendationService:
         """
         
         last_error = None
-        for model_name in ["gemini-1.5-flash", "gemini-1.5-flash-latest", "gemini-2.0-flash-exp"]:
+        for model_name in ["gemini-1.5-flash", "gemini-1.5-flash-latest"]:
             try:
                 # Using async interface for the SDK
                 response = await self.client.aio.models.generate_content(
@@ -112,11 +112,9 @@ class AIRecommendationService:
         
         last_error = None
         # Expanded model list to find anything that works with the provided key
-        models_to_try = [
             "gemini-1.5-flash", 
             "gemini-1.5-flash-latest", 
             "gemini-1.5-pro", 
-            "gemini-2.0-flash-exp",
             "gemini-pro"
         ]
         

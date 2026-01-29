@@ -5,6 +5,7 @@ import logging
 from typing import Dict, Any
 
 from app.config import settings
+from app.services.search_service import GoogleSearchService
 
 logger = logging.getLogger(__name__)
 
@@ -12,6 +13,7 @@ class MarketAnalyzer:
     def __init__(self):
         api_key = settings.GEMINI_API_KEY
         self.client = genai.Client(api_key=api_key)
+        self.search_service = GoogleSearchService()
 
     async def analyze_product(self, product_data: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -19,6 +21,11 @@ class MarketAnalyzer:
         """
         if not self.client:
             raise ValueError("GEMINI_API_KEY not configured.")
+
+        # Gather real-time market data
+        search_query = f"{product_data.get('title')} codecanyon review alternative"
+        search_results = self.search_service.search(search_query, num_results=5)
+        search_context = json.dumps(search_results[:3]) if search_results else "No search data available."
 
         prompt = f"""
         Act as a Senior Market Analyst & Product Manager. Perform a deep competitive analysis for this CodeCanyon product:
@@ -30,6 +37,9 @@ class MarketAnalyzer:
         Rating: {product_data.get('rating', 0)}
         Features: {', '.join(product_data.get('features', []))}
         Description: {product_data.get('description', '')[:2000]}
+        
+        MARKET CONTEXT (Real-time Google Search):
+        {search_context}
         
         TASK:
         1. Conduct a SWOT analysis.
@@ -61,7 +71,7 @@ class MarketAnalyzer:
         
         try:
             response = self.client.models.generate_content(
-                model="gemini-2.0-flash-exp", # Using 2.0 for better reasoning if available
+                model="gemini-1.5-flash", # Using stable 1.5-flash
                 contents=prompt
             )
             
@@ -116,7 +126,7 @@ class MarketAnalyzer:
         
         try:
             response = self.client.models.generate_content(
-                model="gemini-2.0-flash-exp",
+                model="gemini-1.5-flash",
                 contents=prompt
             )
             

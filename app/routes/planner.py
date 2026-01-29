@@ -1,20 +1,21 @@
-from fastapi import APIRouter, Request, Depends, HTTPException
+from fastapi import APIRouter, Request, Depends, HTTPException, status
 from fastapi.responses import HTMLResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from app.database import get_db
 from app.models.product import Product
-from app.models.analysis import AnalysisResult
+from app.models.analysis import AnalysisResult, UserProject
 from app.utils.templates import templates
 from app.services.ai import AIRecommendationService
-from app.utils.auth import get_current_user
+from app.utils.auth import login_required
 from app.models.user import User
 import uuid
 
+from fastapi.responses import RedirectResponse
 router = APIRouter(prefix="/planner", tags=["Planner"])
 
 @router.get("/", response_class=HTMLResponse)
-async def planner_list(request: Request, db: AsyncSession = Depends(get_db), current_user: User = Depends(get_current_user)):
+async def planner_list(request: Request, db: AsyncSession = Depends(get_db), current_user: User = Depends(login_required)):
     # Fetch products that have at least one analysis result
     stmt = select(Product).join(AnalysisResult).distinct().order_by(Product.created_at.desc())
     result = await db.execute(stmt)
@@ -35,7 +36,7 @@ async def planner_list(request: Request, db: AsyncSession = Depends(get_db), cur
     })
 
 @router.get("/{product_id}", response_class=HTMLResponse)
-async def planner_home(product_id: str, request: Request, db: AsyncSession = Depends(get_db), current_user: User = Depends(get_current_user)):
+async def planner_home(product_id: str, request: Request, db: AsyncSession = Depends(get_db), current_user: User = Depends(login_required)):
     product_uuid = uuid.UUID(product_id)
     product = await db.get(Product, product_uuid)
     if not product:
@@ -54,7 +55,7 @@ async def planner_home(product_id: str, request: Request, db: AsyncSession = Dep
     })
 
 @router.get("/{product_id}/step/{step}", response_class=HTMLResponse)
-async def planner_step(product_id: str, step: int, request: Request, db: AsyncSession = Depends(get_db), current_user: User = Depends(get_current_user)):
+async def planner_step(product_id: str, step: int, request: Request, db: AsyncSession = Depends(get_db), current_user: User = Depends(login_required)):
     product_uuid = uuid.UUID(product_id)
     product = await db.get(Product, product_uuid)
     
@@ -71,7 +72,7 @@ async def planner_step(product_id: str, step: int, request: Request, db: AsyncSe
     })
 
 @router.get("/{product_id}/ai-insights/{step}", response_class=HTMLResponse)
-async def ai_insights_fragment(product_id: str, step: int, request: Request, db: AsyncSession = Depends(get_db), current_user: User = Depends(get_current_user)):
+async def ai_insights_fragment(product_id: str, step: int, request: Request, db: AsyncSession = Depends(get_db), current_user: User = Depends(login_required)):
     product_uuid = uuid.UUID(product_id)
     product = await db.get(Product, product_uuid)
     
@@ -103,3 +104,33 @@ async def generate_blueprint_api(product_id: str, request: Request, db: AsyncSes
     # but satisfies the 'audit' requirement for the route to exist.
     from fastapi.responses import RedirectResponse
     return RedirectResponse(url=f"/planner/{product_id}")
+
+@router.post("/{product_id}/finalize")
+async def finalize_blueprint(
+    product_id: str,
+    request: Request,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(login_required)
+):
+    product_uuid = uuid.UUID(product_id)
+    product = await db.get(Product, product_uuid)
+    
+    stmt = select(AnalysisResult).where(AnalysisResult.product_id == product_uuid).order_by(AnalysisResult.created_at.desc())
+    res = await db.execute(stmt)
+    analysis = res.scalars().first()
+    
+    # Create UserProject
+    new_project = UserProject(
+        user_id=current_user.id,
+        product_id=product.id,
+        blueprint=analysis.ai_recommendations if analysis else {},
+        status="active"
+    )
+    db.add(new_project)
+    await db.commit()
+    
+    # Return a success page or redirect to dashboard
+    # Since we used hx-target="body", a full redirect is fine.
+    response = RedirectResponse(url="/dashboard", status_code=status.HTTP_303_SEE_OTHER)
+    response.headers["HX-Trigger"] = '{"showMessage": {"message": "Project Finalized & Saved!", "level": "success"}}'
+    return response

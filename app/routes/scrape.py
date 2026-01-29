@@ -7,7 +7,7 @@ from app.models.job import ScrapingJob
 from app.models.product import Product
 # from app.services.scraper import CodeCanyonScraper
 from app.utils.templates import templates
-from app.utils.auth import get_current_user
+from app.utils.auth import login_required
 from app.models.user import User
 from datetime import datetime
 import uuid
@@ -19,7 +19,7 @@ async def init_scrape(
     request: Request,
     url: str = Form(...),
     db: AsyncSession = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    current_user: User = Depends(login_required)
 ):
     # Basic URL validation
     valid_keywords = ["codecanyon.net/item/", "codecanyon.net/search", "codecanyon.net/category/", "codecanyon.net/popular_item/"]
@@ -69,7 +69,7 @@ async def get_job_status(
     job_id: str,
     request: Request,
     db: AsyncSession = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    current_user: User = Depends(login_required)
 ):
     try:
         job_uuid = uuid.UUID(job_id)

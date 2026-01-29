@@ -5,8 +5,9 @@ from sqlalchemy.orm import Mapped, mapped_column
 from datetime import datetime
 from typing import Optional
 from app.database import Base
+from flask_login import UserMixin
 
-class User(Base):
+class User(UserMixin, Base):
     __tablename__ = "users"
     
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
@@ -22,13 +23,7 @@ class User(Base):
     last_login: Mapped[Optional[datetime]] = mapped_column(TIMESTAMP, nullable=True)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, server_default="true")
 
-    @property
-    def is_authenticated(self):
-        return True
-
-    @property
-    def is_anonymous(self):
-        return False
-
+    # UserMixin provides is_authenticated, is_active, is_anonymous, get_id
+    # We override get_id to ensure it returns the str(id)
     def get_id(self):
         return str(self.id)
