@@ -1,2 +1,15 @@
 .vercel
+.env
 .env*.local
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.db
+instance/
+.pytest_cache/
+.vscode/
+.idea/
+*.log
+worker/stealth_results.png
